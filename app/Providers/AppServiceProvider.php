@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\User;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        ResetPassword::createUrlUsing(function (User $user, string $token) {
+//            return 'https://example.com/reset-password?token='.$token;
+            return env('FRONTEND_URL').'/reset-password?token='.$token;
+        });
     }
 }
