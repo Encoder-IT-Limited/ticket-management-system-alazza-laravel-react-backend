@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ForgetPasswordRequest;
 use App\Http\Requests\LoginRequest;
-use App\Mail\ForgotPasswordMail;
-use App\Models\Admin;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Resources\User\UserResource;
+use App\Models\Services\UserService;
 use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use Carbon\Carbon;
@@ -34,7 +35,7 @@ class AuthController extends Controller
                 'email' => ['Incorrect credentials.'],
             ]);
         }
-        $user = Auth::guard($this->guard)->user();
+        $user = Auth::user();
         if (!$user || !$user->status) {
             return $this->failure('Your account is inactive. Please contact the administrator.', 401);
         }
@@ -46,16 +47,48 @@ class AuthController extends Controller
         ]);
     }
 
+    public function register(UserStoreRequest $request): \Illuminate\Http\JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $userService = new UserService();
+            $userService->store($request);
+
+            $credentials = $request->validated();
+            if (!Auth::attempt($credentials)) {
+                throw ValidationException::withMessages([
+                    'email' => ['Incorrect credentials.'],
+                ]);
+            }
+            $user = Auth::user();
+            if (!$user || !$user->status) {
+                return $this->failure('Your account is inactive. Please contact the administrator.', 401);
+            }
+
+            $token = $user->createToken('user' . 'Token', ['check-' . ($user->role ?? 'user')]);
+
+            DB::commit();
+            return $this->success('User created successfully', [
+                'user' => new UserResource($user),
+                'token' => $token->plainTextToken
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $this->failure($e->getMessage());
+        }
+    }
+
     public function logout(Request $request): \Illuminate\Http\JsonResponse
     {
-        auth()->user()->tokens()->delete();
+//        auth()->user()->tokens()->delete();
+        $request->user()->tokens()->delete();
         return $this->success('Successfully logged out.');
     }
 
-    public function getAuthUser(): \Illuminate\Http\JsonResponse
+    public function getAuthUser(Request $request): \Illuminate\Http\JsonResponse
     {
-        $user = User::findOrFail(auth()->id());
-        return $this->success('Success.', $user);
+        $user = User::findOrFail($request->user()->id);
+        return $this->success('Success.', new UserResource($user));
     }
 
     /**
@@ -63,8 +96,11 @@ class AuthController extends Controller
      */
     public function forgotPassword(ForgetPasswordRequest $request): \Illuminate\Http\JsonResponse
     {
+        $data = $request->validated();
         $status = Password::sendResetLink($request->only('email'));
-
+        if (isset($data['redirect_url'])) {
+            config(['FRONTEND_URL' => $data['redirect_url']]);
+        }
         if ($status === Password::RESET_LINK_SENT) {
             return $this->success(__($status));
         } else {
@@ -79,18 +115,16 @@ class AuthController extends Controller
         ]);
 
         $password_reset = DB::table('password_reset_tokens')->where('token', $request->token)->first();
-        if ($password_reset === null)
-            abort(400, 'Token not valid');
+        if ($password_reset === null) {
+            return $this->failure('Password reset token is invalid.', 422);
+        }
 
         if (Carbon::parse($password_reset->created_at)->addMinutes(720)->isPast()) {
             $password_reset->delete();
-            abort(500, 'Password reset token is expired.');
+            return $this->failure('Password reset token has expired.', 422);
         }
 
-        return response()->json([
-            'message' => 'Password reset token is valid.',
-            'token' => $password_reset
-        ], 200);
+        return $this->success('Token is valid.');
     }
 
     public function resetPassword(Request $request): \Illuminate\Http\JsonResponse
@@ -101,6 +135,15 @@ class AuthController extends Controller
             'token' => 'required_without:previous_password',
             'previous_password' => 'required_without:token',
         ]);
+        if ($request->has('previous_password')) {
+            $user = User::where('email', $request->email)->first();
+            if (!Hash::check($request->previous_password, $user->password)) {
+                return $this->failure('The provided password does not match your current password.', 422);
+            }
+
+            $user->update(['password' => Hash::make($request->password)]);
+            return $this->success('Password updated successfully.');
+        }
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, string $password) {
@@ -112,7 +155,6 @@ class AuthController extends Controller
                 event(new PasswordReset($user));
             }
         );
-
 
         if ($status === Password::PASSWORD_RESET) {
             return $this->success(__($status));

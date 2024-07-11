@@ -24,6 +24,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'role' => 'required|string|in:admin,staff,client',
 
             'user_id_documents' => 'sometimes|nullable|array',
             'user_id_documents.*' => 'sometimes|nullable|file|mimes:pdf,jpeg,png,jpg,txt,svg,zip,gif|max:10240',

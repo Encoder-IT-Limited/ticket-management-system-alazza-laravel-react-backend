@@ -23,7 +23,7 @@ class ForgetPasswordRequest extends FormRequest
     {
         return [
             'email' => 'required|string|email|exists:users,email',
-            'redirect_url' => 'required|string',
+            'redirect_url' => 'sometimes|required|string',
         ];
     }
 }

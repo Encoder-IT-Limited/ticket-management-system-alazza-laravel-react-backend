@@ -13,7 +13,7 @@ trait ApiResponseTrait
         ], $status);
     }
 
-    protected function failure($message, $status = 422): \Illuminate\Http\JsonResponse
+    protected function failure($message, $status = 400): \Illuminate\Http\JsonResponse
     {
         return response()->json([
             'success' => false,

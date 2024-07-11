@@ -16,3 +16,8 @@ function remove_($value): array|string
 {
     return str_replace('_', ' ', $value);
 }
+
+function failureResponse($message, $status = 400): \Illuminate\Http\JsonResponse
+{
+    return response()->json(['success' => false, 'message' => $message, 'status' => $status], $status);
+}

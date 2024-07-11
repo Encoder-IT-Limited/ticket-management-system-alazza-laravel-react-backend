@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         ResetPassword::createUrlUsing(function (User $user, string $token) {
 //            return 'https://example.com/reset-password?token='.$token;
-            return env('FRONTEND_URL').'/reset-password?token='.$token;
+            return config('app.frontend_url').'/reset-password?token='.$token;
         });
     }
 }
