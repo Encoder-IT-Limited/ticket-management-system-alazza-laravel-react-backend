@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketReplyRequest;
 use App\Models\Services\TicketReplyService;
+use App\Models\Ticket;
 use App\Models\TicketReply;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
@@ -23,15 +25,19 @@ class TicketReplyController extends Controller
      */
     public function index()
     {
-        $ticketReplies = $this->ticketReplyService->getAll();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TicketReplyRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-        //
+        try {
+            $ticketReply = $this->ticketReplyService->store($request, $ticket);
+            return $this->success('Ticket Reply Created', $ticketReply);
+        } catch (\Exception $e) {
+            return $this->failure($e->getMessage());
+        }
     }
 
     /**
