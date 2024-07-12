@@ -107,4 +107,12 @@ class TicketController extends Controller
         $mail->ticketCloseMail($ticket);
         return $this->success('Ticket resolved successfully');
     }
+
+    public function export(Request $request): \Illuminate\Http\Response|string|\Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        if ((auth()->user()->role !== 'admin')) {
+            return $this->failure('You are not authorized to perform this action', 403);
+        }
+        return $this->ticketService->export($request);
+    }
 }

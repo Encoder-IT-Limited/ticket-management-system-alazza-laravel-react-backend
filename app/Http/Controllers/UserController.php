@@ -70,7 +70,7 @@ class UserController extends Controller
         }
     }
 
-    public function export(Request $request)
+    public function export(Request $request): \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse|string
     {
         $request->validate([
             'ids' => 'sometimes|required|array',

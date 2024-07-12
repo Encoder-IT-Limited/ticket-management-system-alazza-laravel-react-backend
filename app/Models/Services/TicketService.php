@@ -2,11 +2,15 @@
 
 namespace App\Models\Services;
 
-
 use App\Models\Ticket;
+use App\Traits\ApiResponseTrait;
+use App\Traits\CommonTrait;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class TicketService
 {
+    use CommonTrait;
 
     public function getAll()
     {
@@ -53,5 +57,49 @@ class TicketService
         $ticket->save();
 
         return $ticket;
+    }
+
+    public function export(Request $request): \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse|string
+    {
+        $request->validate([
+            'ids' => 'sometimes|required|array',
+            'format' => 'sometimes|required|in:excel,xlsx,csv,pdf',
+            'start_date' => 'sometimes|required|date',
+            'end_date' => 'sometimes|required|date',
+        ]);
+
+        $columns = [
+            'title', 'description',
+            'status',
+            'client.name',
+            'admin.name',
+            'is_resolved',
+            'created_at',
+            'resolved_at',
+
+        ];
+        $headers = [
+            'Title', 'Description',
+            'Status',
+            'Client Name',
+            'Admin Name',
+            'Is Resolved',
+            'Created At',
+            'Resolved At',
+        ];
+
+
+        $data = Ticket::query();
+        if ($request->has('ids')) {
+            $data->whereIn('id', $request->ids)->get();
+        }
+        if ($request->has('start_date') && $request->has('end_date')) {
+            $data->whereBetween('created_at', [
+                Carbon::parse($request->start_date), Carbon::parse($request->end_date)
+            ]);
+        }
+        $data = $data->with('client', 'admin')->get();
+
+        return $this->exportData(null, $columns, $headers, 'tickets', $data);
     }
 }

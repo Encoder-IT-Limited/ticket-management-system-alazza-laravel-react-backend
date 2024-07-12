@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use NahidFerdous\Searchable\Searchable;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Ticket extends Model
 {
     use HasFactory, Searchable;
+    use LogsActivity;
 
     protected $fillable = [
         'title',
@@ -26,6 +29,14 @@ class Ticket extends Model
             'is_resolved' => 'boolean',
             'resolved_at' => 'datetime',
         ];
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly([...self::getFillable()])
+            ->logOnlyDirty();
+        // Chain fluent methods for configuration options
     }
 
     public function setStatusAttribute($value): void

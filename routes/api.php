@@ -8,6 +8,13 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('export')->group(function () {
+        Route::get('/user', [UserController::class, 'export']);
+        Route::get('/tickets', [TicketController::class, 'export']);
+    });
+});
+
 Route::group(['middleware' => ['cors', 'json',]], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);

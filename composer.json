@@ -12,6 +12,7 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "maatwebsite/excel": "^3.1",
         "nahid-ferdous/laravel-searchable": "^1.4",
         "spatie/laravel-activitylog": "^4.8"
     },
