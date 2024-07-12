@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -15,13 +16,15 @@ class TicketOpenMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     public Ticket $ticket;
+    public User $user;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($ticket)
+    public function __construct($ticket, $user)
     {
         $this->ticket = $ticket;
+        $this->user = $user;
     }
 
     /**
@@ -43,6 +46,7 @@ class TicketOpenMail extends Mailable implements ShouldQueue
             view: 'mail.TicketOpenMail',
             with: [
                 'ticket' => $this->ticket,
+                'user' => $this->user,
             ]
         );
     }

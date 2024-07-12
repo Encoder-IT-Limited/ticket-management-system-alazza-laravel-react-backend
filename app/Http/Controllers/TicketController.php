@@ -44,8 +44,12 @@ class TicketController extends Controller
             $ticket->load('client');
 
             // Send Email to All Admin
+//            $users = User::where('role', 'admin')->get();
+//            Mail::to($users)->send(new TicketOpenMail($ticket));
             $users = User::where('role', 'admin')->get();
-            Mail::to($users)->send(new TicketOpenMail($ticket));
+            foreach ($users as $user) {
+                Mail::to($user->email)->queue(new TicketOpenMail($ticket, $user));
+            }
 
             return $this->success('Ticket created successfully', new TicketResource($ticket));
         } catch (\Exception $e) {
