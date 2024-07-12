@@ -30,6 +30,7 @@ class TicketService
         $ticket = new Ticket();
         $ticket->fill($data);
         $ticket->save();
+        $this->uploadFiles($request, $ticket);
 
         return $ticket;
     }
@@ -55,8 +56,18 @@ class TicketService
         }
         $ticket->fill($data);
         $ticket->save();
+        $this->uploadFiles($request, $ticket);
 
         return $ticket;
+    }
+
+    protected function uploadFiles($request, $model): void
+    {
+        if ($request->has('files')) {
+            foreach ($request->user_id_documents as $key => $document) {
+                $model->uploadMedia($document, 'ticket_files' . $key, 'ticket_files');
+            }
+        }
     }
 
     public function export(Request $request): \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse|string

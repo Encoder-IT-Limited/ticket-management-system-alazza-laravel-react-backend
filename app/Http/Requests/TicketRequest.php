@@ -12,10 +12,10 @@ class TicketRequest extends FormRequest
     public function authorize(): bool
     {
         // if request method is post, then only client can create ticket
-        if ($this->isMethod('post')) {
-            return auth()->user()->role !== 'admin';
-        }
-        return true;
+        return auth()->user()->role !== 'admin';
+//        if ($this->isMethod('post')) {
+//        }
+//        return true;
     }
 
     /**
@@ -28,6 +28,8 @@ class TicketRequest extends FormRequest
         $rule = [
             'title' => 'required|string',
             'description' => 'sometimes|required|string',
+            'files' => 'sometimes|required|array',
+            'files.*' => 'sometimes|required|file|mimes:jpg,jpeg,png,pdf,docx,doc|max:4096',
         ];
         if ($this->isMethod('put') && (auth()->user()->role === 'admin')) {
             $rule['is_resolved'] = 'sometimes|required|boolean';

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use NahidFerdous\Searchable\Searchable;
@@ -10,7 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Ticket extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, InteractsWithMedia;
     use LogsActivity;
 
     protected $fillable = [

@@ -39,7 +39,7 @@ class TicketController extends Controller
     {
         try {
             $ticket = $this->ticketService->store($request);
-            $ticket->load('client');
+            $ticket->load('client', 'media');
 
             // Send Email to All Admin
             $mail = new MailService();
@@ -56,7 +56,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-        $ticket->load('client', 'admin');
+        $ticket->load('client', 'admin', 'media');
         return $this->success('Success', new TicketResource($ticket));
     }
 
@@ -71,7 +71,7 @@ class TicketController extends Controller
 
         $is_resolved = $ticket->is_resolved;
         $ticket = $this->ticketService->update($request, $ticket);
-        $ticket->load('client', 'admin');
+        $ticket->load('client', 'admin', 'media');
 
         // Send Email ...
         if ($is_resolved == 0 && $ticket->is_resolved == 1) {
