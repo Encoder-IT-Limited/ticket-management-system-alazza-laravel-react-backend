@@ -7,6 +7,7 @@ use App\Http\Resources\Ticket\TicketCollection;
 use App\Http\Resources\Ticket\TicketResource;
 use App\Mail\TicketCloseMail;
 use App\Mail\TicketOpenMail;
+use App\Models\Services\MailService;
 use App\Models\Services\TicketService;
 use App\Models\Ticket;
 use App\Models\User;
@@ -45,12 +46,8 @@ class TicketController extends Controller
             $ticket->load('client');
 
             // Send Email to All Admin
-//            $users = User::where('role', 'admin')->get();
-//            Mail::to($users)->send(new TicketOpenMail($ticket));
-            $users = User::where('role', 'admin')->get();
-            foreach ($users as $user) {
-                Mail::to($user->email)->queue(new TicketOpenMail($ticket, $user));
-            }
+            $mail = new MailService();
+            $mail->ticketOpenMail($ticket);
 
             return $this->success('Ticket created successfully', new TicketResource($ticket));
         } catch (\Exception $e) {
@@ -73,7 +70,7 @@ class TicketController extends Controller
     public function update(TicketRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
     {
         if ($ticket->is_resolved == 0) {
-            return $this->failure('Ticket already closed', 400);
+            return $this->failure('Ticket already closed! Cannot Update Ticket', 400);
         }
 
         $is_resolved = $ticket->is_resolved;
@@ -82,13 +79,8 @@ class TicketController extends Controller
 
         // Send Email ...
         if ($is_resolved == 1 && $ticket->is_resolved == 0) {
-            $users = User::where('role', 'admin')->get();
-            foreach ($users as $user) {
-                Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
-            }
-            if ($ticket->client->email) {
-                Mail::to($ticket->client->email)->queue(new TicketCloseMail($ticket, $ticket->client));
-            }
+            $mail = new MailService();
+            $mail->ticketCloseMail($ticket);
         }
         return $this->success('Ticket updated successfully', new TicketResource($ticket));
     }
@@ -108,6 +100,8 @@ class TicketController extends Controller
             return $this->failure('Ticket already closed', 400);
         }
         $this->ticketService->resolved($ticket);
+        $mail = new MailService();
+        $mail->ticketCloseMail($ticket);
         return $this->success('Ticket resolved successfully');
     }
 }
