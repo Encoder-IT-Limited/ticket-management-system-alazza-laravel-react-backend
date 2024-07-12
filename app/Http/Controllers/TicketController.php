@@ -26,9 +26,9 @@ class TicketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Ticket $ticket): \Illuminate\Http\JsonResponse
+    public function index(): \Illuminate\Http\JsonResponse
     {
-        $tickets = $this->ticketService->getAll($ticket);
+        $tickets = $this->ticketService->getAll();
         return $this->success('Success', TicketCollection::make($tickets));
     }
 
@@ -56,7 +56,12 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-        $ticket->load('client', 'admin', 'media', 'ticketReplies');
+        $ticket->load('client', 'admin', 'media', ['ticketReplies' =>
+            function ($query) {
+                $query->with('from', 'to')
+                    ->latest()
+                    ->orderBy('created_at', 'desc');
+            }]);
         return $this->success('Success', new TicketResource($ticket));
     }
 

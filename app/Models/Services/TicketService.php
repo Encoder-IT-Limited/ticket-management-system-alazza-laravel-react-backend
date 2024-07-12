@@ -12,15 +12,15 @@ class TicketService
 {
     use CommonTrait;
 
-    public function getAll($ticket)
+    public function getAll()
     {
-        $take = request('per_page', 25);
-        return $ticket->with(['ticketReplies' => function ($query) use ($take) {
-            $query->with('from', 'to')
-                ->latest()
-                ->take($take)
-                ->orderBy('created_at', 'desc');
-        }])->paginate(request('per_page', 25));
+        $query = request('search_query');
+        return Ticket::whereAny(['title', 'description']
+            , 'like'
+            , "%$query%")
+            ->with('client', 'admin')
+            ->latest()
+            ->paginate(request('per_page', 25));
     }
 
     public function store($request): Ticket

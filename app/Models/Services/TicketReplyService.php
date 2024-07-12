@@ -13,13 +13,15 @@ class TicketReplyService
 {
     use CommonTrait;
 
-
-    public function getAll()
+    public function getAll($ticket)
     {
-        $query = request('search_query');
-        return TicketReply::latest()
-            ->with('from', 'to')
-            ->paginate(request('per_page', 25));
+        $take = request('per_page', 25);
+        return $ticket->with(['ticketReplies' => function ($query) use ($take) {
+            $query->with('from', 'to')
+                ->latest()
+                ->take($take)
+                ->orderBy('created_at', 'desc');
+        }])->paginate(request('per_page', 25));
     }
 
     public function store($request, $ticket): TicketReply
