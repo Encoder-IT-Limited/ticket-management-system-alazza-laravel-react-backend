@@ -15,9 +15,16 @@ class TicketService
     public function getAll()
     {
         $query = request('search_query');
-        return Ticket::whereAny(['title', 'description']
-            , 'like'
-            , "%$query%")
+        if (auth()->user()->role === 'admin') {
+            return Ticket::whereAny(['title', 'description']
+                , 'like'
+                , "%$query%")
+                ->with('client', 'admin')
+                ->latest()
+                ->paginate(request('per_page', 25));
+        }
+        return Ticket::where('client_id', auth()->id())
+            ->whereAny(['title', 'description'], 'like', "%$query%")
             ->with('client', 'admin')
             ->latest()
             ->paginate(request('per_page', 25));
