@@ -30,6 +30,15 @@ class TicketService
         return $ticket;
     }
 
+    public function resolved($ticket): void
+    {
+        $ticket->update([
+            'is_resolved' => true,
+            'resolved_at' => now(),
+            'status' => 'closed',
+        ]);
+    }
+
     public function update($request, $ticket)
     {
         $data = $request->validated();

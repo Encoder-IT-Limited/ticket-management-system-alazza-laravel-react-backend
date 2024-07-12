@@ -24,6 +24,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
 
         // Users
         Route::apiResource('users', UserController::class);
+        Route::put('ticket/{ticket}/resolved', [TicketController::class, 'resolved']);
         Route::apiResource('tickets', TicketController::class);
 
 

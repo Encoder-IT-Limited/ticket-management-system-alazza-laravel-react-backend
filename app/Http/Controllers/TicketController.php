@@ -72,16 +72,16 @@ class TicketController extends Controller
      */
     public function update(TicketRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-        if ($ticket->status == 0) {
+        if ($ticket->is_resolved == 0) {
             return $this->failure('Ticket already closed', 400);
         }
 
-        $status = $ticket->status;
+        $is_resolved = $ticket->is_resolved;
         $ticket = $this->ticketService->update($request, $ticket);
         $ticket->load('client', 'admin');
 
         // Send Email ...
-        if ($status == 1 && $ticket->status == 0) {
+        if ($is_resolved == 1 && $ticket->is_resolved == 0) {
             $users = User::where('role', 'admin')->get();
             foreach ($users as $user) {
                 Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
@@ -100,5 +100,14 @@ class TicketController extends Controller
     {
         $ticket->delete();
         return $this->success('Ticket deleted successfully');
+    }
+
+    public function resolved(Ticket $ticket): \Illuminate\Http\JsonResponse
+    {
+        if ($ticket->is_resolved == 1) {
+            return $this->failure('Ticket already closed', 400);
+        }
+        $this->ticketService->resolved($ticket);
+        return $this->success('Ticket resolved successfully');
     }
 }
