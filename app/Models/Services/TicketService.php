@@ -12,15 +12,15 @@ class TicketService
 {
     use CommonTrait;
 
-    public function getAll()
+    public function getAll($ticket)
     {
-        $query = request('search_query');
-        return Ticket::whereAny(['title', 'description']
-            , 'like'
-            , "%$query%")
-            ->with('client', 'admin')
-            ->latest()
-            ->paginate(request('per_page', 25));
+        $take = request('per_page', 25);
+        return $ticket->with(['ticketReplies' => function ($query) use ($take) {
+            $query->with('from', 'to')
+                ->latest()
+                ->take($take)
+                ->orderBy('created_at', 'desc');
+        }])->paginate(request('per_page', 25));
     }
 
     public function store($request): Ticket
@@ -33,16 +33,6 @@ class TicketService
         $this->uploadFiles($request, $ticket);
 
         return $ticket;
-    }
-
-    public function resolved($ticket): void
-    {
-        $ticket->update([
-            'is_resolved' => true,
-            'resolved_at' => now(),
-            'admin_id' => auth()->user()->role === 'admin' ? auth()->id() : null,
-            'status' => 'closed',
-        ]);
     }
 
     public function update($request, $ticket)
@@ -61,11 +51,24 @@ class TicketService
         return $ticket;
     }
 
+    public function resolved($ticket): void
+    {
+        $ticket->update([
+            'is_resolved' => true,
+            'resolved_at' => now(),
+            'admin_id' => auth()->user()->role === 'admin' ? auth()->id() : null,
+            'status' => 'closed',
+        ]);
+    }
+
+
     protected function uploadFiles($request, $model): void
     {
         if ($request->has('files')) {
-            foreach ($request->user_id_documents as $key => $document) {
-                $model->uploadMedia($document, 'ticket_files' . $key, 'ticket_files');
+            foreach ($request->files as $key => $document) {
+                foreach ($document as $file) {
+                    $model->uploadMedia($file, $model?->client?->name . '_' . $key, 'ticket_files');
+                }
             }
         }
     }
@@ -98,7 +101,6 @@ class TicketService
             'Created At',
             'Resolved At',
         ];
-
 
         $data = Ticket::query();
         if ($request->has('ids')) {

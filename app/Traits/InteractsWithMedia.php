@@ -35,7 +35,7 @@ trait InteractsWithMedia
 
             $generated_name = Str::slug(($name ?? $original_file_name));
 
-            $newFileName = $generated_name . '_' . time() . '.' . $file_extension;
+            $newFileName = $generated_name . '_' . time() . rand(0, 1000) . '.' . $file_extension;
 
             $path = '/uploads/' . $collection;
             if ($file->move(public_path($path), $newFileName)) {

@@ -31,8 +31,12 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
 
         // Users
         Route::apiResource('users', UserController::class);
+
         Route::put('ticket/{ticket}/resolved', [TicketController::class, 'resolved']);
         Route::apiResource('tickets', TicketController::class);
+
+        Route::get('ticket/{ticket}/replies', [TicketController::class, 'index']);
+
 
 
         Route::get("activity-log", [ActivityLogController::class, 'index']);

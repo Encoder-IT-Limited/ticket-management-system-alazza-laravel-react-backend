@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Services\TicketReplyService;
 use App\Models\TicketReply;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 
 class TicketReplyController extends Controller
 {
+    use ApiResponseTrait;
+
+    protected TicketReplyService $ticketReplyService;
+
+    public function __construct(TicketReplyService $ticketReplyService)
+    {
+        $this->ticketReplyService = $ticketReplyService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $ticketReplies = $this->ticketReplyService->getAll();
     }
 
     /**

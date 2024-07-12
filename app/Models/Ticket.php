@@ -24,7 +24,7 @@ class Ticket extends Model
         'resolved_at',
     ];
 
-    public function casts()
+    protected function casts(): array
     {
         return [
             'is_resolved' => 'boolean',
@@ -53,5 +53,10 @@ class Ticket extends Model
     public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function ticketReplies(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(TicketReply::class);
     }
 }

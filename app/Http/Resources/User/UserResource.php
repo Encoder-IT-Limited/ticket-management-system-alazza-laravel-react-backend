@@ -23,13 +23,13 @@ class UserResource extends JsonResource
             'status' => $this->status,
             'role' => $this->role,
 
-//            'documents' => $this->whenLoaded('media',
-//                [
-//                    'user_id_documents' => MediaResource::collection($this->media->where('collection_name', 'user_id_document')),
-//                    'device_licenses' => MediaResource::collection($this->media->where('collection_name', 'device_license')),
-//                    'other_documents' => MediaResource::collection($this->media->where('collection_name', 'other_document')),
-//                ]
-//            ),
+            'documents' => $this->whenLoaded('media',
+                [
+                    'user_id_documents' => MediaResource::collection($this->media->where('collection_name', 'user_id_document')),
+                    'device_licenses' => MediaResource::collection($this->media->where('collection_name', 'device_license')),
+                    'other_documents' => MediaResource::collection($this->media->where('collection_name', 'other_document')),
+                ]
+            ),
 //            'documents' => [
 //                'user_id_documents' => $this->media->where('collection_name', 'user_id_document')->pluck('media_url'),
 //                'device_licenses' => $this->media->where('collection_name', 'device_license')->pluck('media_url'),
