@@ -5,16 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TicketRequest;
 use App\Http\Resources\Ticket\TicketCollection;
 use App\Http\Resources\Ticket\TicketResource;
-use App\Mail\TicketCloseMail;
-use App\Mail\TicketOpenMail;
 use App\Models\Services\MailService;
 use App\Models\Services\TicketService;
 use App\Models\Ticket;
-use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
