@@ -99,9 +99,9 @@ class TicketController extends Controller
         if ((auth()->user()->role !== 'admin')) {
             return $this->failure('You are not authorized to perform this action', 403);
         }
-//        if ($ticket->is_resolved == 1) {
-//            return $this->failure('Ticket already closed', 400);
-//        }
+        if ($ticket->is_resolved == 1) {
+            return $this->failure('Ticket already closed', 400);
+        }
         $this->ticketService->resolved($ticket);
         $mail = new MailService();
         $mail->ticketCloseMail($ticket);
