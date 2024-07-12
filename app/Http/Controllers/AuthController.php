@@ -51,8 +51,9 @@ class AuthController extends Controller
     {
         try {
             DB::beginTransaction();
-            $userService = new UserService();
-            $userService->store($request);
+            $data = $request->except('role');
+            $data['password'] = Hash::make($data['password']);
+            User::create($data);
 
             $credentials = $request->validated();
             if (!Auth::attempt($credentials)) {

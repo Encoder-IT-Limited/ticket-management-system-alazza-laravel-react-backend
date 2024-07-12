@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
 
         // Users
         Route::apiResource('users', UserController::class);
+        Route::apiResource('tickets', TicketController::class);
 
 
         Route::get("activity-log", [ActivityLogController::class, 'index']);

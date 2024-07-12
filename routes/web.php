@@ -3,5 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "<h1>404 Not Found.</h1>";
+//    return view('welcome');
 });
