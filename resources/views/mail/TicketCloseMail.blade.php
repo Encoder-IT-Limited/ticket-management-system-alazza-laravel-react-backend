@@ -60,13 +60,13 @@
         <div>
             <h2>Dear {{$user?->name}},</h2>
             @if($user->id == $ticket->client_id)
-                <small>Your ticket has been closed by <strong>"{{$ticket->user->name}}"</strong>
+                <small>Your ticket has been closed by <strong>"{{$ticket?->admin?->name}}"</strong>
                     at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
-            @elseif($user->id == $ticket->response_admin_id)
-                <small>You closed a ticket requested by <strong>"{{$ticket->user->name}}"</strong>
+            @elseif($user->id == $ticket->admin_id)
+                <small>You closed a ticket requested by <strong>"{{$ticket?->client?->name}}"</strong>
                     at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
             @else
-                <small>Ticket close by <strong>"{{$ticket->admin->name}}"</strong>
+                <small>Ticket close by <strong>"{{$ticket?->admin?->name}}"</strong>
                     at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
             @endif
             <div>
@@ -81,8 +81,13 @@
                     <span style="color: red">Close</span>
                 @endif
             </div>
-            <div>Time:
+            <div>
+                <span>Request Time:</span>
                 <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>
+            </div>
+            <div>
+                <span>Resolved Time:</span>
+                <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>
             </div>
 
             <a href="{{ env('APP_FRONTEND_URL') }}/ticket/{{$ticket->id}}" class="btn">

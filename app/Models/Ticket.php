@@ -15,10 +15,18 @@ class Ticket extends Model
         'description',
         'status',
         'client_id',
-        'response_admin_id',
+        'admin_id',
         'is_resolved',
         'resolved_at',
     ];
+
+    public function casts()
+    {
+        return [
+            'is_resolved' => 'boolean',
+            'resolved_at' => 'datetime',
+        ];
+    }
 
     public function setStatusAttribute($value): void
     {
@@ -32,6 +40,6 @@ class Ticket extends Model
 
     public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class, 'response_admin_id');
+        return $this->belongsTo(User::class, 'admin_id');
     }
 }

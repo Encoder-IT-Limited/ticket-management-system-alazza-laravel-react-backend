@@ -35,6 +35,7 @@ class TicketService
         $ticket->update([
             'is_resolved' => true,
             'resolved_at' => now(),
+            'admin_id' => auth()->user()->role === 'admin' ? auth()->id() : null,
             'status' => 'closed',
         ]);
     }
@@ -42,8 +43,12 @@ class TicketService
     public function update($request, $ticket)
     {
         $data = $request->validated();
-        $data['resolved_at'] = $data['is_resolved'] ? now() : null;
-        $data['status'] = $data['is_resolved'] ? 'closed' : 'open';
+        if (isset($data['is_resolved'])) {
+            $data['resolved_at'] = $data['is_resolved'] ? now() : null;
+            $data['status'] = $data['is_resolved'] ? 'closed' : 'open';
+            $data['admin_id'] = $data['is_resolved'] ? auth()->id() : null;
+            $data['is_resolved'] = $data['is_resolved'] ? 1 : 0;
+        }
         $ticket->fill($data);
         $ticket->save();
 

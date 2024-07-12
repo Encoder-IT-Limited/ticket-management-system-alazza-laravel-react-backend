@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('title', 255);
             $table->text('description')->nullable();
             $table->foreignId('client_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->foreignId('response_admin_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('admin_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('status')->default('open');
             $table->boolean('is_resolved')->default(false);
             $table->timestamp('resolved_at')->nullable();
