@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('export')->group(function () {
-        Route::get('/user', [UserController::class, 'export']);
+        Route::get('/users', [UserController::class, 'export']);
         Route::get('/tickets', [TicketController::class, 'export']);
     });
 });
