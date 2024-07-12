@@ -59,7 +59,7 @@
         </div>
         <div>
             <h2>Dear {{$user?->name}},</h2>
-            <small>A new ticket is opened by <strong>"{{$ticket->client->name}}"</strong>
+            <small>Ticket close by <strong>"{{$ticket->admin->name}}"</strong>
                 at <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>.</small>
             <div>
                 <small>Ticket Details: </small>
@@ -69,10 +69,10 @@
             </h3>
             <p>{{$ticket->description}}</p>
             <div>Status:
-                @if($ticket->status === 'open')
+                @if($ticket->status)
                     <span style="color: green">Open</span>
                 @else
-                    <span style="color: red">{{ ucfirst($ticket->status) }}</span>
+                    <span style="color: red">Close</span>
                 @endif
             </div>
             <div>Time:

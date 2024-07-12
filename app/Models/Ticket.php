@@ -16,7 +16,14 @@ class Ticket extends Model
         'status',
         'client_id',
         'response_admin_id',
+        'is_resolved',
+        'resolved_at',
     ];
+
+    public function setStatusAttribute($value): void
+    {
+        $this->attributes['status'] = strtolower($value);
+    }
 
     public function client(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

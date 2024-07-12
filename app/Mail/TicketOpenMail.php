@@ -33,7 +33,7 @@ class TicketOpenMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Ticket Open ' . config('app.name'),
+            subject: 'Ticket Open Mail' . config('app.name'),
         );
     }
 

@@ -19,9 +19,11 @@ class TicketResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'status' => $this->status ? 'Open' : 'Closed',
+            'status' => $this->status,
             'client' => new UserResource($this->whenLoaded('client')),
             'admin' => new UserResource($this->whenLoaded('admin')),
+            'is_resolved' => $this->is_resolved,
+            'resolved_at' => $this->resolved_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

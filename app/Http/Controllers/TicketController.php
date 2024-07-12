@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TicketRequest;
 use App\Http\Resources\Ticket\TicketCollection;
 use App\Http\Resources\Ticket\TicketResource;
+use App\Mail\TicketCloseMail;
 use App\Mail\TicketOpenMail;
 use App\Models\Services\TicketService;
 use App\Models\Ticket;
@@ -71,8 +72,24 @@ class TicketController extends Controller
      */
     public function update(TicketRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
     {
+        if ($ticket->status == 0) {
+            return $this->failure('Ticket already closed', 400);
+        }
+
+        $status = $ticket->status;
         $ticket = $this->ticketService->update($request, $ticket);
         $ticket->load('client', 'admin');
+
+        // Send Email ...
+        if ($status == 1 && $ticket->status == 0) {
+            $users = User::where('role', 'admin')->get();
+            foreach ($users as $user) {
+                Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
+            }
+            if ($ticket->client->email) {
+                Mail::to($ticket->client->email)->queue(new TicketCloseMail($ticket, $ticket->client));
+            }
+        }
         return $this->success('Ticket updated successfully', new TicketResource($ticket));
     }
 

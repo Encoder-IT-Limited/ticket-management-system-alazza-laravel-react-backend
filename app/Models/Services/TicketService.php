@@ -22,7 +22,6 @@ class TicketService
     public function store($request): Ticket
     {
         $data = $request->validated();
-        $data['status'] = true;
         $data['client_id'] = auth()->id();
         $ticket = new Ticket();
         $ticket->fill($data);
@@ -34,6 +33,8 @@ class TicketService
     public function update($request, $ticket)
     {
         $data = $request->validated();
+        $data['resolved_at'] = $data['is_resolved'] ? now() : null;
+        $data['status'] = $data['is_resolved'] ? 'closed' : 'open';
         $ticket->fill($data);
         $ticket->save();
 
