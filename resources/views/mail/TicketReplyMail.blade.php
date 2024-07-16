@@ -58,36 +58,37 @@
             <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="">
         </div>
         <div>
-            <h2>Dear {{$user?->name}},</h2>
-            @if($user->id == $ticket->client_id)
-                <small>Your ticket has been closed by <strong>"{{$ticket?->admin?->name}}"</strong>
-                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
-            @elseif($user->id == $ticket->admin_id)
-                <small>You closed a ticket requested by <strong>"{{$ticket?->client?->name}}"</strong>
-                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
-            @else
-                <small>Ticket close by <strong>"{{$ticket?->admin?->name}}"</strong>
-                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
-            @endif
+            <h2>Hello {{$ticketReply->to?->name}},</h2>
+            <small>You have a message from <strong>"{{$ticketReply->from->name}}"</strong>, for your ticket opened
+                at <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>.</small>
+            <div>
+                <small>Ticket Reply: </small>
+            </div>
+            <div>
+                {{ $ticketReply->message }}
+                <div>
+                    At: <strong>{{ \Carbon\Carbon::parse($ticketReply->create_at)->format('d-m-Y h:i A')}}</strong>
+                </div>
+            </div>
+            <br>
+            <br>
+
             <div>
                 <small>Ticket Details: </small>
             </div>
-            <h3>{{$ticket->title}}</h3>
+            <h3>
+                {{$ticket->title}}
+            </h3>
             <p>{{$ticket->description}}</p>
             <div>Status:
-                @if($ticket->status)
+                @if($ticket->status === 'open')
                     <span style="color: green">Open</span>
                 @else
-                    <span style="color: red">Close</span>
+                    <span style="color: red">{{ ucfirst($ticket->status) }}</span>
                 @endif
             </div>
-            <div>
-                <span>Request Time:</span>
+            <div>Time:
                 <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>
-            </div>
-            <div>
-                <span>Resolved Time:</span>
-                <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>
             </div>
 
             <a href="{{ env('APP_FRONTEND_URL') }}/ticket/{{$ticket->id}}" class="btn">

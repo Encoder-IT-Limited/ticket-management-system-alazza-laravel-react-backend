@@ -56,7 +56,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-        $ticket->load('client', 'admin', 'media', ['ticketReplies' =>
+        $ticket->load(['client', 'admin', 'media', 'ticketReplies' =>
             function ($query) {
                 $query->with('from', 'to')
                     ->latest()

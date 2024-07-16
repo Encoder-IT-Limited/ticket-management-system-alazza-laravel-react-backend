@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketReplyRequest;
+use App\Models\Services\MailService;
 use App\Models\Services\TicketReplyService;
 use App\Models\Ticket;
 use App\Models\TicketReply;
@@ -34,6 +35,12 @@ class TicketReplyController extends Controller
     {
         try {
             $ticketReply = $this->ticketReplyService->store($request, $ticket);
+
+            $ticketReply->load('from', 'to');
+            // Send Email to All Admin
+            $mail = new MailService();
+            $mail->ticketReplyMail($ticket, $ticketReply);
+
             return $this->success('Ticket Reply Created', $ticketReply);
         } catch (\Exception $e) {
             return $this->failure($e->getMessage());

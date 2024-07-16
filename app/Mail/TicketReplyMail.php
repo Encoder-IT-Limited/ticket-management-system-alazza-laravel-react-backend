@@ -3,7 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Ticket;
-use App\Models\User;
+use App\Models\TicketReply;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,20 +11,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class TicketOpenMail extends Mailable implements ShouldQueue
+class TicketReplyMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     public Ticket $ticket;
-    public User $user;
+    public TicketReply $reply;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($ticket, $user)
+    public function __construct($ticket, $reply)
     {
         $this->ticket = $ticket;
-        $this->user = $user;
+        $this->reply = $reply;
     }
 
     /**
@@ -33,7 +33,7 @@ class TicketOpenMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Ticket Open Mail' . config('app.name'),
+            subject: 'Ticket Reply Mail' . config('app.name'),
         );
     }
 
@@ -43,10 +43,10 @@ class TicketOpenMail extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.TicketOpenMail',
+            view: 'mail.TicketReplyMail',
             with: [
                 'ticket' => $this->ticket,
-                'user' => $this->user,
+                'user' => $this->reply,
             ]
         );
     }

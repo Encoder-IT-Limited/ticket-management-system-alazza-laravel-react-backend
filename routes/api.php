@@ -33,11 +33,11 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         // Users
         Route::apiResource('users', UserController::class);
 
-        Route::put('ticket/{ticket}/resolved', [TicketController::class, 'resolved']);
+        Route::put('tickets/{ticket}/resolved', [TicketController::class, 'resolved']);
         Route::apiResource('tickets', TicketController::class);
 
-        Route::get('ticket/{ticket}/replies', [TicketController::class, 'show']);
-        Route::post('ticket/{ticket}/replies', [TicketReplyController::class, 'store']);
+        Route::get('tickets/{ticket}/replies', [TicketController::class, 'show']);
+        Route::post('tickets/{ticket}/replies', [TicketReplyController::class, 'store']);
 
 
         Route::get("activity-log", [ActivityLogController::class, 'index']);
