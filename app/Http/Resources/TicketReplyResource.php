@@ -30,7 +30,7 @@ class TicketReplyResource extends JsonResource
         ];
     }
 
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->from_id === auth()->id() ? 'right' : 'left';
     }
