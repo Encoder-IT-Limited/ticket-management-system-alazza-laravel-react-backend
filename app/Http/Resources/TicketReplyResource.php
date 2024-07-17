@@ -22,11 +22,16 @@ class TicketReplyResource extends JsonResource
             'from' => new UserWithoutMediaResource($this->whenLoaded('from')),
             'to' => new UserWithoutMediaResource($this->whenLoaded('to')),
             'message' => $this->message,
-            'position' => $this->position,
-            'user_type' => $this->user_type,
+            'position' => $this->getPosition(),
+            'user_type' => $this?->from?->role,
             'read_at' => $this->read_at,
             'replied_at' => $this->replied_at,
             'created_at' => $this->created_at,
         ];
+    }
+
+    public function getPosition()
+    {
+        return $this->from_id === auth()->id() ? 'right' : 'left';
     }
 }
