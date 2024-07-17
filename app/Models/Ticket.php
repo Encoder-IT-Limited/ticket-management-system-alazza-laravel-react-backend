@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use NahidFerdous\Searchable\Searchable;
@@ -10,7 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Ticket extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, InteractsWithMedia;
     use LogsActivity;
 
     protected $fillable = [
@@ -23,7 +24,7 @@ class Ticket extends Model
         'resolved_at',
     ];
 
-    public function casts()
+    protected function casts(): array
     {
         return [
             'is_resolved' => 'boolean',
@@ -52,5 +53,10 @@ class Ticket extends Model
     public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function ticketReplies(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(TicketReply::class);
     }
 }

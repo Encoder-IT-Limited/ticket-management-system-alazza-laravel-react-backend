@@ -15,9 +15,16 @@ class TicketService
     public function getAll()
     {
         $query = request('search_query');
-        return Ticket::whereAny(['title', 'description']
-            , 'like'
-            , "%$query%")
+        if (auth()->user()->role === 'admin') {
+            return Ticket::whereAny(['title', 'description']
+                , 'like'
+                , "%$query%")
+                ->with('client', 'admin')
+                ->latest()
+                ->paginate(request('per_page', 25));
+        }
+        return Ticket::where('client_id', auth()->id())
+            ->whereAny(['title', 'description'], 'like', "%$query%")
             ->with('client', 'admin')
             ->latest()
             ->paginate(request('per_page', 25));
@@ -30,6 +37,23 @@ class TicketService
         $ticket = new Ticket();
         $ticket->fill($data);
         $ticket->save();
+        $this->uploadFiles($request, $ticket);
+
+        return $ticket;
+    }
+
+    public function update($request, $ticket)
+    {
+        $data = $request->validated();
+        if (isset($data['is_resolved'])) {
+            $data['resolved_at'] = $data['is_resolved'] ? now() : null;
+            $data['status'] = $data['is_resolved'] ? 'closed' : 'open';
+            $data['admin_id'] = $data['is_resolved'] ? auth()->id() : null;
+            $data['is_resolved'] = $data['is_resolved'] ? 1 : 0;
+        }
+        $ticket->fill($data);
+        $ticket->save();
+        $this->uploadFiles($request, $ticket);
 
         return $ticket;
     }
@@ -44,19 +68,16 @@ class TicketService
         ]);
     }
 
-    public function update($request, $ticket)
-    {
-        $data = $request->validated();
-        if (isset($data['is_resolved'])) {
-            $data['resolved_at'] = $data['is_resolved'] ? now() : null;
-            $data['status'] = $data['is_resolved'] ? 'closed' : 'open';
-            $data['admin_id'] = $data['is_resolved'] ? auth()->id() : null;
-            $data['is_resolved'] = $data['is_resolved'] ? 1 : 0;
-        }
-        $ticket->fill($data);
-        $ticket->save();
 
-        return $ticket;
+    protected function uploadFiles($request, $model): void
+    {
+        if ($request->has('files')) {
+            foreach ($request->files as $key => $document) {
+                foreach ($document as $file) {
+                    $model->uploadMedia($file, $model?->client?->name . '_' . $key, 'ticket_files');
+                }
+            }
+        }
     }
 
     public function export(Request $request): \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse|string
@@ -87,7 +108,6 @@ class TicketService
             'Created At',
             'Resolved At',
         ];
-
 
         $data = Ticket::query();
         if ($request->has('ids')) {
