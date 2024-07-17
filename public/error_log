@@ -1,0 +1,686 @@
+[11-Jul-2024 09:19:11 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 10:13:19 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 10:13:19 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 10:13:20 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 10:13:23 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 16:11:36 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 16:11:36 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 16:12:00 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 16:12:00 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 19:36:26 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 19:36:27 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 19:36:27 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[11-Jul-2024 19:36:29 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:41:43 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:41:49 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:41:52 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:41:56 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:00 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:03 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:07 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:11 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:16 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:20 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:23 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:27 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:29 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:32 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:35 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:38 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:41 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:44 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:48 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:51 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:55 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:42:57 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:01 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:03 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:08 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:13 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:16 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:19 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:22 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:25 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:28 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:32 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:36 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[12-Jul-2024 20:43:39 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[16-Jul-2024 03:46:00 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
+[16-Jul-2024 04:20:36 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [errors.error] not found. in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139
+Stack trace:
+#0 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\View\FileViewFinder->findInPaths()
+#1 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate\View\FileViewFinder->find()
+#2 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(88): Illuminate\View\Factory->make()
+#3 /home/demoglth/app/laravel/bootstrap/app.php(64): Illuminate\Routing\ResponseFactory->view()
+#4 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(677): {closure}()
+#5 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->renderViaCallbacks()
+#6 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(219): Illuminate\Foundation\Exceptions\Handler->render()
+#7 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(196): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse()
+#8 /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException()
+#9 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}()
+#10 {main}
+  thrown in /home/demoglth/app/laravel/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php on line 139
