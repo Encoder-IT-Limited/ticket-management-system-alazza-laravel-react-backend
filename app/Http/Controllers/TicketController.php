@@ -58,7 +58,7 @@ class TicketController extends Controller
     {
         $ticket->load(['client', 'admin', 'media', 'ticketReplies' =>
             function ($query) {
-                $query->with('from', 'to')
+                $query->with('from', 'to', 'media')
                     ->latest()
                     ->orderBy('created_at', 'desc');
             }]);
