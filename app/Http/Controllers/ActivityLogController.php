@@ -9,12 +9,15 @@ use Spatie\Activitylog\Models\Activity;
 class ActivityLogController extends Controller
 {
     use ApiResponseTrait;
+
     /**
      * Display a listing of the resource.
      */
     public function index(): \Illuminate\Http\JsonResponse
     {
-        $activity = Activity::latest()->paginate(20);
+        $activity = Activity::with('causer')
+            ->latest()
+            ->paginate(20);
         return $this->success('Activity Log Retrieved Successfully', $activity);
     }
 

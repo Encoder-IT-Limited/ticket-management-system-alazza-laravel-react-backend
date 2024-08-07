@@ -25,6 +25,7 @@ class TicketReplyResource extends JsonResource
             'position' => $this->getPosition(),
             'user_type' => $this?->from?->role,
             'read_at' => $this->read_at,
+            'attachments' => MediaResource::collection($this->media->where('collection_name', 'attachments')),
             'replied_at' => $this->replied_at,
             'created_at' => $this->created_at,
         ];

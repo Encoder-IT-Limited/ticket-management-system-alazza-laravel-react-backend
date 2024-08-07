@@ -20,6 +20,6 @@ class Media extends Model
 
     public function getMediaUrlAttribute(): string
     {
-        return asset('public' . $this->path);
+        return asset('' . $this->path);
     }
 }

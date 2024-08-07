@@ -37,6 +37,7 @@ class TicketReplyService
         $ticketReply = new TicketReply();
         $ticketReply->fill($data);
         $ticketReply->save();
+        $this->uploadFiles($request, $ticketReply);
 
         return $ticketReply;
     }
@@ -53,5 +54,14 @@ class TicketReplyService
     public function delete($ticketReply): void
     {
         $ticketReply->delete();
+    }
+
+    protected function uploadFiles($request, $model): void
+    {
+        if ($request->has('attachments')) {
+            foreach ($request->attachments as $key => $document) {
+                $model->uploadMedia($document, 'attachments_' . $key, 'attachments');
+            }
+        }
     }
 }

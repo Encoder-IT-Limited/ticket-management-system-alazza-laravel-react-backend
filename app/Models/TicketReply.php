@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +12,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class TicketReply extends Model
 {
     use HasFactory, SoftDeletes;
-    use LogsActivity;
+    use LogsActivity, InteractsWithMedia;
 
     protected $fillable = [
         'ticket_id',
