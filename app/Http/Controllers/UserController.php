@@ -12,6 +12,7 @@ use App\Traits\ApiResponseTrait;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -50,6 +51,24 @@ class UserController extends Controller
             return $this->success('User updated successfully', new UserResource($user));
         } catch (\Exception $e) {
             return $this->failure($e->getMessage());
+        }
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'previous_password' => 'required:token',
+            'password' => 'required|different:previous_password|min:4|confirmed',
+        ]);
+        if ($request->has('previous_password')) {
+            $user = User::where('email', $request->email)->first();
+            if (!Hash::check($request->previous_password, $user->password)) {
+                return $this->failure('The provided password does not match your current password.', 422);
+            }
+
+            $user->update(['password' => Hash::make($request->password)]);
+            return $this->success('Password updated successfully.');
         }
     }
 

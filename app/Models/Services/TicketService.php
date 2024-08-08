@@ -114,9 +114,11 @@ class TicketService
             $data->whereIn('id', $request->ids)->get();
         }
         if ($request->has('start_date') && $request->has('end_date')) {
-            $data->whereBetween('created_at', [
-                Carbon::parse($request->start_date), Carbon::parse($request->end_date)
-            ]);
+            $from = date($request->start_date);
+            $to = date($request->end_date);
+            $data->whereDate('created_at','>=',$from);
+            $data->whereDate('created_at','<=',$to);
+//                ->whereBetween('created_at', [$from, $to]);
         }
         $data = $data->with('client', 'admin')->get();
 

@@ -98,10 +98,10 @@ class AuthController extends Controller
     public function forgotPassword(ForgetPasswordRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
-        $status = Password::sendResetLink($request->only('email'));
         if (isset($data['redirect_url'])) {
             config(['FRONTEND_URL' => $data['redirect_url']]);
         }
+        $status = Password::sendResetLink($request->only('email'));
         if ($status === Password::RESET_LINK_SENT) {
             return $this->success(__($status));
         } else {

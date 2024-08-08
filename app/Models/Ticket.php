@@ -29,6 +29,7 @@ class Ticket extends Model
         return [
             'is_resolved' => 'boolean',
             'resolved_at' => 'datetime',
+            'created_at' => 'datetime',
         ];
     }
 
