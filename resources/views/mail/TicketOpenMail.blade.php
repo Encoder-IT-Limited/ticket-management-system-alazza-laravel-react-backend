@@ -55,7 +55,7 @@
     <div class="mailContainer">
         <div class="logoContainer">
             {{--            <img class="logoHead" src="{{url('/images/logo.webp')}}" alt="">--}}
-            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="">
+            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="" height="160px">
         </div>
         <div>
             <h2>Dear {{$user?->name}},</h2>
@@ -79,7 +79,7 @@
                 <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>
             </div>
 
-            <a href="{{ env('APP_FRONTEND_URL') }}/ticket/{{$ticket->id}}" class="btn">
+            <a href="{{ env('APP_FRONTEND_URL') }}/tickets/{{$ticket->id}}" class="btn">
                 View Ticket
             </a>
         </div>

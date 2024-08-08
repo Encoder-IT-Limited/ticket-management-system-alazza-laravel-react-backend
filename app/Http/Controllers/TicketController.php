@@ -37,6 +37,9 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request): \Illuminate\Http\JsonResponse
     {
+        if (auth()->user()->role !== 'client') {
+            return $this->failure('You are not authorized to perform this action', 403);
+        }
         try {
             $ticket = $this->ticketService->store($request);
             $ticket->load('client', 'media');

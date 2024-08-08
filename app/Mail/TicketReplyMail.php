@@ -46,7 +46,7 @@ class TicketReplyMail extends Mailable
             view: 'mail.TicketReplyMail',
             with: [
                 'ticket' => $this->ticket,
-                'user' => $this->reply,
+                'reply' => $this->reply,
             ]
         );
     }

@@ -55,19 +55,19 @@
     <div class="mailContainer">
         <div class="logoContainer">
             {{--            <img class="logoHead" src="{{url('/images/logo.webp')}}" alt="">--}}
-            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="">
+            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="" height="160px">
         </div>
         <div>
-            <h2>Hello {{$ticketReply->to?->name}},</h2>
-            <small>You have a message from <strong>"{{$ticketReply->from->name}}"</strong>, for your ticket opened
+            <h2>Hello {{$reply->to?->name}},</h2>
+            <small>You have a message from <strong>"{{$reply->from->name}}"</strong>, for your ticket opened
                 at <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>.</small>
             <div>
                 <small>Ticket Reply: </small>
             </div>
             <div>
-                {{ $ticketReply->message }}
+                {{ $reply->message }}
                 <div>
-                    At: <strong>{{ \Carbon\Carbon::parse($ticketReply->create_at)->format('d-m-Y h:i A')}}</strong>
+                    At: <strong>{{ \Carbon\Carbon::parse($reply->create_at)->format('d-m-Y h:i A')}}</strong>
                 </div>
             </div>
             <br>
@@ -91,7 +91,7 @@
                 <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>
             </div>
 
-            <a href="{{ env('APP_FRONTEND_URL') }}/ticket/{{$ticket->id}}" class="btn">
+            <a href="{{ env('APP_FRONTEND_URL') }}/tickets/{{$ticket->id}}" class="btn">
                 View Ticket
             </a>
         </div>
