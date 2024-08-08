@@ -33,6 +33,9 @@ class TicketReplyController extends Controller
      */
     public function store(TicketReplyRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
     {
+        if ($ticket->is_resolved == 1) {
+            return $this->failure('Ticket already closed', 400);
+        }
         try {
             $ticketReply = $this->ticketReplyService->store($request, $ticket);
 

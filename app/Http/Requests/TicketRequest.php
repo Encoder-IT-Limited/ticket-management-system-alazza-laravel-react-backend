@@ -26,8 +26,9 @@ class TicketRequest extends FormRequest
     public function rules(): array
     {
         $rule = [
-            'title' => 'required|string',
+            'title' => 'sometimes|required|string',
             'description' => 'sometimes|required|string',
+            'admin_id' => 'sometimes|required|exists:users,id',
             'files' => 'sometimes|required|array',
             'files.*' => 'sometimes|required|file|mimes:jpg,jpeg,png,pdf,docx,doc|max:4096',
         ];
