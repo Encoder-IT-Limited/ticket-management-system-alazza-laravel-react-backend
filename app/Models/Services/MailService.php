@@ -37,7 +37,7 @@ class MailService
     public function ticketReplyMail($ticket, $reply): void
     {
         if ($reply->to->email) {
-            Mail::to($ticket->client->email)
+            Mail::to($ticket->to->email)
                 ->queue(new TicketReplyMail($ticket, $reply));
         }
     }

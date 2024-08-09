@@ -59,7 +59,7 @@
         </div>
         <div>
             <h2>Hello {{$reply->to?->name}},</h2>
-            <small>You have a message from <strong>"{{$reply->from->name}}"</strong>, for your ticket opened
+            <small>You have a message from <strong>"{{$reply->from->name}}"</strong>, for a ticket opened
                 at <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>.</small>
             <div>
                 <small>Ticket Reply: </small>
