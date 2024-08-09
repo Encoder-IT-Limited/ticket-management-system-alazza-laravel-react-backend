@@ -40,6 +40,7 @@ class TicketReplyController extends Controller
             $ticketReply = $this->ticketReplyService->store($request, $ticket);
 
             $ticketReply->load('from', 'to');
+            $ticketReply->refresh();
             // Send Email to All Admin
             $mail = new MailService();
             $mail->ticketReplyMail($ticket, $ticketReply);
