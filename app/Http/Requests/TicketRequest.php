@@ -12,10 +12,10 @@ class TicketRequest extends FormRequest
     public function authorize(): bool
     {
         // if request method is post, then only client can create ticket
-        return auth()->user()->role !== 'admin';
-//        if ($this->isMethod('post')) {
-//        }
-//        return true;
+        if ($this->isMethod('post')) {
+            return auth()->user()->role !== 'admin';
+        }
+        return true;
     }
 
     /**

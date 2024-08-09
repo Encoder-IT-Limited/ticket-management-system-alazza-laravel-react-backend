@@ -18,7 +18,7 @@ class MailService
 //            Mail::to($users)->send(new TicketOpenMail($ticket));
         $users = User::where('role', 'admin')->get();
         foreach ($users as $user) {
-            Mail::to($user->email)->send(new TicketOpenMail($ticket, $user));
+            Mail::to($user->email)->queue(new TicketOpenMail($ticket, $user));
         }
     }
 
@@ -26,11 +26,11 @@ class MailService
     {
         $users = User::where('role', 'admin')->get();
         foreach ($users as $user) {
-            Mail::to($user->email)->send(new TicketCloseMail($ticket, $user));
+            Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
         }
         if ($ticket->client->email) {
             // Mail To user
-            Mail::to($ticket->client->email)->send(new TicketCloseMail($ticket, $ticket->client));
+            Mail::to($ticket->client->email)->queue(new TicketCloseMail($ticket, $ticket->client));
         }
     }
 
@@ -38,7 +38,7 @@ class MailService
     {
         if ($reply->to->email) {
             Mail::to($ticket->client->email)
-                ->send(new TicketReplyMail($ticket, $reply));
+                ->queue(new TicketReplyMail($ticket, $reply));
         }
     }
 }

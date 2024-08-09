@@ -37,9 +37,6 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request): \Illuminate\Http\JsonResponse
     {
-        if (auth()->user()->role !== 'client') {
-            return $this->failure('You are not authorized to perform this action', 403);
-        }
         try {
             $ticket = $this->ticketService->store($request);
             $ticket->load('client', 'media');
@@ -94,6 +91,10 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
+        // logged in user is not admin or ticket is assigned to another admin
+        if ((auth()->user()->role !== 'admin') || ($ticket->admin_id && $ticket->admin_id !== auth()->id())) {
+            return $this->failure('You are not authorized to perform this action', 403);
+        }
         $ticket->delete();
         return $this->success('Ticket deleted successfully');
     }
