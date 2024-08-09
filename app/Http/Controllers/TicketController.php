@@ -76,6 +76,7 @@ class TicketController extends Controller
 
         $is_resolved = $ticket->is_resolved;
         $ticket = $this->ticketService->update($request, $ticket);
+        $ticket->refresh();
         $ticket->load('client', 'admin', 'media');
 
         // Send Email ...
