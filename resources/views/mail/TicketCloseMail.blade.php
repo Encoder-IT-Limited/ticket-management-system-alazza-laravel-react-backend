@@ -75,10 +75,12 @@
             <h3>{{$ticket->title}}</h3>
             <p>{{$ticket->description}}</p>
             <div>Status:
-                @if($ticket->status)
+                @if($ticket->status =='open')
                     <span style="color: green">Open</span>
-                @else
+                @elseif($ticket->status =='close')
                     <span style="color: red">Close</span>
+                @else
+                    {{ $ticket->status }}
                 @endif
             </div>
             <div>

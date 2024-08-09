@@ -30,7 +30,7 @@ class MailService
         }
         if ($ticket->client->email) {
             // Mail To user
-            Mail::to($ticket->client->email)->queue(new TicketCloseMail($ticket, $ticket->client));
+            Mail::to($ticket->client->email)->send(new TicketCloseMail($ticket, $ticket->client));
         }
     }
 

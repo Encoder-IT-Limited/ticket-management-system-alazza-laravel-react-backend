@@ -15,19 +15,21 @@ class TicketService
     public function getAll()
     {
         $query = request('search_query');
-        if (auth()->user()->role === 'admin') {
-            return Ticket::whereAny(['title', 'description']
-                , 'like'
-                , "%$query%")
-                ->with('client', 'admin')
-                ->latest()
-                ->paginate(request('per_page', 25));
+        $data = Ticket::query();
+        $data->whereAny(['title', 'description'], 'like', "%$query%")
+            ->with('client', 'admin');
+
+        if (auth()->user()->role !== 'admin') {
+            $data->where('client_id', auth()->id());
         }
-        return Ticket::where('client_id', auth()->id())
-            ->whereAny(['title', 'description'], 'like', "%$query%")
-            ->with('client', 'admin')
-            ->latest()
-            ->paginate(request('per_page', 25));
+        if (request('start_date') && request('end_date')) {
+            $from = date(request()->start_date);
+            $to = date(request()->end_date);
+            $data->whereBetween('created_at', [$from, $to]);
+        }
+
+        $data = $data->latest()->paginate(perPage(25));
+        return $data;
     }
 
     public function store($request): Ticket
@@ -116,9 +118,7 @@ class TicketService
         if ($request->has('start_date') && $request->has('end_date')) {
             $from = date($request->start_date);
             $to = date($request->end_date);
-            $data->whereDate('created_at','>=',$from);
-            $data->whereDate('created_at','<=',$to);
-//                ->whereBetween('created_at', [$from, $to]);
+            $data->whereBetween('created_at', [$from, $to]);
         }
         $data = $data->with('client', 'admin')->get();
 
