@@ -79,7 +79,7 @@ class TicketController extends Controller
         $ticket->refresh();
         $ticket->load('client', 'admin', 'media');
 
-        // Send Email ...
+        // Send Email ... if ticket is resolved (changed from 0 to 1)
         if ($is_resolved == 0 && $ticket->is_resolved == 1) {
             $mail = new MailService();
             $mail->ticketCloseMail($ticket);
