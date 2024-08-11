@@ -36,6 +36,11 @@ class UserController extends Controller
         try {
             DB::beginTransaction();
             $user = $this->userService->store($request);
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($user)
+                ->log('edited');
             DB::commit();
             return $this->success('User created successfully', new UserResource($user));
         } catch (\Exception $e) {
