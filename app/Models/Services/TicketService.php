@@ -23,9 +23,10 @@ class TicketService
             $data->where('client_id', auth()->id());
         }
         if (request('start_date') && request('end_date')) {
-            $from = date(request()->start_date);
-            $to = date(request()->end_date);
-            $data->whereBetween('created_at', [$from, $to]);
+            $from = Carbon::parse(request('start_date'));
+            $to = Carbon::parse(request('end_date'));
+            $data->whereDate('created_at', '>=', $from)
+                ->whereDate('created_at', '<=', $to);
         }
 
         $data = $data->latest()->paginate(perPage(25));
