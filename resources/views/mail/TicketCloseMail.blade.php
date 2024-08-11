@@ -92,7 +92,7 @@
                 <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>
             </div>
 
-            <a href="{{ env('APP_FRONTEND_URL') }}/tickets/{{$ticket->id}}" class="btn">
+            <a href="{{ config('app.frontend_url') }}/tickets/{{$ticket->id}}" class="btn">
                 View Ticket
             </a>
         </div>
