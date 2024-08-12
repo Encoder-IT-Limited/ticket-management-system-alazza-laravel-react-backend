@@ -13,6 +13,7 @@ use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Activitylog\Facades\CauserResolver;
 
 class UserController extends Controller
 {
@@ -37,10 +38,11 @@ class UserController extends Controller
             DB::beginTransaction();
             $user = $this->userService->store($request);
 
-            activity()
-                ->causedBy(auth()->user())
-                ->performedOn($user)
-                ->log('edited');
+            CauserResolver::setCauser(auth()->user());
+//            activity()
+//                ->causedBy(auth()->user())
+//                ->performedOn($user)
+//                ->log('edited');
             DB::commit();
             return $this->success('User created successfully', new UserResource($user));
         } catch (\Exception $e) {
