@@ -88,6 +88,7 @@ class UserController extends Controller
     public function destroy(User $user): \Illuminate\Http\JsonResponse
     {
         try {
+            CauserResolver::setCauser(auth()->user());
             $user->deleteAllMedia();
             $user->forceDelete();
             return $this->success('User deleted successfully');

@@ -11,6 +11,7 @@ use App\Models\Ticket;
 use App\Traits\ApiResponseTrait;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Facades\CauserResolver;
 
 class TicketController extends Controller
 {
@@ -96,6 +97,7 @@ class TicketController extends Controller
         if ((auth()->user()->role !== 'admin') || ($ticket->admin_id && $ticket->admin_id !== auth()->id())) {
             return $this->failure('You are not authorized to perform this action', 403);
         }
+        CauserResolver::setCauser(auth()->user());
         $ticket->delete();
         return $this->success('Ticket deleted successfully');
     }
