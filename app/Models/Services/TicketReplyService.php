@@ -35,6 +35,7 @@ class TicketReplyService
             $data['to_id'] = $ticket->client_id;
         }
         $ticketReply = new TicketReply();
+        $data['replied_at'] = Carbon::now();
         $ticketReply->fill($data);
         $ticketReply->save();
         $this->uploadFiles($request, $ticketReply);

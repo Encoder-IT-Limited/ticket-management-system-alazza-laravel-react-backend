@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Spatie\Activitylog\Facades\CauserResolver;
 
 class AuthController extends Controller
 {
@@ -65,7 +66,9 @@ class AuthController extends Controller
             if (!$user || !$user->status) {
                 return $this->failure('Your account is inactive. Please contact the administrator.', 401);
             }
-
+            if (auth()->check()) {
+                CauserResolver::setCauser(auth()->user());
+            }
             $token = $user->createToken('user' . 'Token', ['check-' . ($user->role ?? 'user')]);
 
             DB::commit();
@@ -137,6 +140,9 @@ class AuthController extends Controller
             'previous_password' => 'required_without:token',
         ]);
         if ($request->has('previous_password')) {
+            if (auth()->check()) {
+                CauserResolver::setCauser(auth()->user());
+            }
             $user = User::where('email', $request->email)->first();
             if (!Hash::check($request->previous_password, $user->password)) {
                 return $this->failure('The provided password does not match your current password.', 422);
