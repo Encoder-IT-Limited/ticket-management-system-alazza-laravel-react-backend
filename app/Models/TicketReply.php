@@ -25,8 +25,8 @@ class TicketReply extends Model
     ];
 
     protected $casts = [
-        'read_at' => 'datetime',
-        'replied_at' => 'datetime',
+//        'read_at' => 'datetime',
+//        'replied_at' => 'datetime',
     ];
 
     public function getActivitylogOptions(): LogOptions
