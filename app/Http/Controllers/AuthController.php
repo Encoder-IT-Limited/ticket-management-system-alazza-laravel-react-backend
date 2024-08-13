@@ -147,8 +147,8 @@ class AuthController extends Controller
             $user = User::where('email', $request->email)->first();
             if (auth()->check()) {
                 activity()
-                    ->causedBy(auth()->user())
                     ->performedOn($user)
+                    ->causedBy(auth()->user())
                     ->log('edited');
             }
             if (!Hash::check($request->previous_password, $user->password)) {

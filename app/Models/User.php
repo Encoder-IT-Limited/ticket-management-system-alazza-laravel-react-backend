@@ -60,7 +60,8 @@ class User extends Authenticatable
     {
         return LogOptions::defaults()
             ->logOnly([...self::getFillable()])
-            ->logOnlyDirty();
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
         // Chain fluent methods for configuration options
     }
 }
