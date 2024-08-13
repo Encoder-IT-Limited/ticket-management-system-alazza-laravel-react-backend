@@ -66,8 +66,8 @@ class AuthController extends Controller
             if (!$user || !$user->status) {
                 return $this->failure('Your account is inactive. Please contact the administrator.', 401);
             }
-            if (auth()->check()) {
-                CauserResolver::setCauser(auth()->user());
+            if ($user) {
+                CauserResolver::setCauser($user);
             }
             $token = $user->createToken('user' . 'Token', ['check-' . ($user->role ?? 'user')]);
 
@@ -140,10 +140,17 @@ class AuthController extends Controller
             'previous_password' => 'required_without:token',
         ]);
         if ($request->has('previous_password')) {
+
             if (auth()->check()) {
                 CauserResolver::setCauser(auth()->user());
             }
             $user = User::where('email', $request->email)->first();
+            if (auth()->check()) {
+                activity()
+                    ->causedBy(auth()->user())
+                    ->performedOn($user)
+                    ->log('edited');
+            }
             if (!Hash::check($request->previous_password, $user->password)) {
                 return $this->failure('The provided password does not match your current password.', 422);
             }

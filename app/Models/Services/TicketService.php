@@ -116,11 +116,13 @@ class TicketService
         if ($request->has('ids')) {
             $data->whereIn('id', $request->ids)->get();
         }
-        if ($request->has('start_date') && $request->has('end_date')) {
-            $from = date($request->start_date);
-            $to = date($request->end_date);
-            $data->whereBetween('created_at', [$from, $to]);
+        if (request('start_date') && request('end_date')) {
+            $from = Carbon::parse(request('start_date'));
+            $to = Carbon::parse(request('end_date'));
+            $data->whereDate('created_at', '>=', $from)
+                ->whereDate('created_at', '<=', $to);
         }
+
         $data = $data->with('client', 'admin')->get();
 
         return $this->exportData(null, $columns, $headers, 'tickets', $data);
