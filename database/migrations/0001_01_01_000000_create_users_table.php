@@ -18,6 +18,9 @@ return new class extends Migration {
             $table->string('password');
             $table->boolean('status')->default(1);
             $table->string('role')->default('client');
+            $table->string('company')->nullable();
+            $table->string('section')->nullable();
+            $table->string('position')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -27,6 +27,9 @@ class UserStoreRequest extends FormRequest
             'password' => 'required|min:4',
             'role' => 'sometimes|required|string|in:admin,staff,client',
             'status' => 'sometimes|required|boolean',
+            'company' => 'sometimes|required',
+            'section' => 'sometimes|required',
+            'position' => 'sometimes|required',
 
             'user_id_documents' => 'sometimes|nullable|array',
             'user_id_documents.*' => 'sometimes|nullable|file|mimes:pdf,jpeg,png,jpg,txt,svg,zip,gif|max:10240',
