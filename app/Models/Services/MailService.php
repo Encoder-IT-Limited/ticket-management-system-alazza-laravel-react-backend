@@ -3,12 +3,15 @@
 namespace App\Models\Services;
 
 
+use App\Mail\EmailVerificationMail;
 use App\Mail\TicketCloseMail;
 use App\Mail\TicketOpenMail;
 use App\Mail\TicketReplyMail;
+use App\Models\EmailVerificationToken;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class MailService
 {
@@ -40,5 +43,21 @@ class MailService
             Mail::to($reply->to->email)
                 ->queue(new TicketReplyMail($ticket, $reply));
         }
+    }
+
+    public function sendEmailVerificationMail($user): bool
+    {
+        $emailSent = false;
+        if ($user && $user->email_verified_at === null) {
+            EmailVerificationToken::where('email', $user->email)->delete();
+            $emailToken = EmailVerificationToken::create([
+                'email' => $user->email,
+                'token' => $token = sha1(time() . Str::random(10)),
+            ]);
+            Mail::to($user->email)->queue(new EmailVerificationMail($user, $emailToken));
+            $emailSent = true;
+        }
+
+        return $emailSent;
     }
 }

@@ -29,6 +29,12 @@ return new class extends Migration {
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
+            $table->timestamps();
+        });
+
+        Schema::create('email_verification_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
@@ -49,6 +55,7 @@ return new class extends Migration {
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('email_verification_tokens');
         Schema::dropIfExists('sessions');
     }
 };

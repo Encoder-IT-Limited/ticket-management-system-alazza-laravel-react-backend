@@ -19,6 +19,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::group(['middleware' => ['cors', 'json',]], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
+    Route::get('send-verification-email', [AuthController::class, 'sendVerificationEmail']);
+    Route::post('verify-email', [AuthController::class, 'verifyEmail'])->name('verify-email');
 
     Route::prefix('password')->group(function () {
         Route::post('forgot', [AuthController::class, 'forgotPassword']);
@@ -26,7 +28,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::post('reset', [AuthController::class, 'resetPassword']);
     });
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::get('me', [AuthController::class, 'getAuthUser']);
         Route::get('logout', [AuthController::class, 'logout']);
 
