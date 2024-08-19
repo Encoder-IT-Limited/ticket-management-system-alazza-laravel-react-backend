@@ -97,6 +97,12 @@ class UserController extends Controller
         }
     }
 
+    public function toggleStatus(User $user): \Illuminate\Http\JsonResponse
+    {
+        $user->update(['status' => $user->status === 'active' ? 0 : 1]);
+        return $this->success('User status updated successfully');
+    }
+
     public function export(Request $request): \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse|string
     {
         $request->validate([
