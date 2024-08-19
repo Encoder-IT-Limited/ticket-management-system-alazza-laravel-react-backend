@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmailVerificationRequest;
+use App\Http\Requests\EmailVerificatioRequest;
 use App\Http\Requests\ForgetPasswordRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Resources\User\UserResource;
+use App\Mail\EmailVerificationMail;
 use App\Models\EmailVerificationToken;
 use App\Models\Services\MailService;
 use App\Models\Services\UserService;
@@ -62,7 +65,6 @@ class AuthController extends Controller
     public function register(UserStoreRequest $request): \Illuminate\Http\JsonResponse
     {
         try {
-            DB::beginTransaction();
             $data = $request->except('role');
             $data['password'] = Hash::make($data['password']);
             $user = new User();
@@ -76,23 +78,17 @@ class AuthController extends Controller
                 ]);
             }
             $user = Auth::user();
-            DB::commit();
             if (!$user || !$user->status) {
                 return $this->failure('Your account is inactive. Please contact the administrator.', 401);
             }
             $token = $user->createToken('user' . 'Token', ['check-' . ($user->role ?? 'user')]);
 
-            $emailSent = (new MailService)->sendEmailVerificationMail(auth()->user());
-            if ($emailSent) {
-                return $this->success('Please verify your email address. An Email verification request was sent to your email.', new UserResource($user));
-            }
-
-            return $this->success('User created successfully', [
+            (new MailService)->sendEmailVerificationMail($user);
+            return $this->success('Please verify your email address. An Email verification request was sent to your email.', [
                 'user' => new UserResource($user),
-                'token' => $token->plainTextToken
+//                'token' => $token->plainTextToken
             ]);
         } catch (\Exception $e) {
-            DB::rollBack();
             return $this->failure($e->getMessage());
         }
     }
@@ -106,7 +102,6 @@ class AuthController extends Controller
             'email.exists' => 'User not found with this Email.',
         ]);
 
-
         $email = request('email');
         $user = User::where('email', $email)->first();
         if ($user === null) {
@@ -119,16 +114,8 @@ class AuthController extends Controller
         return $this->failure('Failed to send verification email.', 422);
     }
 
-    public function verifyEmail(Request $request): \Illuminate\Http\JsonResponse
+    public function verifyEmail(EmailVerificationRequest $request): \Illuminate\Http\JsonResponse
     {
-        $request->validate([
-            'email' => 'required|email|exists:users,email',
-            'token' => 'required',
-        ], [
-            'email.email' => 'Invalid Email.',
-            'email.exists' => 'User not found with this Email.',
-        ]);
-
         $email = request('email');
         $token = request('token');
         $emailToken = EmailVerificationToken::where('email', $email)->where('token', $token)->first();
