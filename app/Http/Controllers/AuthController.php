@@ -48,11 +48,8 @@ class AuthController extends Controller
         }
 
         if ($user->email_verified_at === null) {
-            $emailSent = (new MailService)->sendEmailVerificationMail(auth()->user());
-            if ($emailSent) {
-                return $this->failure('Please verify your email address. An Email verification request was sent to your email.', 401);
-            }
-            return $this->failure('Failed to send verification email.', 422);
+            (new MailService)->sendEmailVerificationMail(auth()->user());
+            return $this->failure('Please verify your email address. An Email verification request was sent to your email.', 401);
         }
 
         $token = $user->createToken('user' . 'Token', ['check-' . ($user->role ?? 'user')]);
@@ -107,17 +104,15 @@ class AuthController extends Controller
         if ($user === null) {
             return $this->failure('User not found with this Email.', 404);
         }
-        $emailSent = (new MailService)->sendEmailVerificationMail($user);
-        if ($emailSent) {
-            return $this->success('Verification email sent successfully.');
-        }
-        return $this->failure('Failed to send verification email.', 422);
+        (new MailService)->sendEmailVerificationMail($user);
+        return $this->success('Verification email sent successfully.');
+//        return $this->failure('Failed to send verification email.', 422);
     }
 
     public function verifyEmail(EmailVerificationRequest $request): \Illuminate\Http\JsonResponse
     {
-        $email = request('email');
-        $token = request('token');
+        $email = $request->email;
+        $token = $request->token;
         $emailToken = EmailVerificationToken::where('email', $email)->where('token', $token)->first();
         if ($emailToken === null) {
             return $this->failure('Email verification token is invalid.', 422);
@@ -128,8 +123,10 @@ class AuthController extends Controller
             return $this->failure('Email verification token has expired.', 422);
         }
 
-        $user = User::where('email', $email)->first();
-        $user->update(['email_verified_at' => now()]);
+        $user = User::where('email', $email)->firstOrFail();
+        $user->email_verified_at = now();
+        $user->save();
+
         $emailToken->delete();
         return $this->success('Email verified successfully.');
     }
