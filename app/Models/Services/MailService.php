@@ -54,7 +54,7 @@ class MailService
                 'email' => $user->email,
                 'token' => $token = sha1(time() . Str::random(10)),
             ]);
-            Mail::to($user->email)->send(new EmailVerificationMail($user, $emailToken));
+            Mail::to($user->email)->queue(new EmailVerificationMail($user, $emailToken));
             $emailSent = true;
         }
 

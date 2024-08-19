@@ -65,7 +65,9 @@ class AuthController extends Controller
             DB::beginTransaction();
             $data = $request->except('role');
             $data['password'] = Hash::make($data['password']);
-            User::create($data);
+            $user = new User();
+            $user->fill($data);
+            $user->save();
 
             $credentials = $request->validated();
             if (!Auth::attempt($credentials)) {
@@ -74,20 +76,17 @@ class AuthController extends Controller
                 ]);
             }
             $user = Auth::user();
+            DB::commit();
             if (!$user || !$user->status) {
                 return $this->failure('Your account is inactive. Please contact the administrator.', 401);
-            }
-            if ($user) {
-                CauserResolver::setCauser($user);
             }
             $token = $user->createToken('user' . 'Token', ['check-' . ($user->role ?? 'user')]);
 
             $emailSent = (new MailService)->sendEmailVerificationMail(auth()->user());
             if ($emailSent) {
-                return $this->success('Please verify your email address. An Email verification request was sent to your email.');
+                return $this->success('Please verify your email address. An Email verification request was sent to your email.', new UserResource($user));
             }
 
-            DB::commit();
             return $this->success('User created successfully', [
                 'user' => new UserResource($user),
                 'token' => $token->plainTextToken
@@ -98,12 +97,20 @@ class AuthController extends Controller
         }
     }
 
-    public function sendVerificationEmail(): \Illuminate\Http\JsonResponse
+    public function sendVerificationEmail(Request $request): \Illuminate\Http\JsonResponse
     {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ], [
+            'email.email' => 'Invalid Email.',
+            'email.exists' => 'User not found with this Email.',
+        ]);
+
+
         $email = request('email');
         $user = User::where('email', $email)->first();
         if ($user === null) {
-            return $this->failure('User not found.', 404);
+            return $this->failure('User not found with this Email.', 404);
         }
         $emailSent = (new MailService)->sendEmailVerificationMail($user);
         if ($emailSent) {
@@ -117,6 +124,9 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'token' => 'required',
+        ], [
+            'email.email' => 'Invalid Email.',
+            'email.exists' => 'User not found with this Email.',
         ]);
 
         $email = request('email');
