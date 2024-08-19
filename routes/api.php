@@ -35,7 +35,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::get('logout', [AuthController::class, 'logout']);
 
         // Users
-        Route::get('user/{users}/toggle-status', [UserController::class, 'toggleStatus']);
+        Route::post('user/{users}/toggle-status', [UserController::class, 'toggleStatus']);
         Route::apiResource('users', UserController::class);
 
 

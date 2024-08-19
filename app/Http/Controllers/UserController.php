@@ -97,10 +97,11 @@ class UserController extends Controller
         }
     }
 
-    public function toggleStatus(User $user): \Illuminate\Http\JsonResponse
+    public function toggleStatus($user): \Illuminate\Http\JsonResponse
     {
-        $user->update(['status' => $user->status === 'active' ? 0 : 1]);
-        return $this->success('User status updated successfully');
+        $user = User::findOrFail($user);
+        $user->update(['status' => $status = $user->status ? 0 : 1]);
+        return $this->success('User status updated successfully', $user);
     }
 
     public function export(Request $request): \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse|string
