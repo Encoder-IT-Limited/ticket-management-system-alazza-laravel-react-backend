@@ -101,7 +101,10 @@ class AuthController extends Controller
     public function sendVerificationEmail(): \Illuminate\Http\JsonResponse
     {
         $email = request('email');
-        $user = User::where('email', $email)->firstOrFail();
+        $user = User::where('email', $email)->first();
+        if ($user === null) {
+            return $this->failure('User not found.', 404);
+        }
         $emailSent = (new MailService)->sendEmailVerificationMail($user);
         if ($emailSent) {
             return $this->success('Verification email sent successfully.');

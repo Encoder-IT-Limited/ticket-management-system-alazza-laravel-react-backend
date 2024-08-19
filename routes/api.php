@@ -16,6 +16,8 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
+//email=fohonof998%40polatrix.com
+
 Route::group(['middleware' => ['cors', 'json',]], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
