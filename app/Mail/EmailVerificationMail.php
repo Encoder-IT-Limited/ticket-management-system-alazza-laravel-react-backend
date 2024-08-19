@@ -16,12 +16,12 @@ class EmailVerificationMail extends Mailable
     use Queueable, SerializesModels;
 
     public User $user;
-    public EmailVerificationToken $emailToken;
+    public $emailToken;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(User $user, EmailVerificationToken $emailToken)
+    public function __construct(User $user, $emailToken)
     {
         $this->user = $user;
         $this->emailToken = $emailToken;

@@ -33,8 +33,9 @@ return new class extends Migration {
         });
 
         Schema::create('email_verification_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
+            $table->id();
+            $table->string('email');
+            $table->string('token')->nullable();
             $table->timestamps();
         });
 

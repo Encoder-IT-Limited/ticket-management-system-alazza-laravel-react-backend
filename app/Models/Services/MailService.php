@@ -45,19 +45,16 @@ class MailService
         }
     }
 
-    public function sendEmailVerificationMail($user): bool
+    public function sendEmailVerificationMail($user): void
     {
-        $emailSent = false;
         if ($user && $user->email_verified_at === null) {
             EmailVerificationToken::where('email', $user->email)->delete();
             $emailToken = EmailVerificationToken::create([
                 'email' => $user->email,
                 'token' => $token = sha1(time() . Str::random(10)),
             ]);
+//            info($emailToken);
             Mail::to($user->email)->queue(new EmailVerificationMail($user, $emailToken));
-            $emailSent = true;
         }
-
-        return $emailSent;
     }
 }
