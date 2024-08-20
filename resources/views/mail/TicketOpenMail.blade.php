@@ -21,7 +21,8 @@
     .logoHead {
         text-align: center;
         margin: 0 auto;
-        height: 100px;
+        height: auto;
+        width: 200px;
     }
 
     .logoContainer {
@@ -55,7 +56,7 @@
     <div class="mailContainer">
         <div class="logoContainer">
             {{--            <img class="logoHead" src="{{url('/images/logo.webp')}}" alt="">--}}
-            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="" height="160px">
+            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="">
         </div>
         <div>
             <h2>Dear {{$user?->name}},</h2>
