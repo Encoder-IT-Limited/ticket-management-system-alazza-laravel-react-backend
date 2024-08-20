@@ -60,8 +60,7 @@ class TicketController extends Controller
         $ticket->load(['client', 'admin', 'media', 'ticketReplies' =>
             function ($query) {
                 $query->with('from', 'to', 'media')
-                    ->latest();
-//                    ->orderBy('created_at', 'desc');
+                    ->orderBy('created_at', 'desc');
             }]);
         return $this->success('Success', new TicketResource($ticket));
     }
@@ -104,9 +103,9 @@ class TicketController extends Controller
 
     public function resolved(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-        if ((auth()->user()->role !== 'admin')) {
-            return $this->failure('You are not authorized to perform this action', 403);
-        }
+//        if ((auth()->user()->role !== 'admin')) {
+//            return $this->failure('You are not authorized to perform this action', 403);
+//        }
         if ($ticket->is_resolved == 1) {
             return $this->failure('Ticket already closed', 400);
         }
