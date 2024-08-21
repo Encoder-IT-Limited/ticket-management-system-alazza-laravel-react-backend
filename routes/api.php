@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketReplyController;
 use App\Http\Controllers\UserController;
@@ -42,7 +43,10 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::put('tickets/{ticket}/resolved', [TicketController::class, 'resolved']);
         Route::apiResource('tickets', TicketController::class);
 
+        Route::get('new-tickets', [NotificationController::class, 'newTickets']);
+
         Route::get('tickets/{ticket}/replies', [TicketController::class, 'show']);
+        Route::get('tickets/{ticket}/read', [TicketReplyController::class, 'read']);
         Route::post('tickets/{ticket}/replies', [TicketReplyController::class, 'store']);
 
 

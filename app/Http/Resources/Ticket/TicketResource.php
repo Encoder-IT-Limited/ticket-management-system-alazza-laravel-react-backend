@@ -28,10 +28,16 @@ class TicketResource extends JsonResource
             'resolved_at' => $this->resolved_at,
             'files' => $this->whenLoaded('media', MediaResource::collection($this->media)),
             'replies' => TicketReplyResource::collection($this->whenLoaded('ticketReplies')),
+            'new_reply_count' => $this->countNewReplies(),
             'client' => new UserWithoutMediaResource($this->whenLoaded('client')),
             'admin' => new UserWithoutMediaResource($this->whenLoaded('admin')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+    }
+
+    public function countNewReplies()
+    {
+        return $this->ticketReplies->whereNull('read_at')->count();
     }
 }

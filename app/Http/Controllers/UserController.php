@@ -110,8 +110,8 @@ class UserController extends Controller
             'ids' => 'sometimes|required|array',
             'format' => 'sometimes|required|in:excel,xlsx,csv,pdf',
         ]);
-        $columns = ['id', 'name', 'email', 'created_at',];
-        $headers = ['ID', 'Name', 'Email', 'Created At',];
+        $columns = ['id', 'name', 'email', 'role', 'status', 'company', 'section', 'position', 'created_at',];
+        $headers = ['ID', 'Name', 'Email', 'Role', 'Status', 'Company', 'Section', 'Position', 'Created At',];
 
         return $this->exportData(User::class, $columns, $headers, 'users');
     }

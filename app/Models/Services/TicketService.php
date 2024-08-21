@@ -12,7 +12,7 @@ class TicketService
 {
     use CommonTrait;
 
-    public function getAll()
+    public function getAll(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $query = request('search_query');
         $data = Ticket::query();

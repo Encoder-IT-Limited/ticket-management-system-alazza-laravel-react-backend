@@ -8,6 +8,7 @@ use App\Models\Services\TicketReplyService;
 use App\Models\Ticket;
 use App\Models\TicketReply;
 use App\Traits\ApiResponseTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TicketReplyController extends Controller
@@ -49,6 +50,12 @@ class TicketReplyController extends Controller
         } catch (\Exception $e) {
             return $this->failure($e->getMessage());
         }
+    }
+
+    public function read(Ticket $ticket): \Illuminate\Http\JsonResponse
+    {
+        $ticket->ticketReplies()->whereNull('read_at')->update(['read_at' => Carbon::now()]);
+        return $this->success('Ticket Read');
     }
 
     /**
