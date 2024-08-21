@@ -126,7 +126,7 @@
     <div class="mailContainer">
         <div class="logoContainer">
             {{--            <img class="logoHead" src="{{url('/images/logo.webp')}}" alt="">--}}
-            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="">
+            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="" width="200">
         </div>
         <div>
             <h2>Dear {{$user?->name}},</h2>
@@ -164,45 +164,45 @@
             <div>Status:
                 @if(lcfirst($ticket->status) =='open')
                     <span style="color: green">Open</span>
-                @elseif(lcfirst($ticket->status) =='close')
-                    <span style="color: red">Close</span>
+                @elseif(lcfirst($ticket->status) =='closed')
+                    <span style="color: red">Closed</span>
                 @else
                     {{ $ticket->status }}
                 @endif
             </div>
 
-            <div class="main-container">
-                <h3>How was your Experience with us?</h3>
-                <small style="margin-bottom: 1rem">Please, take a minute to give your review.</small>
-                <form action="{{ route('tickets.review') }}" id="reviewBox">
-                    @csrf
-                    @method('POST')
-                    <div class="flex items-center justify-between" style="margin-bottom: 1rem">
-                        <label class="flex items-center flex-col reactions">
-                            <input type="radio" id="rating1" name="rating" value="1" hidden required>
-                            <span class="emoji" id="emoji1" style="font-size: 30px">🙁</span>
-                            <small class="emoji-text">Unhappy</small>
-                        </label>
-                        <label class="flex items-center flex-col reactions">
-                            <input type="radio" id="rating2" name="rating" value="2" hidden required>
-                            <span class="emoji" id="emoji2" style="font-size: 30px">😐</span>
-                            <small class="emoji-text">Neutral</small>
-                        </label>
-                        <label class="flex items-center flex-col reactions">
-                            <input type="radio" id="rating3" name="rating" value="3" hidden required>
-                            <span class="emoji" id="emoji3" style="font-size: 30px">😃</span>
-                            <small class="emoji-text">Happy</small>
-                        </label>
-                    </div>
+            {{--            <div class="main-container">--}}
+            {{--                <h3>How was your Experience with us?</h3>--}}
+            {{--                <small style="margin-bottom: 1rem">Please, take a minute to give your review.</small>--}}
+            {{--                <form action="{{ route('tickets.review' , ['ticket'=>$ticket]) }}" id="reviewBox">--}}
+            {{--                    @csrf--}}
+            {{--                    @method('POST')--}}
+            {{--                    <div class="flex items-center justify-between" style="margin-bottom: 1rem">--}}
+            {{--                        <label class="flex items-center flex-col reactions">--}}
+            {{--                            <input type="radio" id="rating1" name="rating" value="1" hidden required>--}}
+            {{--                            <span class="emoji" id="emoji1" style="font-size: 30px">🙁</span>--}}
+            {{--                            <small class="emoji-text">Unhappy</small>--}}
+            {{--                        </label>--}}
+            {{--                        <label class="flex items-center flex-col reactions">--}}
+            {{--                            <input type="radio" id="rating2" name="rating" value="2" hidden required>--}}
+            {{--                            <span class="emoji" id="emoji2" style="font-size: 30px">😐</span>--}}
+            {{--                            <small class="emoji-text">Neutral</small>--}}
+            {{--                        </label>--}}
+            {{--                        <label class="flex items-center flex-col reactions">--}}
+            {{--                            <input type="radio" id="rating3" name="rating" value="3" hidden required>--}}
+            {{--                            <span class="emoji" id="emoji3" style="font-size: 30px">😃</span>--}}
+            {{--                            <small class="emoji-text">Happy</small>--}}
+            {{--                        </label>--}}
+            {{--                    </div>--}}
 
-                    <div>
-                        <textarea name="review"></textarea>
-                    </div>
-                    <div>
-                        <button class="btn" type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
+            {{--                    <div>--}}
+            {{--                        <textarea name="review"></textarea>--}}
+            {{--                    </div>--}}
+            {{--                    <div>--}}
+            {{--                        <button class="btn" type="submit">Submit</button>--}}
+            {{--                    </div>--}}
+            {{--                </form>--}}
+            {{--            </div>--}}
 
             <div>
                 <span>Request Time:</span>
@@ -212,9 +212,16 @@
                 <span>Resolved Time:</span>
                 <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>
             </div>
-
-            <a href="{{ config('app.frontend_url') }}/tickets/{{$ticket->id}}" class="btn">
-                View Ticket
+            <br>
+            <br>
+            <a href="{{ config('app.frontend_url') }}/tickets/{{$ticket->id}}">
+                <div
+                    style="background-color:#7747FF;border-bottom:0px solid transparent;border-left:0px solid transparent;border-radius:4px;border-right:0px solid transparent;border-top:0px solid transparent;color:#ffffff;display:inline-block;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;font-weight:400;mso-border-alt:none;padding-bottom:5px;padding-top:5px;text-align:center;text-decoration:none;width:auto;word-break:keep-all;"><span style="word-break: break-word; padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; letter-spacing: normal;">
+                        <span style="word-break: break-word; line-height: 32px;">
+                            View Ticket
+                        </span>
+                    </span>
+                </div>
             </a>
         </div>
     </div>

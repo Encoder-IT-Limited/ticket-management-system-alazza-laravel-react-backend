@@ -56,7 +56,7 @@
     <div class="mailContainer">
         <div class="logoContainer">
             {{--            <img class="logoHead" src="{{url('/images/logo.webp')}}" alt="">--}}
-            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="">
+            <img class="logoHead" src="https://alazzaz.tech/logo.png" alt="" width="200">
         </div>
         <div>
             <h2>Dear {{$user?->name}},</h2>

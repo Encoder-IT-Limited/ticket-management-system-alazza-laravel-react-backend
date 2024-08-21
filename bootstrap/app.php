@@ -37,30 +37,30 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('api/*')) {
                 return failureResponse('Resource not found', 404);
             }
-            return response()->view('errors.error', ['error' => $e,], 500);
+            return response()->view('errors.error', ['error' => $e,], 404);
         });
         $exceptions->render(function (ModelNotFoundException $e, Request $request) {
             if ($request->is('api/*')) {
                 return failureResponse('Resource not found', 404);
             }
-            return response()->view('errors.error', ['error' => $e,], 500);
+            return response()->view('errors.error', ['error' => $e,], 404);
         });
         $exceptions->render(function (AuthenticationException $e, Request $request) {
             if ($request->is('api/*')) {
                 return failureResponse('Unauthenticated', 401);
             }
-            return response()->view('errors.error', ['error' => $e,], 500);
+            return response()->view('errors.error', ['error' => $e,], 401);
         });
         $exceptions->render(function (UnauthorizedException $e, Request $request) {
             if ($request->is('api/*')) {
                 return failureResponse('Unauthorized action. You need permission to view.', 403);
             }
-            return response()->view('errors.error', ['error' => $e,], 500);
+            return response()->view('errors.error', ['error' => $e,], 403);
         });
-        $exceptions->render(function (Throwable $e, Request $request) {
-            if ($request->is('api/*')) {
-                return failureResponse($e->getMessage(), 500);
-            }
-            return response()->view('errors.error', ['error' => $e,], 500);
-        });
+//        $exceptions->render(function (Throwable $e, Request $request) {
+//            if ($request->is('api/*')) {
+//                return failureResponse($e->getMessage(), $e->getCode());
+//            }
+//            return response()->view('errors.error', ['error' => $e,], $e->getCode());
+//        });
     })->create();

@@ -73,7 +73,7 @@ class TicketService
         ]);
     }
 
-    public function createReview($request, $ticket): \Illuminate\Http\JsonResponse
+    public function createReview($request, $ticket)
     {
         $data = $request->validated();
         $ticket->update($data);
