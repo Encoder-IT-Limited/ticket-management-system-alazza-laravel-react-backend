@@ -40,6 +40,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::apiResource('users', UserController::class);
 
         Route::put('tickets/{ticket}/resolved', [TicketController::class, 'resolved']);
+        Route::match(['GET', 'POST'], 'tickets/{ticket}/review', [TicketController::class, 'review'])->name('tickets.review');
         Route::apiResource('tickets', TicketController::class);
 
         Route::get('new-tickets', [NotificationController::class, 'newTickets']);

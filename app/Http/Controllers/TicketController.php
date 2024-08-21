@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketRequest;
+use App\Http\Requests\TicketReviewRequest;
 use App\Http\Resources\Ticket\TicketCollection;
 use App\Http\Resources\Ticket\TicketResource;
 use App\Models\Services\MailService;
@@ -113,6 +114,12 @@ class TicketController extends Controller
         $mail = new MailService();
         $mail->ticketCloseMail($ticket);
         return $this->success('Ticket resolved successfully');
+    }
+
+    public function review(TicketReviewRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
+    {
+        $ticket = $this->ticketService->createReview($request, $ticket);
+        return $this->success('Success', new TicketResource($ticket));
     }
 
     public function export(Request $request): \Illuminate\Http\Response|string|\Symfony\Component\HttpFoundation\BinaryFileResponse

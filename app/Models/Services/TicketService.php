@@ -73,6 +73,13 @@ class TicketService
         ]);
     }
 
+    public function createReview($request, $ticket): \Illuminate\Http\JsonResponse
+    {
+        $data = $request->validated();
+        $ticket->update($data);
+        return $ticket;
+    }
+
 
     protected function uploadFiles($request, $model): void
     {

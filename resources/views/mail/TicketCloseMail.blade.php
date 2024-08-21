@@ -174,7 +174,7 @@
             <div class="main-container">
                 <h3>How was your Experience with us?</h3>
                 <small style="margin-bottom: 1rem">Please, take a minute to give your review.</small>
-                <form action="{{ route('ticket-reviews.store' ) }}" id="reviewBox">
+                <form action="{{ route('tickets.review') }}" id="reviewBox">
                     @csrf
                     @method('POST')
                     <div class="flex items-center justify-between" style="margin-bottom: 1rem">
