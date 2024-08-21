@@ -10,11 +10,11 @@ class NotificationController extends Controller
 {
     use ApiResponseTrait;
 
-    public function newTickets(): void
+    public function newTickets(): \Illuminate\Http\JsonResponse
     {
         $user = auth()->user();
 
         $ticketCount = Ticket::where('admin_id', null)->count();
-        $this->success('Success', ['ticket_count' => $ticketCount]);
+        return $this->success('Success', ['ticket_count' => $ticketCount]);
     }
 }
