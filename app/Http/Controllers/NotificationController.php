@@ -14,7 +14,7 @@ class NotificationController extends Controller
     {
         $user = auth()->user();
 
-        $ticketCount = Ticket::where('admin_id', null)->count();
+        $ticketCount = Ticket::where('admin_id', null)->where('is_resolved', false)->count();
         return $this->success('Success', ['ticket_count' => $ticketCount]);
     }
 }
