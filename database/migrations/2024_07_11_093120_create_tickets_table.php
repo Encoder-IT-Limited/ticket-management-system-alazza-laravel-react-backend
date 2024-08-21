@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->string('ticket_no', 255)->unique();
             $table->string('title', 255);
             $table->text('description')->nullable();
             $table->foreignId('client_id')->nullable()->constrained('users')->onDelete('set null');

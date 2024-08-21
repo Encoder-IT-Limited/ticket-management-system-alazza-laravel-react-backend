@@ -15,6 +15,7 @@ class Ticket extends Model
     use LogsActivity;
 
     protected $fillable = [
+        'ticket_no',
         'title',
         'description',
         'status',
@@ -39,6 +40,11 @@ class Ticket extends Model
             ->logOnly([...self::getFillable()])
             ->logOnlyDirty();
         // Chain fluent methods for configuration options
+    }
+
+    public function setTicketNoAttribute(): void
+    {
+        $this->attributes['ticket_no'] = generateTicketNumber();
     }
 
     public function setStatusAttribute($value): void

@@ -61,7 +61,9 @@
         <div>
             <h2>Dear {{$user?->name}},</h2>
             <small>A new ticket is opened by <strong>"{{$ticket->client->name}}"</strong>
-                at <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>.</small>
+                at <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>.
+                <strong>Ticket no: {{ $ticket->ticket_no }}.</strong>
+            </small>
             <div>
                 <small>Ticket Details: </small>
             </div>

@@ -62,13 +62,19 @@
             <h2>Dear {{$user?->name}},</h2>
             @if($user->id == $ticket->client_id)
                 <small>Your ticket has been closed by <strong>"{{$ticket?->admin?->name}}"</strong>
-                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
+                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.
+                    <strong>Ticket no: {{ $ticket->ticket_no }}.</strong>
+                </small>
             @elseif($user->id == $ticket->admin_id)
                 <small>You closed a ticket requested by <strong>"{{$ticket?->client?->name}}"</strong>
-                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
+                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.
+                    <strong>Ticket no: {{ $ticket->ticket_no }}.</strong>
+                </small>
             @else
                 <small>Ticket close by <strong>"{{$ticket?->admin?->name}}"</strong>
-                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.</small>
+                    at <strong>{{ \Carbon\Carbon::parse($ticket->resolved_at)->format('d-m-Y h:i A')}}</strong>.
+                    <strong>Ticket no: {{ $ticket->ticket_no }}.</strong>
+                </small>
             @endif
             <div>
                 <small>Ticket Details: </small>
