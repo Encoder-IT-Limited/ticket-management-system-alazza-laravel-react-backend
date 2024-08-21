@@ -31,7 +31,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::post('reset', [AuthController::class, 'resetPassword']);
     });
 
-        Route::match(['GET', 'POST'], 'tickets/{ticket}/review', [TicketController::class, 'review'])->name('tickets.review');
+    Route::post('tickets/{ticket}/review', [TicketController::class, 'review'])->name('tickets.review');
     Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::get('me', [AuthController::class, 'getAuthUser']);
         Route::get('logout', [AuthController::class, 'logout']);
