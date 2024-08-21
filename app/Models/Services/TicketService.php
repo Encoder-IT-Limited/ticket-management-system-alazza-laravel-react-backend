@@ -69,6 +69,7 @@ class TicketService
             'resolved_at' => now(),
 //            'admin_id' => auth()->user()->role === 'admin' ? auth()->id() : null,
             'status' => 'closed',
+            'resolved_by' => auth()->id(),
         ]);
     }
 

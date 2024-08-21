@@ -33,6 +33,10 @@ class TicketResource extends JsonResource
             'admin' => new UserWithoutMediaResource($this->whenLoaded('admin')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+
+            'resolvedBy' => new UserResource($this->whenLoaded('resolvedBy')),
+            'rating' => $this->rating,
+            'review' => $this->review,
         ];
     }
 

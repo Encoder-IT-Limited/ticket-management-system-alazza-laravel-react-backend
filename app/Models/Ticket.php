@@ -23,6 +23,9 @@ class Ticket extends Model
         'admin_id',
         'is_resolved',
         'resolved_at',
+        'resolved_by',
+        'rating',
+        'review',
     ];
 
     protected function casts(): array
@@ -65,5 +68,10 @@ class Ticket extends Model
     public function ticketReplies(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(TicketReply::class);
+    }
+
+    public function resolvedBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'resolved_by');
     }
 }

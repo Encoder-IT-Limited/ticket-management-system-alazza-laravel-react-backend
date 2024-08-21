@@ -20,6 +20,11 @@ return new class extends Migration {
             $table->string('status')->default('open');
             $table->boolean('is_resolved')->default(false);
             $table->timestamp('resolved_at')->nullable();
+
+            $table->foreignId('resolved_by')->nullable()->constrained('users')->onDelete('set null');
+
+            $table->integer('rating')->nullable();
+            $table->string('review')->nullable();
             $table->timestamps();
         });
     }
