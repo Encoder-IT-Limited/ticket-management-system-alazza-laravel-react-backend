@@ -42,10 +42,10 @@ class Ticket extends Model
         // Chain fluent methods for configuration options
     }
 
-    public function setTicketNoAttribute(): void
-    {
-        $this->attributes['ticket_no'] = generateTicketNumber();
-    }
+//    public function setTicketNoAttribute(): void
+//    {
+//        $this->attributes['ticket_no'] = generateTicketNumber();
+//    }
 
     public function setStatusAttribute($value): void
     {

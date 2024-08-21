@@ -16,7 +16,7 @@ class TicketService
     {
         $query = request('search_query');
         $data = Ticket::query();
-        $data->whereAny(['title', 'description'], 'like', "%$query%")
+        $data->whereAny(['title', 'description', 'ticket_no'], 'like', "%$query%")
             ->with('client', 'admin');
 
         if (auth()->user()->role !== 'admin') {
@@ -37,6 +37,7 @@ class TicketService
     {
         $data = $request->validated();
         $data['client_id'] = auth()->id();
+        $data['ticket_no'] = generateTicketNumber();
         $ticket = new Ticket();
         $ticket->fill($data);
         $ticket->save();
