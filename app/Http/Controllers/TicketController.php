@@ -126,6 +126,16 @@ class TicketController extends Controller
     {
         $ticket = Ticket::where('is_resolved', true)->whereNotNull('rating')->get();
 
+        if ($ticket->isEmpty()) {
+            return $this->success('Success', [
+                'sad' => 0,
+                'neutral' => 0,
+                'happy' => 0,
+                'total' => 0,
+                'happy_clients' => '0%',
+            ]);
+        }
+
         $sad = $ticket->where('rating', '1')->count();
         $neutral = $ticket->where('rating', '2')->count();
         $happy = $ticket->where('rating', '3')->count();
@@ -139,7 +149,7 @@ class TicketController extends Controller
             'neutral' => $neutral,
             'happy' => $happy,
             'total' => $total,
-            'happy_clients' => (string)$overPercentageOfHappyClients . '%',
+            'happy_clients' => $overPercentageOfHappyClients . '%',
         ]);
     }
 
