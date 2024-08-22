@@ -107,6 +107,8 @@ class TicketService
             'client.name',
             'admin.name',
             'is_resolved',
+            'rating',
+            'review',
             'created_at',
             'resolved_at',
 
@@ -117,6 +119,8 @@ class TicketService
             'Client Name',
             'Admin Name',
             'Is Resolved',
+            'Rating',
+            'Review',
             'Created At',
             'Resolved At',
         ];
