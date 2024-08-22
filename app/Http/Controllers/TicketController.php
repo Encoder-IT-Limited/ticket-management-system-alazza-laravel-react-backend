@@ -122,6 +122,27 @@ class TicketController extends Controller
         return $this->success('Success', new TicketResource($ticket));
     }
 
+    public function overview(): \Illuminate\Http\JsonResponse
+    {
+        $ticket = Ticket::where('is_resolved', true)->whereNotNull('rating')->get();
+
+        $sad = $ticket->where('rating', '1')->count();
+        $neutral = $ticket->where('rating', '2')->count();
+        $happy = $ticket->where('rating', '3')->count();
+
+        $total = $sad + $neutral + $happy;
+
+        $overPercentageOfHappyClients = ($happy / $total) * 100;
+
+        return $this->success('Success', [
+            'sad' => $sad,
+            'neutral' => $neutral,
+            'happy' => $happy,
+            'total' => $total,
+            'happy_clients' => (string)$overPercentageOfHappyClients . '%',
+        ]);
+    }
+
     public function export(Request $request): \Illuminate\Http\Response|string|\Symfony\Component\HttpFoundation\BinaryFileResponse
     {
         if ((auth()->user()->role !== 'admin')) {

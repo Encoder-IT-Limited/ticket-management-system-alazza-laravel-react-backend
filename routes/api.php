@@ -17,8 +17,6 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
-//email=fohonof998%40polatrix.com
-
 Route::group(['middleware' => ['cors', 'json',]], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
@@ -32,6 +30,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
     });
 
     Route::post('tickets/{ticket}/review', [TicketController::class, 'review'])->name('tickets.review');
+    Route::get('tickets/review-overview', [TicketController::class, 'overview']);
     Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::get('me', [AuthController::class, 'getAuthUser']);
         Route::get('logout', [AuthController::class, 'logout']);
