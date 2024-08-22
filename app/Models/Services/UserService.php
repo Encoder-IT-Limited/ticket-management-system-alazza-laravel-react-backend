@@ -26,6 +26,7 @@ class UserService
     public function store($request)
     {
         $data = $request->validated();
+        $password = $data['password'];
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         $this->uploadFiles($request, $user);
@@ -39,7 +40,7 @@ class UserService
                 'token' => $token = sha1(time() . Str::random(10)),
             ]);
         }
-        Mail::to($user->email)->queue(new CreateUserMail($user, $data['password'], $emailToken));
+        Mail::to($user->email)->queue(new CreateUserMail($user, $password, $emailToken));
 
         return $user;
     }
