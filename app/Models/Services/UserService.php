@@ -4,8 +4,11 @@ namespace App\Models\Services;
 
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
+use App\Mail\CreateUserMail;
+use App\Mail\TicketCloseMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserService
 {
@@ -25,6 +28,8 @@ class UserService
         $user = User::create($data);
         $this->uploadFiles($request, $user);
         $user->load('media');
+
+        Mail::to($user->email)->queue(new CreateUserMail($user, $data['password']));
 
         return $user;
     }
