@@ -14,15 +14,16 @@ class CreateUserMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user, $password;
+    public $user, $password, $emailToken;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(User $user, $password)
+    public function __construct(User $user, $password, $emailToken)
     {
         $this->user = $user;
         $this->password = $password;
+        $this->emailToken = $emailToken;
     }
 
     /**
@@ -41,8 +42,8 @@ class CreateUserMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
-            with: ['user' => $this->user, 'password' => $this->password],
+            view: 'mail.CreateUserMail',
+            with: ['user' => $this->user, 'password' => $this->password, 'emailToken' => $this->emailToken],
         );
     }
 

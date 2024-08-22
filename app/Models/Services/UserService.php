@@ -6,9 +6,11 @@ use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
 use App\Mail\CreateUserMail;
 use App\Mail\TicketCloseMail;
+use App\Models\EmailVerificationToken;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserService
 {
@@ -29,7 +31,15 @@ class UserService
         $this->uploadFiles($request, $user);
         $user->load('media');
 
-        Mail::to($user->email)->queue(new CreateUserMail($user, $data['password']));
+        $emailToken = null;
+        if ($user && $user->email_verified_at === null) {
+            EmailVerificationToken::where('email', $user->email)->delete();
+            $emailToken = EmailVerificationToken::create([
+                'email' => $user->email,
+                'token' => $token = sha1(time() . Str::random(10)),
+            ]);
+        }
+        Mail::to($user->email)->queue(new CreateUserMail($user, $data['password'], $emailToken));
 
         return $user;
     }
