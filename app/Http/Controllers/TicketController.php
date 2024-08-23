@@ -61,7 +61,7 @@ class TicketController extends Controller
         $ticket->load(['client', 'admin', 'media', 'ticketReplies' =>
             function ($query) {
                 $query->with('from', 'to', 'media')
-                    ->orderBy('created_at', 'desc');
+                    ->orderBy('created_at', request('direction', 'asc'));
             }]);
         return $this->success('Success', new TicketResource($ticket));
     }
