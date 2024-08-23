@@ -29,5 +29,5 @@ function generateTicketNumber(): string
     $latestTicket = Ticket::latest('id')->first();
     $lastTicketNumber = $latestTicket ? (int)substr($latestTicket->ticket_no, 1) : 0;
     $newTicketNumber = str_pad($lastTicketNumber + 1, 5, '0', STR_PAD_LEFT);
-    return 'T-' . $newTicketNumber . time();
+    return 'T-' . $newTicketNumber;
 }
