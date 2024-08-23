@@ -128,26 +128,33 @@ class TicketController extends Controller
 
         if ($ticket->isEmpty()) {
             return $this->success('Success', [
+                'very_sad' => 0,
                 'sad' => 0,
                 'neutral' => 0,
                 'happy' => 0,
+                'very_happy' => 0,
                 'total' => 0,
                 'happy_clients' => '0%',
             ]);
         }
 
-        $sad = $ticket->where('rating', '1')->count();
-        $neutral = $ticket->where('rating', '2')->count();
-        $happy = $ticket->where('rating', '3')->count();
+        $verySad = $ticket->where('rating', '1')->count();
+        $sad = $ticket->where('rating', '2')->count();
+        $neutral = $ticket->where('rating', '3')->count();
+        $happy = $ticket->where('rating', '4')->count();
+        $veryHappy = $ticket->where('rating', '5')->count();
+
 
         $total = $sad + $neutral + $happy;
 
         $overPercentageOfHappyClients = ($happy / $total) * 100;
 
         return $this->success('Success', [
+            'very_sad' => $verySad,
             'sad' => $sad,
             'neutral' => $neutral,
             'happy' => $happy,
+            'very_happy' => $veryHappy,
             'total' => $total,
             'happy_clients' => $overPercentageOfHappyClients . '%',
         ]);
