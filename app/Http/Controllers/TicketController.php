@@ -147,7 +147,7 @@ class TicketController extends Controller
 
         $total = $sad + $neutral + $happy;
 
-        $overPercentageOfHappyClients = ($happy / $total) * 100;
+        $overPercentageOfHappyClients = ($veryHappy / $total) * 100;
 
         return $this->success('Success', [
             'very_sad' => $verySad,
