@@ -24,10 +24,22 @@ function failureResponse($message, $status = 400): \Illuminate\Http\JsonResponse
     return response()->json(['success' => false, 'message' => $message, 'status' => $status], $status);
 }
 
-function generateTicketNumber(): string
+function generateTicketNumber($add = 0): string
 {
     $latestTicket = Ticket::latest('id')->first();
-    $lastTicketNumber = $latestTicket ? (int)substr($latestTicket->ticket_no, 1) : 0;
-    $newTicketNumber = str_pad($lastTicketNumber + 1, 5, '0', STR_PAD_LEFT);
-    return 'T-' . $newTicketNumber;
+
+    if (!$latestTicket) {
+        return 'T-0001';
+    }
+
+    $latestTicketNo = $latestTicket->ticket_no;
+    $latestTicketNo = substr($latestTicketNo, 2);
+    $latestTicketNo = (int)$latestTicketNo + 1 + $add;
+    $latestTicketNo = str_pad($latestTicketNo, 4, '0', STR_PAD_LEFT);
+
+    if (Ticket::where('ticket_no', 'T-' . $latestTicketNo)->exists()) {
+        return generateTicketNumber(1);
+    }
+
+    return 'T-' . $latestTicketNo;
 }
