@@ -74,4 +74,9 @@ class MediaController extends Controller
             return $this->failure($e->getMessage());
         }
     }
+
+    public function download(Media $media)
+    {
+        return response()->download($media->getPath(), $media->file_name);
+    }
 }
