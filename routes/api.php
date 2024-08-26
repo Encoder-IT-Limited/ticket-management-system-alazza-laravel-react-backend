@@ -17,6 +17,8 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
+Route::get('media/download/{media}', [MediaController::class, 'download']);
+
 Route::group(['middleware' => ['cors', 'json',]], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
@@ -54,6 +56,5 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         // Delete Media ...
         Route::delete('media/{media}', [MediaController::class, 'destroy']);
 
-        Route::get('media/download/{media}', [MediaController::class, 'download']);
     });
 });

@@ -77,6 +77,6 @@ class MediaController extends Controller
 
     public function download(Media $media)
     {
-        return response()->download($media->getPath(), $media->file_name);
+        return response()->download(public_path($media->path), $media->file_name);
     }
 }
