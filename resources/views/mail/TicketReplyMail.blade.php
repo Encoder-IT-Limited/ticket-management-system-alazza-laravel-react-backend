@@ -95,7 +95,7 @@
                 <strong>{{ \Carbon\Carbon::parse($ticket->create_at)->format('d-m-Y h:i A')}}</strong>
             </div>
 
-            <a href="{{ config('app.frontend_url') }}/tickets/{{$ticket->id}}" class="btn">
+            <a href="{{ config('app.frontend_url') }}/tickets/{{$ticket->id}}">
                 <div
                     style="background-color:#7747FF;border-bottom:0px solid transparent;border-left:0px solid transparent;border-radius:4px;border-right:0px solid transparent;border-top:0px solid transparent;color:#ffffff;display:inline-block;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;font-weight:400;mso-border-alt:none;padding-bottom:5px;padding-top:5px;text-align:center;text-decoration:none;width:auto;word-break:keep-all;"><span style="word-break: break-word; padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; letter-spacing: normal;">
                         <span style="word-break: break-word; line-height: 32px;">
