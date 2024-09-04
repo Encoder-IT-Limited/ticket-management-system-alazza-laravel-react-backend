@@ -31,7 +31,7 @@ class MailService
         foreach ($users as $user) {
             Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
         }
-        if ($ticket->client->email) {
+        if ($ticket->client && $ticket->client->email) {
             // Mail To user
             Mail::to($ticket->client->email)->send(new TicketCloseMail($ticket, $ticket->client));
         }
@@ -39,7 +39,7 @@ class MailService
 
     public function ticketReplyMail($ticket, $reply): void
     {
-        if ($reply->to->email) {
+        if ($reply->to && $reply->to->email) {
             Mail::to($reply->to->email)
                 ->queue(new TicketReplyMail($ticket, $reply));
         }
@@ -53,7 +53,6 @@ class MailService
                 'email' => $user->email,
                 'token' => $token = sha1(time() . Str::random(10)),
             ]);
-//            info($emailToken);
             Mail::to($user->email)->queue(new EmailVerificationMail($user, $emailToken));
         }
     }

@@ -32,9 +32,10 @@ class UserService
         $this->uploadFiles($request, $user);
         $user->load('media');
 
+//        (new MailService)->sendEmailVerificationMail($user);
         $emailToken = null;
-        if ($user && $user->email_verified_at === null) {
-            EmailVerificationToken::where('email', $user->email)->delete();
+        EmailVerificationToken::where('email', $user->email)->delete();
+        if ($user->email_verified_at === null) {
             $emailToken = EmailVerificationToken::create([
                 'email' => $user->email,
                 'token' => $token = sha1(time() . Str::random(10)),
