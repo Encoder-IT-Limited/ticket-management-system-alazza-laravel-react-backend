@@ -22,7 +22,7 @@ class TicketReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'rating' => 'required|numeric|min:1|max:5',
+            'rating' => 'required|numeric|min:1|max:3',
             'review' => 'sometimes|nullable|string',
         ];
     }
