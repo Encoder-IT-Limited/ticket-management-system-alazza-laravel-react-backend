@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'role' => 'admin',
+            'is_super_admin' => true,
         ]);
     }
 }
