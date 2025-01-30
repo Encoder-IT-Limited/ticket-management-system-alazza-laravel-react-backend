@@ -25,6 +25,7 @@ class UserWithoutMediaResource extends JsonResource
             'section' => $this->section,
             'position' => $this->position,
             'created_at' => $this->created_at,
+            'is_super_admin' => $this->is_super_admin,
         ];
     }
 }
