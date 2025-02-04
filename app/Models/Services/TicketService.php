@@ -28,9 +28,13 @@ class TicketService
             $data->whereDate('created_at', '>=', $from)
                 ->whereDate('created_at', '<=', $to);
         }
-
-        $data = $data->latest()->paginate(perPage(25));
-        return $data;
+        if (request('category_id')) {
+            $data->where('category_id', request('category_id'));
+        }
+        if (request('priority')) {
+            $data->where('priority', request('priority'));
+        }
+        return $data->latest()->paginate(perPage(25));
     }
 
     public function store($request): Ticket
