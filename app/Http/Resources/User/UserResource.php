@@ -25,6 +25,7 @@ class UserResource extends JsonResource
             'company' => $this->company,
             'section' => $this->section,
             'position' => $this->position,
+            'is_super_admin' => $this->is_super_admin,
             'documents' => $this->whenLoaded('media', [
                 'user_id_documents' => MediaResource::collection($this->media->where('collection_name', 'user_id_document')),
                 'device_licenses' => MediaResource::collection($this->media->where('collection_name', 'device_license')),

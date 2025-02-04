@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('password');
             $table->boolean('status')->default(1);
             $table->string('role')->default('client');
+            $table->boolean('is_super_admin')->default(0);
             $table->string('company')->nullable();
             $table->string('section')->nullable();
             $table->string('position')->nullable();
