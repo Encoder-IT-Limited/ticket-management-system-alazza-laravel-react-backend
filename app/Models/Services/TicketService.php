@@ -2,6 +2,7 @@
 
 namespace App\Models\Services;
 
+use App\Models\Category;
 use App\Models\Ticket;
 use App\Traits\ApiResponseTrait;
 use App\Traits\CommonTrait;
@@ -29,7 +30,16 @@ class TicketService
                 ->whereDate('created_at', '<=', $to);
         }
         if (request('category_id')) {
-            $data->where('category_id', request('category_id'));
+            $categoryId = request('category_id');
+            $childCategoryIds = Category::where('parent_id', $categoryId)->pluck('id')->toArray();
+
+            $data->where(function ($query) use ($categoryId, $childCategoryIds) {
+                $query->where('category_id', $categoryId);
+
+                if (!empty($childCategoryIds)) {
+                    $query->orWhereIn('category_id', $childCategoryIds);
+                }
+            });
         }
         if (request('priority')) {
             $data->where('priority', request('priority'));
