@@ -26,6 +26,8 @@ class Ticket extends Model
         'resolved_by',
         'rating',
         'review',
+        'category_id',
+        'priority',
     ];
 
     protected function casts(): array
@@ -73,5 +75,10 @@ class Ticket extends Model
     public function resolvedBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'resolved_by');
+    }
+
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

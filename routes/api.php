@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
@@ -40,6 +41,8 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         // Users
         Route::post('user/{users}/toggle-status', [UserController::class, 'toggleStatus']);
         Route::apiResource('users', UserController::class);
+
+        Route::apiResource('categories', CategoryController::class);
 
         Route::put('tickets/{ticket}/resolved', [TicketController::class, 'resolved']);
         Route::apiResource('tickets', TicketController::class);

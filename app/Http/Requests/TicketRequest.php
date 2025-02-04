@@ -31,6 +31,8 @@ class TicketRequest extends FormRequest
             'admin_id' => 'sometimes|required|exists:users,id',
             'files' => 'sometimes|required|array',
             'files.*' => 'sometimes|required|file|mimes:jpg,jpeg,png,pdf,docx,doc,zip|max:4096',
+            'category_id' => 'sometimes|required|exists:categories,id',
+            'priority' => 'sometimes|required|in:ordinary,medium,high,emergency',
         ];
         if ($this->isMethod('put') && (auth()->user()->role === 'admin')) {
             $rule['is_resolved'] = 'sometimes|required|boolean';

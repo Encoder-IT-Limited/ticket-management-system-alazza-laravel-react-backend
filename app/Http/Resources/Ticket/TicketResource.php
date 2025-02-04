@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Ticket;
 
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\MediaResource;
 use App\Http\Resources\TicketReplyResource;
 use App\Http\Resources\User\UserResource;
@@ -37,6 +38,7 @@ class TicketResource extends JsonResource
             'resolvedBy' => new UserResource($this->whenLoaded('resolvedBy')),
             'rating' => $this->rating,
             'review' => $this->review,
+            'category' => new CategoryResource($this->whenLoaded('category')),
         ];
     }
 
