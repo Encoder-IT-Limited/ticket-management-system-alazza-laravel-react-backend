@@ -116,6 +116,24 @@ class TicketController extends Controller
         return $this->success('Ticket resolved successfully');
     }
 
+    public function statistics(): \Illuminate\Http\JsonResponse
+    {
+        $ticketCounts = Ticket::selectRaw('
+        COUNT(*) as ticket_count,
+        SUM(CASE WHEN is_resolved = 0 THEN 1 ELSE 0 END) as open_ticket_count,
+        SUM(CASE WHEN is_resolved = 1 THEN 1 ELSE 0 END) as closed_ticket_count,
+        SUM(CASE WHEN is_resolved = 1 AND TIMESTAMPDIFF(HOUR, created_at, resolved_at) > 24 THEN 1 ELSE 0 END) as late_resolved_count
+    ')->first();
+
+        return $this->success('Success', [
+            'ticket_count' => $ticketCounts->ticket_count,
+            'open_ticket_count' => $ticketCounts->open_ticket_count,
+            'closed_ticket_count' => $ticketCounts->closed_ticket_count,
+            'late_resolved_count' => $ticketCounts->late_resolved_count,
+        ]);
+    }
+
+
     public function review(TicketReviewRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
     {
         $ticket = $this->ticketService->createReview($request, $ticket);
