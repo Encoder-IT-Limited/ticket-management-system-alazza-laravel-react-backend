@@ -17,16 +17,26 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         User::firstOrCreate([
-            'name' => 'Admin',
             'email' => 'dev@fazit.sa',
+        ], [
+            'name' => 'Admin',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'role' => 'admin',
             'is_super_admin' => true,
         ]);
 
+        User::firstOrCreate([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin@admin.com'),
+            'role' => 'admin',
+            'is_super_admin' => true,
+        ]);
+
         $this->call([
-           CategorySeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }

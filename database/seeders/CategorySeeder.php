@@ -75,13 +75,13 @@ class CategorySeeder extends Seeder
 
 
         foreach ($categories as $category) {
-            $parentCategory = \App\Models\Category::create([
+            $parentCategory = \App\Models\Category::updateOrCreate([
                 'name' => $category['name'],
                 'description' => $category['name'] . ' Category',
             ]);
 
             foreach ($category['children'] as $child) {
-                \App\Models\Category::create([
+                \App\Models\Category::updateOrCreate([
                     'name' => $child['name'],
                     'description' => $child['name'] . ' Category',
                     'parent_id' => $parentCategory->id,
