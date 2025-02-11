@@ -132,6 +132,7 @@ class TicketController extends Controller
             'closed_ticket_count' => $ticketCounts->closed_ticket_count,
             'late_resolved_count' => $ticketCounts->late_resolved_count,
             'line_chart' => $this->generateLineChart(),
+            'bar_chart' => $this->generateBarChart(),
         ]);
     }
 
