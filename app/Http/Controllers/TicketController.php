@@ -176,7 +176,7 @@ class TicketController extends Controller
         ];
     }
 
-    private function generateBarChart()
+    private function generateBarChart(): array
     {
         // Weekly Statistics for Bar Chart (Last 7 Days)
         $weeklyStats = Ticket::selectRaw('
