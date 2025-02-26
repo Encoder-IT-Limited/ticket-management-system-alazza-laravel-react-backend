@@ -170,9 +170,9 @@ class TicketController extends Controller
 
         return [
             'labels' => [
-                ['dataKey' => 'openTicket', 'stroke' => '#8884d8'],
-                ['dataKey' => 'closeTicket', 'stroke' => '#82ca9d'],
-                ['dataKey' => 'lateResolvedTicket', 'stroke' => '#ffc658'],
+                ['dataKey' => 'openTicket', 'stroke' => '#008000'],
+                ['dataKey' => 'closeTicket', 'stroke' => '#FFA500'],
+                ['dataKey' => 'lateResolvedTicket', 'stroke' => '#FF0000'],
             ],
             'data' => $lineChartData
         ];
