@@ -161,18 +161,18 @@ class TicketController extends Controller
             $stats = $monthlyStats->firstWhere('month', $num);
 
             $lineChartData[] = [
-                'name' => $name,
-                'openTicket' => $stats->open_tickets ?? 0,
-                'closeTicket' => $stats->closed_tickets ?? 0,
-                'lateResolvedTicket' => $stats->late_resolved_tickets ?? 0,
+                'Name' => $name,
+                'Open Ticket' => $stats->open_tickets ?? 0,
+                'Close Ticket' => $stats->closed_tickets ?? 0,
+                'Late Ticket' => $stats->late_resolved_tickets ?? 0,
             ];
         }
 
         return [
             'labels' => [
-                ['dataKey' => 'openTicket', 'stroke' => '#008000'],
-                ['dataKey' => 'closeTicket', 'stroke' => '#FFA500'],
-                ['dataKey' => 'lateResolvedTicket', 'stroke' => '#FF0000'],
+                ['dataKey' => 'Open Ticket', 'stroke' => '#008000'],
+                ['dataKey' => 'Close Ticket', 'stroke' => '#FFA500'],
+                ['dataKey' => 'Late Ticket', 'stroke' => '#FF0000'],
             ],
             'data' => $lineChartData
         ];
@@ -202,18 +202,18 @@ class TicketController extends Controller
             $stats = $weeklyStats->firstWhere('day', $date);
 
             $barChartData[] = [
-                'name' => $dayLabel,
-                'openTicket' => $stats->open_tickets ?? 0,
-                'closeTicket' => $stats->closed_tickets ?? 0,
-                'lateResolvedTicket' => $stats->late_resolved_tickets ?? 0,
+                'Name' => $dayLabel,
+                'Open Ticket' => $stats->open_tickets ?? 0,
+                'Close Ticket' => $stats->closed_tickets ?? 0,
+                'Late Ticket' => $stats->late_resolved_tickets ?? 0,
             ];
         }
 
         return [
             'labels' => [
-                ['dataKey' => 'openTicket', 'fill' => '#8884d8'],
-                ['dataKey' => 'closeTicket', 'fill' => '#82ca9d'],
-                ['dataKey' => 'lateResolvedTicket', 'fill' => '#ffc658'],
+                ['dataKey' => 'Open Ticket', 'fill' => '#8884d8'],
+                ['dataKey' => 'Close Ticket', 'fill' => '#82ca9d'],
+                ['dataKey' => 'Late Ticket', 'fill' => '#ffc658'],
             ],
             'data' => $barChartData
         ];
