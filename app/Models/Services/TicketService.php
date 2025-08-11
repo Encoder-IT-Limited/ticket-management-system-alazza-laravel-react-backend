@@ -156,4 +156,89 @@ class TicketService
 
         return $this->exportData(null, $columns, $headers, 'tickets', $data);
     }
+
+
+    public function generateLineChart(): array
+    {
+        $currentMonth = now()->month;
+        $last12Months = collect(range(0, 11))->mapWithKeys(function ($i) use ($currentMonth) {
+            $month = ($currentMonth - $i) > 0 ? ($currentMonth - $i) : ($currentMonth - $i + 12);
+            return [$month => now()->subMonths($i)->format('M')];
+        })->reverse();
+
+        $monthlyStats = Ticket::selectRaw('
+        MONTH(created_at) as month,
+        COUNT(*) as total_tickets,
+        SUM(CASE WHEN is_resolved = 0 THEN 1 ELSE 0 END) as open_tickets,
+        SUM(CASE WHEN is_resolved = 1 THEN 1 ELSE 0 END) as closed_tickets,
+        SUM(CASE WHEN is_resolved = 1 AND TIMESTAMPDIFF(HOUR, created_at, resolved_at) > 24 THEN 1 ELSE 0 END) as late_resolved_tickets
+    ')
+            ->whereBetween('created_at', [now()->subMonths(11)->startOfMonth(), now()->endOfMonth()])
+            ->groupByRaw('MONTH(created_at)')
+            ->orderByRaw('MONTH(created_at)')
+            ->get();
+
+        $lineChartData = [];
+
+        foreach ($last12Months as $num => $name) {
+            $stats = $monthlyStats->firstWhere('month', $num);
+
+            $lineChartData[] = [
+                'Name' => $name,
+                'Open Ticket' => $stats->open_tickets ?? 0,
+                'Close Ticket' => $stats->closed_tickets ?? 0,
+                'Late Ticket' => $stats->late_resolved_tickets ?? 0,
+            ];
+        }
+
+        return [
+            'labels' => [
+                ['dataKey' => 'Open Ticket', 'stroke' => '#008000'],
+                ['dataKey' => 'Close Ticket', 'stroke' => '#FFA500'],
+                ['dataKey' => 'Late Ticket', 'stroke' => '#FF0000'],
+            ],
+            'data' => $lineChartData
+        ];
+    }
+
+    public function generateBarChart(): array
+    {
+        $last7Days = collect(range(0, 6))->mapWithKeys(function ($i) {
+            return [now()->subDays($i)->format('Y-m-d') => 'Day ' . (7 - $i)];
+        })->reverse();
+
+        $weeklyStats = Ticket::selectRaw('
+        DATE(created_at) as day,
+        COUNT(*) as total_tickets,
+        SUM(CASE WHEN is_resolved = 0 THEN 1 ELSE 0 END) as open_tickets,
+        SUM(CASE WHEN is_resolved = 1 THEN 1 ELSE 0 END) as closed_tickets,
+        SUM(CASE WHEN is_resolved = 1 AND TIMESTAMPDIFF(HOUR, created_at, resolved_at) > 24 THEN 1 ELSE 0 END) as late_resolved_tickets
+    ')
+            ->whereBetween('created_at', [now()->subDays(6)->startOfDay(), now()->endOfDay()])
+            ->groupByRaw('DATE(created_at)')
+            ->orderByRaw('DATE(created_at)')
+            ->get();
+
+        $barChartData = [];
+
+        foreach ($last7Days as $date => $dayLabel) {
+            $stats = $weeklyStats->firstWhere('day', $date);
+
+            $barChartData[] = [
+                'Name' => $dayLabel,
+                'Open Ticket' => $stats->open_tickets ?? 0,
+                'Close Ticket' => $stats->closed_tickets ?? 0,
+                'Late Ticket' => $stats->late_resolved_tickets ?? 0,
+            ];
+        }
+
+        return [
+            'labels' => [
+                ['dataKey' => 'Open Ticket', 'fill' => '#8884d8'],
+                ['dataKey' => 'Close Ticket', 'fill' => '#82ca9d'],
+                ['dataKey' => 'Late Ticket', 'fill' => '#ffc658'],
+            ],
+            'data' => $barChartData
+        ];
+    }
 }
