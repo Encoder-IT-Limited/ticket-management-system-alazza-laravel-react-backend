@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
@@ -17,6 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/tickets', [TicketController::class, 'export']);
     });
 });
+
 
 Route::get('media/download/{media}', [MediaController::class, 'download']);
 
@@ -56,6 +58,13 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
 
 
         Route::get("activity-log", [ActivityLogController::class, 'index']);
+
+        // Database Management (Admin Only)
+        Route::prefix('database')->group(function () {
+            Route::get('info', [DatabaseController::class, 'info']);
+            Route::get('download', [DatabaseController::class, 'download']);
+
+        });
 
         // Delete Media ...
         Route::delete('media/{media}', [MediaController::class, 'destroy']);
