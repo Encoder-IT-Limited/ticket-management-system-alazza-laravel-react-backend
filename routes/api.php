@@ -9,6 +9,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketReplyController;
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
     Route::get('dashboard/statistics', [TicketController::class, 'statistics']);
     Route::post('tickets/{ticket}/review', [TicketController::class, 'review'])->name('tickets.review');
     Route::get('tickets/review-overview', [TicketController::class, 'overview']);
+    Route::get('settings/logo', [SettingsController::class, 'getCompanyLogo']);
+
     Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::get('me', [AuthController::class, 'getAuthUser']);
         Route::get('logout', [AuthController::class, 'logout']);
@@ -73,6 +76,8 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
             Route::get('download', [DatabaseController::class, 'download']);
 
         });
+
+        Route::post('settings/logo', [SettingsController::class, 'updateLogo']);
 
         // Delete Media ...
         Route::delete('media/{media}', [MediaController::class, 'destroy']);
