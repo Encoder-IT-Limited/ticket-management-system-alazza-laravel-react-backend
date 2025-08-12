@@ -8,6 +8,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketReplyController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,12 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         // Users
         Route::post('user/{users}/toggle-status', [UserController::class, 'toggleStatus']);
         Route::apiResource('users', UserController::class);
+
+        // Roles & Permissions
+        Route::get('roles', [RolePermissionController::class, 'getRole']);
+        Route::post('roles', [RolePermissionController::class, 'createOrUpdateRole']);
+        Route::get('permissions', [RolePermissionController::class, 'getPermission']);
+        Route::post('permissions', [RolePermissionController::class, 'createPermission']);
 
         Route::apiResource('categories', CategoryController::class);
 
