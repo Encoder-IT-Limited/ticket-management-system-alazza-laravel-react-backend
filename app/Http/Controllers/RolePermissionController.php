@@ -35,9 +35,20 @@ class RolePermissionController extends Controller
         ], 201);
     }
 
-    public function getPermission()
+    public function getPermission(Request $request)
     {
-        $permissions = Permission::orderBy('id','asc')->groupBy('category')->get();
+        $search = $request->get('search', '');
+        $per_page = $request->get('per_page', 10);
+
+        $query = Permission::query();
+        if($search){
+            $query
+                ->where('name', 'like', '%'.$search.'%')
+                ->orWhere('category', 'like', '%'.$search.'%');
+        }
+        $permissions = $query
+            ->orderBy('created_at','desc')
+            ->paginate($per_page);
 
         return response()->json([
             'permissions' => $permissions
@@ -46,20 +57,35 @@ class RolePermissionController extends Controller
 
     public function createPermission(Request $request){
         $request->validate([
-            'name' => 'required|string|unique',
+            'id' => 'sometimes|integer|exists:permissions,id',
+            'name' => 'required|string|unique:permissions,name,'.$request->id,
             'category' => 'required|string'
         ]);
-
+        if($request->id){
+            $permission = Permission::find($request->id);
+            $permission->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'category' => $request->category
+            ]);
+            return response()->json([
+                'permission' => $permission
+            ], 200);
+        }
         $permission = Permission::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'category' => $request->category
         ]);
-
-
         return response()->json([
             'permission' => $permission
         ], 201);
+    }
 
+    public function deletePermission(Request $request, $id){
+        Permission::find($request->id)->delete();
+        return response()->json([
+            'message' => 'Permission deleted successfully'
+        ], 204);
     }
 }

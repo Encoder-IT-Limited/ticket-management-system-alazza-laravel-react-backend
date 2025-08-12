@@ -51,6 +51,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::post('roles', [RolePermissionController::class, 'createOrUpdateRole']);
         Route::get('permissions', [RolePermissionController::class, 'getPermission']);
         Route::post('permissions', [RolePermissionController::class, 'createPermission']);
+        Route::delete('permissions/{id}', [RolePermissionController::class, 'deletePermission']);
 
         Route::apiResource('categories', CategoryController::class);
 
