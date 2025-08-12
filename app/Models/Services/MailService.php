@@ -19,7 +19,9 @@ class MailService
     {
 //            $users = User::where('role', 'admin')->get();
 //            Mail::to($users)->send(new TicketOpenMail($ticket));
-        $users = User::where('role', 'admin')->get();
+        $users = User::whereHas('role', function($q){
+            return $q->where('name', 'admin');
+        })->get();
         foreach ($users as $user) {
             Mail::to($user->email)->queue(new TicketOpenMail($ticket, $user));
         }
