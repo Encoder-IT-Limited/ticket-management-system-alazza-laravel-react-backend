@@ -20,7 +20,7 @@ class TicketService
         $data->whereAny(['title', 'description', 'ticket_no'], 'like', "%$query%")
             ->with('client', 'admin', 'category', 'category.parent');
 
-        if (auth()->user()->role !== 'admin') {
+        if (auth()->user()->role->name !== 'Admin') {
             $data->where('client_id', auth()->id());
         }
         if (request('start_date') && request('end_date')) {
@@ -66,7 +66,7 @@ class TicketService
         if (isset($data['is_resolved'])) {
             $data['resolved_at'] = $data['is_resolved'] ? now() : null;
             $data['status'] = $data['is_resolved'] ? 'closed' : 'open';
-//            $data['admin_id'] = $data['is_resolved'] ? auth()->id() : null;
+            //            $data['admin_id'] = $data['is_resolved'] ? auth()->id() : null;
             $data['is_resolved'] = $data['is_resolved'] ? 1 : 0;
         }
         $ticket->fill($data);
@@ -81,7 +81,7 @@ class TicketService
         $ticket->update([
             'is_resolved' => true,
             'resolved_at' => now(),
-//            'admin_id' => auth()->user()->role === 'admin' ? auth()->id() : null,
+            //            'admin_id' => auth()->user()->role === 'admin' ? auth()->id() : null,
             'status' => 'closed',
             'resolved_by' => auth()->id(),
         ]);
@@ -116,7 +116,8 @@ class TicketService
         ]);
 
         $columns = [
-            'title', 'description',
+            'title',
+            'description',
             'status',
             'client.name',
             'client.company',
@@ -129,7 +130,8 @@ class TicketService
 
         ];
         $headers = [
-            'Title', 'Description',
+            'Title',
+            'Description',
             'Status',
             'Client Name',
             'Company Name',
