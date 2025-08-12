@@ -163,7 +163,7 @@ class TicketService
         $currentMonth = now()->month;
         $last12Months = collect(range(0, 11))->mapWithKeys(function ($i) use ($currentMonth) {
             $month = ($currentMonth - $i) > 0 ? ($currentMonth - $i) : ($currentMonth - $i + 12);
-            return [$month => now()->subMonths($i)->format('M')];
+            return [$month => now()->subMonths($i)->format('M Y')];
         })->reverse();
 
         $monthlyStats = Ticket::selectRaw('
@@ -185,9 +185,9 @@ class TicketService
 
             $lineChartData[] = [
                 'Name' => $name,
-                'Open Ticket' => $stats->open_tickets ?? 0,
-                'Close Ticket' => $stats->closed_tickets ?? 0,
-                'Late Ticket' => $stats->late_resolved_tickets ?? 0,
+                'Open Ticket' => (int)($stats->open_tickets ?? 0),
+                'Close Ticket' => (int)($stats->closed_tickets ?? 0),
+                'Late Ticket' => (int)($stats->late_resolved_tickets ?? 0),
             ];
         }
 
@@ -225,10 +225,10 @@ class TicketService
             $stats = $weeklyStats->firstWhere('day', $date);
 
             $barChartData[] = [
-                'Name' => $dayLabel,
-                'Open Ticket' => $stats->open_tickets ?? 0,
-                'Close Ticket' => $stats->closed_tickets ?? 0,
-                'Late Ticket' => $stats->late_resolved_tickets ?? 0,
+                'Name' => $date,
+                'Open Ticket' => (int)($stats->open_tickets ?? 0),
+                'Close Ticket' => (int)($stats->closed_tickets ?? 0),
+                'Late Ticket' => (int)($stats->late_resolved_tickets ?? 0),
             ];
         }
 
