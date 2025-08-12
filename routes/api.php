@@ -52,6 +52,7 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         // Roles & Permissions
         Route::get('roles', [RolePermissionController::class, 'getRole']);
         Route::post('roles', [RolePermissionController::class, 'createOrUpdateRole']);
+        Route::delete('roles/{id}', [RolePermissionController::class, 'deleteRole']);
         Route::get('permissions', [RolePermissionController::class, 'getPermission']);
         Route::post('permissions', [RolePermissionController::class, 'createPermission']);
         Route::delete('permissions/{id}', [RolePermissionController::class, 'deletePermission']);
@@ -74,13 +75,11 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
         Route::prefix('database')->group(function () {
             Route::get('info', [DatabaseController::class, 'info']);
             Route::get('download', [DatabaseController::class, 'download']);
-
         });
 
         Route::post('settings/logo', [SettingsController::class, 'updateLogo']);
 
         // Delete Media ...
         Route::delete('media/{media}', [MediaController::class, 'destroy']);
-
     });
 });
