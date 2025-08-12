@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             // CategorySeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+            RolePermissionSeeder::class,
         ]);
     }
 }

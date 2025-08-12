@@ -10,6 +10,7 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Resources\User\UserResource;
 use App\Mail\EmailVerificationMail;
 use App\Models\EmailVerificationToken;
+use App\Models\Role;
 use App\Models\Services\MailService;
 use App\Models\Services\UserService;
 use App\Models\User;
@@ -65,6 +66,11 @@ class AuthController extends Controller
         try {
             $data = $request->except('role');
             $data['password'] = Hash::make($data['password']);
+
+            // Find the id of the role where name is 'client'
+            $clientRoleId = Role::where('name', 'client')->value('id');
+            $data['role_id'] = $clientRoleId;
+
             $user = new User();
             $user->fill($data);
             $user->save();

@@ -27,6 +27,11 @@ class UserService
     public function store($request)
     {
         $data = $request->validated();
+        // Map incoming role (role id) to role_id column if provided
+        if (array_key_exists('role', $data) && $data['role'] !== null && $data['role'] !== '') {
+            $data['role_id'] = (int) $data['role'];
+            unset($data['role']);
+        }
         $password = $data['password'];
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
@@ -50,6 +55,11 @@ class UserService
     public function update($request, $user)
     {
         $data = $request->validated();
+        // Map incoming role (role id) to role_id column if provided
+        if (array_key_exists('role', $data) && $data['role'] !== null && $data['role'] !== '') {
+            $data['role_id'] = (int) $data['role'];
+            unset($data['role']);
+        }
         $user->update($data);
         $this->uploadFiles($request, $user);
         $user->load('media');

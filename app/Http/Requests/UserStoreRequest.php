@@ -25,7 +25,7 @@ class UserStoreRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:4',
-            'role' => 'sometimes|required|string|in:admin,staff,client',
+            'role' => 'sometimes|required|integer|exists:roles,id',
             'status' => 'sometimes|required|boolean',
             'company' => 'sometimes|required',
             'section' => 'sometimes|required',
