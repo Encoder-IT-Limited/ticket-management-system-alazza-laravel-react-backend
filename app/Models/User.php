@@ -16,8 +16,12 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable,
-        SoftDeletes, Searchable, InteractsWithMedia;
+    use HasApiTokens,
+        HasFactory,
+        Notifiable,
+        SoftDeletes,
+        Searchable,
+        InteractsWithMedia;
     use LogsActivity;
 
     /**

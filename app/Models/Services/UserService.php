@@ -19,7 +19,7 @@ class UserService
         $query = request('search_query');
         return User::whereAny(['name', 'email'], 'like', "%$query%")
             ->whereNot('is_super_admin', true)
-            ->with('media')
+            ->with(['media', 'role'])
             ->latest()
             ->paginate(request('per_page', 25));
     }
@@ -38,7 +38,7 @@ class UserService
         $this->uploadFiles($request, $user);
         $user->load('media');
 
-//        (new MailService)->sendEmailVerificationMail($user);
+        //        (new MailService)->sendEmailVerificationMail($user);
         $emailToken = null;
         EmailVerificationToken::where('email', $user->email)->delete();
         if ($user->email_verified_at === null) {
