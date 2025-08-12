@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Permission;
 
@@ -14,44 +13,45 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-            // System Settings Permissions
-            ['name' => 'Dashboard', 'category' => 'System Settings'],
-            ['name' => 'Change Password', 'category' => 'System Settings'],
-            ['name' => 'Activities Log', 'category' => 'System Settings'],
+            // Users Permissions
+            ['name' => 'Create Users', 'category' => 'Users', 'slug' => 'create-users'],
+            ['name' => 'Read Users', 'category' => 'Users', 'slug' => 'read-users'],
+            ['name' => 'Update Users', 'category' => 'Users', 'slug' => 'update-users'],
+            ['name' => 'Delete Users', 'category' => 'Users', 'slug' => 'delete-users'],
+            ['name' => 'Export Users', 'category' => 'Users', 'slug' => 'export-users'],
 
-            // User Management Permissions
-            ['name' => 'View Users', 'category' => 'User Management'],
-            ['name' => 'Create Users', 'category' => 'User Management'],
-            ['name' => 'Edit Users', 'category' => 'User Management'],
-            ['name' => 'Delete Users', 'category' => 'User Management'],
-            ['name' => 'Assign Roles', 'category' => 'User Management'],
-            
-            // Role Management Permissions
-            ['name' => 'View Roles', 'category' => 'Role Management'],
-            ['name' => 'Create Roles', 'category' => 'Role Management'],
-            ['name' => 'Edit Roles', 'category' => 'Role Management'],
-            ['name' => 'Delete Roles', 'category' => 'Role Management'],
-            ['name' => 'Assign Permissions', 'category' => 'Role Management'],
-            
-            // Ticket Management Permissions
-            ['name' => 'View Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Create Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Edit Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Delete Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Assign Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Close Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Reopen Tickets', 'category' => 'Ticket Management'],
-            ['name' => 'Add Comments', 'category' => 'Ticket Management'],
-            ['name' => 'View Ticket History', 'category' => 'Ticket Management'],
-            
-            // Report Permissions
-            ['name' => 'View Reports', 'category' => 'Reports'],
-            ['name' => 'Generate Reports', 'category' => 'Reports'],
-            ['name' => 'Export Reports', 'category' => 'Reports'],
-            ['name' => 'View Analytics', 'category' => 'Reports'],
-            ['name' => 'View Dashboard', 'category' => 'Reports'],
-            
-          
+            // Roles Permissions
+            ['name' => 'Create Roles', 'category' => 'Roles', 'slug' => 'create-roles'],
+            ['name' => 'Read Roles', 'category' => 'Roles', 'slug' => 'read-roles'],
+            ['name' => 'Update Roles', 'category' => 'Roles', 'slug' => 'update-roles'],
+            ['name' => 'Delete Roles', 'category' => 'Roles', 'slug' => 'delete-roles'],
+
+            // Permissions Permissions
+            ['name' => 'Create Permissions', 'category' => 'Permissions', 'slug' => 'create-permissions'],
+            ['name' => 'Read Permissions', 'category' => 'Permissions', 'slug' => 'read-permissions'],
+            ['name' => 'Update Permissions', 'category' => 'Permissions', 'slug' => 'update-permissions'],
+            ['name' => 'Delete Permissions', 'category' => 'Permissions', 'slug' => 'delete-permissions'],
+
+            // Tickets Permissions
+            ['name' => 'Create Tickets', 'category' => 'Tickets', 'slug' => 'create-tickets'],
+            ['name' => 'Read Tickets', 'category' => 'Tickets', 'slug' => 'read-tickets'],
+            ['name' => 'Update Tickets', 'category' => 'Tickets', 'slug' => 'update-tickets'],
+            ['name' => 'Delete Tickets', 'category' => 'Tickets', 'slug' => 'delete-tickets'],
+            ['name' => 'Assign Tickets', 'category' => 'Tickets', 'slug' => 'assign-tickets'],
+            ['name' => 'Close Tickets', 'category' => 'Tickets', 'slug' => 'close-tickets'],
+            ['name' => 'Add Comments', 'category' => 'Tickets', 'slug' => 'add-comments'],
+
+            // System Permissions
+            ['name' => 'Dashboard', 'category' => 'System', 'slug' => 'dashboard'],
+            ['name' => 'Update Logo', 'category' => 'System', 'slug' => 'update-logo'],
+            ['name' => 'Export Database', 'category' => 'Reports', 'slug' => 'export-database'],
+
+            // Reports Permissions
+            ['name' => 'Read Reports', 'category' => 'Reports', 'slug' => 'read-reports'],
+            ['name' => 'Export Reports', 'category' => 'Reports', 'slug' => 'export-reports'],
+
+            // Activities Log Permissions
+            ['name' => 'Activities Log', 'category' => 'System', 'slug' => 'activities-log'],
         ];
 
         foreach ($permissions as $permission) {

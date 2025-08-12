@@ -22,10 +22,20 @@ class RolePermissionSeeder extends Seeder
         // Attach all permissions to admin role
         $adminRole->permissions()->sync($permissionIds);
 
+        $client_permissions = [
+            'create-tickets',
+            'read-tickets',
+            'close-tickets',
+            'add-comments',
+            'read-reports'
+        ];
+        $clientRole = Role::firstOrCreate(['name' => 'client']);
+        $clientRolePermissionIds = Permission::whereIn('slug', $client_permissions)->pluck('id')->all();
+
+        $clientRole->permissions()->sync($clientRolePermissionIds);
+
         if (isset($this->command)) {
             $this->command->info('Admin role synced with all permissions.');
         }
     }
 }
-
-
