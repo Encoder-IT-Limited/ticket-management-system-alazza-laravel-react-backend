@@ -13,6 +13,11 @@ class Permission extends Model
         'category'
     ];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_permission');
+    }
+
     protected static function boot()
     {
         parent::boot();

@@ -86,14 +86,13 @@ class RolePermissionController extends Controller
         $request->validate([
             'id' => 'sometimes|integer|exists:permissions,id',
             'name' => 'required|string|unique:permissions,name,' . $request->id,
-            'category' => 'required|string'
+            'category' => 'sometimes|string|nullable'
         ]);
         if ($request->id) {
             $permission = Permission::find($request->id);
             $permission->update([
                 'name' => $request->name,
-                'slug' => Str::slug($request->name),
-                'category' => $request->category
+                'category' => $request->category ?? ''
             ]);
             return response()->json([
                 'permission' => $permission
@@ -102,7 +101,7 @@ class RolePermissionController extends Controller
         $permission = Permission::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'category' => $request->category
+            'category' => $request->category ?? ''
         ]);
         return response()->json([
             'permission' => $permission
@@ -111,7 +110,9 @@ class RolePermissionController extends Controller
 
     public function deletePermission(Request $request, $id)
     {
-        Permission::find($request->id)->delete();
+        $permission = Permission::find($id);
+        $permission->roles()->sync([]);
+        $permission->delete();
         return response()->json([
             'message' => 'Permission deleted successfully'
         ], 204);
