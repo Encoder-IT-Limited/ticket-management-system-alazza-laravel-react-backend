@@ -69,4 +69,9 @@ class User extends Authenticatable implements MustVerifyEmail
             ->dontSubmitEmptyLogs();
         // Chain fluent methods for configuration options
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }

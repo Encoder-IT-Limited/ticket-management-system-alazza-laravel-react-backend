@@ -141,7 +141,9 @@ class AuthController extends Controller
 
     public function getAuthUser(Request $request): \Illuminate\Http\JsonResponse
     {
-        $user = User::findOrFail($request->user()->id);
+        $user = User::with(['role' => function($q){
+            $q->with('permissions');
+        }])->findOrFail($request->user()->id);
         return $this->success('Success.', new UserResource($user));
     }
 
