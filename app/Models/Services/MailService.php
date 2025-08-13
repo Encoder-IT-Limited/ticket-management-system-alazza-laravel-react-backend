@@ -29,7 +29,9 @@ class MailService
 
     public function ticketCloseMail($ticket): void
     {
-        $users = User::where('role', 'admin')->get();
+        $users = User::whereHas('role', function($q){
+            return $q->where('name', 'admin');
+        })->get();
         foreach ($users as $user) {
             Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
         }
