@@ -24,9 +24,21 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
-        $categories = $this->categoryService->getAll();
+        if ($request->get('paginate', false)) {
+            $query = Category::with(['children', 'parent']);
+            if ($request->get('type', null) == 'all') {
+                //
+            } else {
+                $query->whereNull('parent_id');
+            }
+            $categories = $query->paginate($request->get('per_page', 10));
+            return response()->json([
+                'categories' => $categories,
+            ]);
+        }
+        $categories = $this->categoryService->getAll($request);
         return $this->success('Success', CategoryResource::collection($categories));
     }
 
