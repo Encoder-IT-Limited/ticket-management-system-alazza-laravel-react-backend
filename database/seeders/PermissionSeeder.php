@@ -32,6 +32,12 @@ class PermissionSeeder extends Seeder
             ['name' => 'Update Permissions', 'category' => 'Permissions', 'slug' => 'update-permissions'],
             ['name' => 'Delete Permissions', 'category' => 'Permissions', 'slug' => 'delete-permissions'],
 
+            // Categories Permissions
+            ['name' => 'Create Categories', 'category' => 'Categories', 'slug' => 'create-categories'],
+            ['name' => 'Read Categories', 'category' => 'Categories', 'slug' => 'read-categories'],
+            ['name' => 'Update Categories', 'category' => 'Categories', 'slug' => 'update-categories'],
+            ['name' => 'Delete Categories', 'category' => 'Categories', 'slug' => 'delete-categories'],
+
             // Tickets Permissions
             ['name' => 'Create Tickets', 'category' => 'Tickets', 'slug' => 'create-tickets'],
             ['name' => 'Read Tickets', 'category' => 'Tickets', 'slug' => 'read-tickets'],
