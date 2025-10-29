@@ -27,13 +27,19 @@ class CategoryController extends Controller
     public function index(Request $request): \Illuminate\Http\JsonResponse
     {
         if ($request->get('paginate', false)) {
-            $query = Category::with(['children', 'parent']);
-            if ($request->get('type', null) == 'all') {
-                //
-            } else {
-                $query->whereNull('parent_id');
+            $query = Category::with([
+                'parent.parent',
+                'children.children',
+            ]);
+
+            if ($request->get('search', false)) {
+                $query->where('name', 'like', '%' . $request->get('search') . '%');
             }
-            $categories = $query->paginate($request->get('per_page', 10));
+
+            $categories = $query
+                ->orderBy('updated_at', 'desc')
+                ->paginate($request->get('per_page', 10));
+
             return response()->json([
                 'categories' => $categories,
             ]);

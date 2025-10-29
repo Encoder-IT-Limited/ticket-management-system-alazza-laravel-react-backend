@@ -9,7 +9,10 @@ class CategoryService
 {
     public function getAll(): \Illuminate\Database\Eloquent\Collection
     {
-        return Category::with('children')->whereNull('parent_id')->get();
+        return Category
+            ::with('children.children')
+            ->whereNull('parent_id')
+            ->get();
     }
 
     public function store($request): Category

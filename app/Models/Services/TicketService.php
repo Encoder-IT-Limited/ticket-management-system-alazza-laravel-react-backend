@@ -18,7 +18,7 @@ class TicketService
         $query = request('search_query');
         $data = Ticket::query();
         $data->whereAny(['title', 'description', 'ticket_no'], 'like', "%$query%")
-            ->with('client', 'admin', 'category', 'category.parent');
+            ->with('client', 'admin', 'category', 'category.parent.parent');
 
         if (auth()->user()->role->name !== 'Admin') {
             $data->where('client_id', auth()->id());
