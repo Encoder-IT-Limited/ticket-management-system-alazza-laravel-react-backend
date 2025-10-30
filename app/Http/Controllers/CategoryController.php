@@ -36,6 +36,10 @@ class CategoryController extends Controller
                 $query->where('name', 'like', '%' . $request->get('search') . '%');
             }
 
+            if ($request->get('parents', false)) {
+                $query->whereNull('parent_id');
+            }
+
             $categories = $query
                 ->orderBy('updated_at', 'desc')
                 ->paginate($request->get('per_page', 10));
