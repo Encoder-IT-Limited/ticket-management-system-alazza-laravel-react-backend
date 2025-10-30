@@ -32,10 +32,7 @@ class TicketService
         if (request('category_id')) {
             $categoryId = (int) request('category_id');
             $descendantIds = Category::getDescendantIds($categoryId);
-
             $idsToMatch = array_unique(array_merge([$categoryId], $descendantIds));
-            info($idsToMatch);
-
             $data->whereIn('category_id', $idsToMatch);
         }
         if (request('priority')) {
