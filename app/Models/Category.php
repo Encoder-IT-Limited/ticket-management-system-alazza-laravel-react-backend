@@ -25,4 +25,24 @@ class Category extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+
+    /**
+     * Get all descendant category IDs (children at all nested levels).
+     */
+    public static function getDescendantIds(int $categoryId): array
+    {
+        $allIds = [];
+        $currentLevel = [$categoryId];
+
+        while (!empty($currentLevel)) {
+            $children = self::whereIn('parent_id', $currentLevel)->pluck('id')->toArray();
+            if (empty($children)) {
+                break;
+            }
+            $allIds = array_values(array_unique(array_merge($allIds, $children)));
+            $currentLevel = $children;
+        }
+
+        return $allIds;
+    }
 }

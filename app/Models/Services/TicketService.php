@@ -30,16 +30,13 @@ class TicketService
                 ->whereDate('created_at', '<=', $to);
         }
         if (request('category_id')) {
-            $categoryId = request('category_id');
-            $childCategoryIds = Category::where('parent_id', $categoryId)->pluck('id')->toArray();
+            $categoryId = (int) request('category_id');
+            $descendantIds = Category::getDescendantIds($categoryId);
 
-            $data->where(function ($query) use ($categoryId, $childCategoryIds) {
-                $query->where('category_id', $categoryId);
+            $idsToMatch = array_unique(array_merge([$categoryId], $descendantIds));
+            info($idsToMatch);
 
-                if (!empty($childCategoryIds)) {
-                    $query->orWhereIn('category_id', $childCategoryIds);
-                }
-            });
+            $data->whereIn('category_id', $idsToMatch);
         }
         if (request('priority')) {
             $data->where('priority', request('priority'));
