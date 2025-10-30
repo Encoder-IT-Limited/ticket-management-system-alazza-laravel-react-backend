@@ -40,6 +40,10 @@ class CategoryController extends Controller
                 $query->whereNull('parent_id');
             }
 
+            if ($request->get('where_has_children', false)) {
+                $query->whereHas('children');
+            }
+
             $categories = $query
                 ->orderBy('updated_at', 'desc')
                 ->paginate($request->get('per_page', 10));
