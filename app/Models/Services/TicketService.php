@@ -20,7 +20,7 @@ class TicketService
         $data->whereAny(['title', 'description', 'ticket_no'], 'like', "%$query%")
             ->with('client', 'admin', 'category', 'category.parent.parent');
 
-        if (auth()->user()->role->name !== 'Admin') {
+        if (auth()->user()->role->name == 'Client') {
             $data->where('client_id', auth()->id());
         }
         if (request('start_date') && request('end_date')) {

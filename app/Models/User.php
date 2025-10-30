@@ -78,4 +78,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(
+            Permission::class,
+            'role_permission',      // Pivot table
+            'role_id',              // Foreign key on pivot referencing the user's role
+            'permission_id',        // Foreign key on pivot referencing permissions
+            'role_id',              // Local key on users table to match pivot.role_id
+            'id'                    // Local key on permissions table
+        );
+    }
 }
