@@ -38,6 +38,9 @@ class TicketService
         if (request('priority')) {
             $data->where('priority', request('priority'));
         }
+        if (request('status')) {
+            $data->where('status', request('status'));
+        }
         return $data->latest()->paginate(perPage(25));
     }
 
