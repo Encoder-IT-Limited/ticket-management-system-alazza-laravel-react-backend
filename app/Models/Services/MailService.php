@@ -16,18 +16,15 @@ class MailService
 {
     public function ticketOpenMail($ticket): void
     {
-        $emails = User
-            ::whereHas('permissions', function ($q) {
-                $q->where('slug', 'ticket-open-mail');
-            })
-            ->pluck('email')
-            ->toArray();
+        $users = User::whereHas('permissions', function ($q) {
+            $q->where('slug', 'ticket-open-mail');
+        })->get();
 
-        foreach ($emails as $email) {
-            Mail::to($email)->queue(
+        foreach ($users as $user) {
+            Mail::to($user->email)->queue(
                 new TicketOpenMail(
                     $ticket,
-                    $email
+                    $user
                 )
             );
         }
@@ -35,18 +32,15 @@ class MailService
 
     public function ticketCloseMail($ticket): void
     {
-        $emails = User
-            ::whereHas('permissions', function ($q) {
-                $q->where('slug', 'ticket-close-mail');
-            })
-            ->pluck('email')
-            ->toArray();
+        $users = User::whereHas('permissions', function ($q) {
+            $q->where('slug', 'ticket-close-mail');
+        })->get();
 
-        foreach ($emails as $email) {
-            Mail::to($email)->queue(
+        foreach ($users as $user) {
+            Mail::to($user->email)->queue(
                 new TicketCloseMail(
                     $ticket,
-                    $email
+                    $user
                 )
             );
         }
