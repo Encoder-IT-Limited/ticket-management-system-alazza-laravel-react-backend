@@ -41,6 +41,12 @@ class TicketService
         if (request('status')) {
             $data->where('status', request('status'));
         }
+
+        $category_ids = auth()->user()->role->getCategoryIds();
+        if (count($category_ids) > 0) {
+            $data->whereIn('category_id', $category_ids);
+        }
+
         return $data->latest()->paginate(perPage(25));
     }
 

@@ -24,6 +24,11 @@ class TicketCollection extends ResourceCollection
             $opened->where('client_id', auth()->id());
             $closed->where('client_id', auth()->id());
         }
+        $category_ids = auth()->user()->role->getCategoryIds();
+        if (count($category_ids) > 0) {
+            $opened->whereIn('category_id', $category_ids);
+            $closed->whereIn('category_id', $category_ids);
+        }
         return [
             'data' => $this->collection->transform(function ($user) {
                 return TicketResource::make($user);

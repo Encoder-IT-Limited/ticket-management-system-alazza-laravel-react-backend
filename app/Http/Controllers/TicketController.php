@@ -59,10 +59,10 @@ class TicketController extends Controller
     public function show(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
         $ticket->load(['client', 'admin', 'media', 'ticketReplies' =>
-            function ($query) {
-                $query->with('from', 'to', 'media')
-                    ->orderBy('created_at', request('direction', 'asc'));
-            }]);
+        function ($query) {
+            $query->with('from', 'to', 'media')
+                ->orderBy('created_at', request('direction', 'asc'));
+        }]);
         return $this->success('Success', new TicketResource($ticket));
     }
 
@@ -104,12 +104,12 @@ class TicketController extends Controller
 
     public function resolved(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-//        if ((auth()->user()->role !== 'admin')) {
-//            return $this->failure('You are not authorized to perform this action', 403);
-//        }
-//        if ($ticket->is_resolved == 1) {
-//            return $this->failure('Ticket already closed', 400);
-//        }
+        //        if ((auth()->user()->role !== 'admin')) {
+        //            return $this->failure('You are not authorized to perform this action', 403);
+        //        }
+        //        if ($ticket->is_resolved == 1) {
+        //            return $this->failure('Ticket already closed', 400);
+        //        }
         $this->ticketService->resolved($ticket);
         $mail = new MailService();
         $mail->ticketCloseMail($ticket);
@@ -143,39 +143,33 @@ class TicketController extends Controller
 
     public function overview(): \Illuminate\Http\JsonResponse
     {
-        $ticket = Ticket::where('is_resolved', true)->whereNotNull('rating')->get();
+        $query = Ticket::where('is_resolved', true)->whereNotNull('rating');
 
-        if ($ticket->isEmpty()) {
+        $category_ids = auth()->user()?->role?->getCategoryIds();
+        if ($category_ids && count($category_ids) > 0) {
+            $query->whereIn('category_id', $category_ids);
+        }
+
+        $tickets = $query->get();
+        if ($tickets->isEmpty()) {
             return $this->success('Success', [
-//                'very_sad' => 0,
                 'sad' => 0,
                 'neutral' => 0,
                 'happy' => 0,
-//                'very_happy' => 0,
                 'total' => 0,
-//                'happy_clients' => '0%',
             ]);
         }
 
-//        $verySad = $ticket->where('rating', '1')->count();
-        $sad = $ticket->where('rating', '1')->count();
-        $neutral = $ticket->where('rating', '2')->count();
-        $happy = $ticket->where('rating', '3')->count();
-//        $veryHappy = $ticket->where('rating', '5')->count();
-
-
+        $sad = $query->where('rating', '1')->count();
+        $neutral = $query->where('rating', '2')->count();
+        $happy = $query->where('rating', '3')->count();
         $total = $sad + $neutral + $happy;
 
-//        $overPercentageOfHappyClients = ($veryHappy / $total) * 100;
-
         return $this->success('Success', [
-//            'very_sad' => $verySad,
             'sad' => $sad,
             'neutral' => $neutral,
             'happy' => $happy,
-//            'very_happy' => $veryHappy,
             'total' => $total,
-//            'happy_clients' => $overPercentageOfHappyClients . '%',
         ]);
     }
 

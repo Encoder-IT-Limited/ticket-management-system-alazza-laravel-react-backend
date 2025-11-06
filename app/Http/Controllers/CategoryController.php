@@ -44,6 +44,11 @@ class CategoryController extends Controller
                 $query->whereHas('children');
             }
 
+            $category_ids = auth()->user()->role->getCategoryIds();
+            if (count($category_ids) > 0) {
+                $query->whereIn('id', $category_ids);
+            }
+
             $categories = $query
                 ->orderBy('updated_at', 'desc')
                 ->paginate($request->get('per_page', 10));

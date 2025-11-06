@@ -44,6 +44,21 @@ class Role extends Model
             }]);
     }
 
+    public function getCategoryIds(): array
+    {
+        $category_ids = [];
+        $collectIds = function ($categories) use (&$collectIds, &$category_ids) {
+            foreach ($categories as $category) {
+                $category_ids[] = $category->id;
+                if ($category->relationLoaded('children') && $category->children->count() > 0) {
+                    $collectIds($category->children);
+                }
+            }
+        };
+        $collectIds($this->categories);
+        return array_values(array_unique($category_ids));
+    }
+
     /**
      * Sync categories to the RoleModel morph table
      *

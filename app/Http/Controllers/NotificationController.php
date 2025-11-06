@@ -12,9 +12,17 @@ class NotificationController extends Controller
 
     public function newTickets(): \Illuminate\Http\JsonResponse
     {
-        $user = auth()->user();
+        $query = Ticket::where('admin_id', null)->where('is_resolved', false);
 
-        $ticketCount = Ticket::where('admin_id', null)->where('is_resolved', false)->count();
-        return $this->success('Success', ['ticket_count' => $ticketCount]);
+        $category_ids = auth()->user()->role->getCategoryIds();
+        if (count($category_ids) > 0) {
+            $query->whereIn('category_id', $category_ids);
+        }
+
+        $ticketCount = $query->count();
+
+        return $this->success('Success', [
+            'ticket_count' => $ticketCount
+        ]);
     }
 }
