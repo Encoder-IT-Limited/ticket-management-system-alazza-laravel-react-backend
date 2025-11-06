@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class RolePermissionController extends Controller
     {
         $search = $request->get('search', '');
         $per_page = $request->get('per_page', 10);
-        $roles = Role::with(['permissions'])->orderBy('created_at', 'desc');
+        $roles = Role::with(['permissions', 'categories'])->orderBy('created_at', 'desc');
         if ($search) {
             $roles->where('name', 'like', '%' . $search . '%');
         }
@@ -29,7 +30,9 @@ class RolePermissionController extends Controller
             'id' => 'sometimes|integer|exists:roles,id',
             'name' => 'required|string|unique:roles,name,' . $request->id,
             'permissions' => 'required|array',
-            'permissions.*' => 'required|integer|exists:permissions,id'
+            'permissions.*' => 'required|integer|exists:permissions,id',
+            'categories' => 'sometimes|array',
+            'categories.*' => 'required|integer|exists:categories,id'
         ]);
 
         if ($request->id) {
@@ -46,6 +49,10 @@ class RolePermissionController extends Controller
         $role->permissions()->sync($request->permissions);
         $role->load('permissions');
 
+        // Sync categories to RoleModel morph table
+        $role->syncModel($request->get('categories', []), Category::class);
+        $role->load('categories');
+
         return response()->json([
             'role' => $role
         ], 201);
@@ -55,6 +62,7 @@ class RolePermissionController extends Controller
     {
         $role = Role::find($id);
         $role->permissions()->sync([]);
+        $role->syncModel([], Category::class);
         $role->delete();
         return response()->json([
             'message' => 'Role deleted successfully'
