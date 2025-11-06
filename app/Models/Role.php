@@ -17,4 +17,30 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class, 'role_permission', 'role_id', 'permission_id');
     }
+
+    public function models()
+    {
+        return $this->hasMany(RoleModel::class, 'role_id');
+    }
+
+    public function categories()
+    {
+        return $this
+            ->hasManyThrough(
+                Category::class,
+                RoleModel::class,
+                'role_id',
+                'id',
+                'id',
+                'model_id'
+            )
+            ->where('model_type', Category::class)
+            ->select('categories.id')
+            ->with(['children' => function ($q) {
+                $q->select('id', 'parent_id')
+                    ->with(['children' => function ($q) {
+                        $q->select('id', 'parent_id');
+                    }]);
+            }]);
+    }
 }
