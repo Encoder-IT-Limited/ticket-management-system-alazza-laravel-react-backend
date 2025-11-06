@@ -18,12 +18,18 @@ class TicketCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
+        $opened = Ticket::where('status', 'open');
+        $closed = Ticket::where('status', 'closed');
+        if (auth()->user()->role->name == 'Client') {
+            $opened->where('client_id', auth()->id());
+            $closed->where('client_id', auth()->id());
+        }
         return [
             'data' => $this->collection->transform(function ($user) {
                 return TicketResource::make($user);
             }),
-            'open_tickets' => Ticket::where('status', 'open')->count(),
-            'closed_tickets' => Ticket::where('status', 'closed')->count(),
+            'open_tickets' => $opened->count(),
+            'closed_tickets' => $closed->count(),
             'meta' => $this->generateMeta(),
         ];
     }
