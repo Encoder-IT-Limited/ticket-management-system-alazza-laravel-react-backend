@@ -143,32 +143,25 @@ class TicketController extends Controller
 
     public function overview(): \Illuminate\Http\JsonResponse
     {
-        $query = Ticket::where('is_resolved', true)->whereNotNull('rating');
-
-        $category_ids = auth()->user()?->role?->getCategoryIds();
-        if ($category_ids && count($category_ids) > 0) {
-            $query->whereIn('category_id', $category_ids);
+        function getQuery()
+        {
+            $query = Ticket::where('is_resolved', true)->whereNotNull('rating');
+            $category_ids = auth()->user()?->role?->getCategoryIds();
+            if (!empty($category_ids)) {
+                $query->whereIn('category_id', $category_ids);
+            }
+            return $query;
         }
 
-        $tickets = $query->get();
-        if ($tickets->isEmpty()) {
-            return $this->success('Success', [
-                'sad' => 0,
-                'neutral' => 0,
-                'happy' => 0,
-                'total' => 0,
-            ]);
-        }
-
-        $sad = $query->where('rating', '1')->count();
-        $neutral = $query->where('rating', '2')->count();
-        $happy = $query->where('rating', '3')->count();
+        $sad = getQuery()->where('rating', 1)->count();
+        $neutral = getQuery()->where('rating', 2)->count();
+        $happy = getQuery()->where('rating', 3)->count();
         $total = $sad + $neutral + $happy;
 
         return $this->success('Success', [
             'sad' => $sad,
-            'neutral' => $neutral,
             'happy' => $happy,
+            'neutral' => $neutral,
             'total' => $total,
         ]);
     }
