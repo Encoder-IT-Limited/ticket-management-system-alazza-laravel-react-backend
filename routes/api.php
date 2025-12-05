@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
@@ -81,5 +82,9 @@ Route::group(['middleware' => ['cors', 'json',]], function () {
 
         // Delete Media ...
         Route::delete('media/{media}', [MediaController::class, 'destroy']);
+
+        // route for employee import AND API resourse
+        Route::post('employees/import', [EmployeeController::class, 'import']);
+        Route::apiResource('employees', EmployeeController::class);
     });
 });
