@@ -39,6 +39,7 @@ class TicketResource extends JsonResource
             'rating' => $this->rating,
             'review' => $this->review,
             'category' => new CategoryResource($this->whenLoaded('category')),
+            'priority' => $this->priority,
         ];
     }
 

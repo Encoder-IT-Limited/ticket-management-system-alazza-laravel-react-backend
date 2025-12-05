@@ -24,9 +24,40 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
-        $categories = $this->categoryService->getAll();
+        if ($request->get('paginate', false)) {
+            $query = Category::with([
+                'parent.parent',
+                'children.children',
+            ]);
+
+            if ($request->get('search', false)) {
+                $query->where('name', 'like', '%' . $request->get('search') . '%');
+            }
+
+            if ($request->get('parents', false)) {
+                $query->whereNull('parent_id');
+            }
+
+            if ($request->get('where_has_children', false)) {
+                $query->whereHas('children');
+            }
+
+            $category_ids = auth()->user()->role->getCategoryIds();
+            if (count($category_ids) > 0) {
+                $query->whereIn('id', $category_ids);
+            }
+
+            $categories = $query
+                ->orderBy('updated_at', 'desc')
+                ->paginate($request->get('per_page', 10));
+
+            return response()->json([
+                'categories' => $categories,
+            ]);
+        }
+        $categories = $this->categoryService->getAll($request);
         return $this->success('Success', CategoryResource::collection($categories));
     }
 

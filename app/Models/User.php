@@ -16,8 +16,12 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable,
-        SoftDeletes, Searchable, InteractsWithMedia;
+    use HasApiTokens,
+        HasFactory,
+        Notifiable,
+        SoftDeletes,
+        Searchable,
+        InteractsWithMedia;
     use LogsActivity;
 
     /**
@@ -29,7 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'role',
+        'role_id',
         'status',
         'company',
         'section',
@@ -68,5 +72,22 @@ class User extends Authenticatable implements MustVerifyEmail
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();
         // Chain fluent methods for configuration options
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(
+            Permission::class,
+            'role_permission',      // Pivot table
+            'role_id',              // Foreign key on pivot referencing the user's role
+            'permission_id',        // Foreign key on pivot referencing permissions
+            'role_id',              // Local key on users table to match pivot.role_id
+            'id'                    // Local key on permissions table
+        );
     }
 }

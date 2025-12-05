@@ -16,17 +16,32 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        User::firstOrCreate([
-            'name' => 'Admin',
-            'email' => 'dev@fazit.sa',
-            'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
-            'role' => 'admin',
-            'is_super_admin' => true,
-        ]);
+        // User::firstOrCreate([
+        //     'email' => 'dev@fazit.sa',
+        // ], [
+        //     'name' => 'Admin',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('12345678'),
+        //     'role' => 'admin',
+        //     'is_super_admin' => true,
+        // ]);
+
+
 
         $this->call([
-           CategorySeeder::class,
+            // CategorySeeder::class,
+            PermissionSeeder::class,
+            RolePermissionSeeder::class,
+        ]);
+
+        User::updateOrCreate([
+            'email' => 'admin@gmail.com',
+        ], [
+            'name' => 'Admin',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'role_id' => 1,
+            'is_super_admin' => true,
         ]);
     }
 }

@@ -1,0 +1,128 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use App\Models\Permission;
+use App\Models\Role;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+class RolePermissionController extends Controller
+{
+    public function getRole(Request $request)
+    {
+        $search = $request->get('search', '');
+        $per_page = $request->get('per_page', 10);
+        $roles = Role::with(['permissions', 'categories'])->orderBy('created_at', 'desc');
+        if ($search) {
+            $roles->where('name', 'like', '%' . $search . '%');
+        }
+        $roles = $roles->paginate($per_page);
+        return response()->json([
+            'roles' => $roles,
+        ], 200);
+    }
+
+    public function createOrUpdateRole(Request $request)
+    {
+        $request->validate([
+            'id' => 'sometimes|integer|exists:roles,id',
+            'name' => 'required|string|unique:roles,name,' . $request->id,
+            'permissions' => 'required|array',
+            'permissions.*' => 'required|integer|exists:permissions,id',
+            'categories' => 'sometimes|array',
+            'categories.*' => 'required|integer|exists:categories,id'
+        ]);
+
+        if ($request->id) {
+            $role = Role::find($request->id);
+            $role->update([
+                'name' => $request->name,
+            ]);
+        } else {
+            $role = Role::create([
+                'name' => $request->name
+            ]);
+        }
+
+        $role->permissions()->sync($request->permissions);
+        $role->load('permissions');
+
+        // Sync categories to RoleModel morph table
+        $role->syncModel($request->get('categories', []), Category::class);
+        $role->load('categories');
+
+        return response()->json([
+            'role' => $role
+        ], 201);
+    }
+
+    public function deleteRole(Request $request, $id)
+    {
+        $role = Role::find($id);
+        $role->permissions()->sync([]);
+        $role->syncModel([], Category::class);
+        $role->delete();
+        return response()->json([
+            'message' => 'Role deleted successfully'
+        ], 204);
+    }
+
+    public function getPermission(Request $request)
+    {
+        $search = $request->get('search', '');
+        $per_page = $request->get('per_page', 10);
+
+        $query = Permission::query();
+        if ($search) {
+            $query
+                ->where('name', 'like', '%' . $search . '%')
+                ->orWhere('category', 'like', '%' . $search . '%');
+        }
+        $permissions = $query
+            ->orderBy('created_at', 'desc')
+            ->paginate($per_page);
+
+        return response()->json([
+            'permissions' => $permissions
+        ], 200);
+    }
+
+    public function createPermission(Request $request)
+    {
+        $request->validate([
+            'id' => 'sometimes|integer|exists:permissions,id',
+            'name' => 'required|string|unique:permissions,name,' . $request->id,
+            'category' => 'sometimes|string|nullable'
+        ]);
+        if ($request->id) {
+            $permission = Permission::find($request->id);
+            $permission->update([
+                'name' => $request->name,
+                'category' => $request->category ?? ''
+            ]);
+            return response()->json([
+                'permission' => $permission
+            ], 200);
+        }
+        $permission = Permission::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'category' => $request->category ?? ''
+        ]);
+        return response()->json([
+            'permission' => $permission
+        ], 201);
+    }
+
+    public function deletePermission(Request $request, $id)
+    {
+        $permission = Permission::find($id);
+        $permission->roles()->sync([]);
+        $permission->delete();
+        return response()->json([
+            'message' => 'Permission deleted successfully'
+        ], 204);
+    }
+}

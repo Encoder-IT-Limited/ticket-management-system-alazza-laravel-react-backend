@@ -8,7 +8,6 @@ use App\Mail\TicketCloseMail;
 use App\Mail\TicketOpenMail;
 use App\Mail\TicketReplyMail;
 use App\Models\EmailVerificationToken;
-use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -17,31 +16,52 @@ class MailService
 {
     public function ticketOpenMail($ticket): void
     {
-//            $users = User::where('role', 'admin')->get();
-//            Mail::to($users)->send(new TicketOpenMail($ticket));
-        $users = User::where('role', 'admin')->get();
+        $users = User::whereHas('permissions', function ($q) {
+            $q->where('slug', 'ticket-open-mail');
+        })->get();
+
         foreach ($users as $user) {
-            Mail::to($user->email)->queue(new TicketOpenMail($ticket, $user));
+            Mail::to($user->email)->queue(
+                new TicketOpenMail(
+                    $ticket,
+                    $user
+                )
+            );
         }
     }
 
     public function ticketCloseMail($ticket): void
     {
-        $users = User::where('role', 'admin')->get();
+        $users = User::whereHas('permissions', function ($q) {
+            $q->where('slug', 'ticket-close-mail');
+        })->get();
+
         foreach ($users as $user) {
-            Mail::to($user->email)->queue(new TicketCloseMail($ticket, $user));
+            Mail::to($user->email)->queue(
+                new TicketCloseMail(
+                    $ticket,
+                    $user
+                )
+            );
         }
+
         if ($ticket->client && $ticket->client->email) {
             // Mail To user
-            Mail::to($ticket->client->email)->send(new TicketCloseMail($ticket, $ticket->client));
+            Mail::to($ticket->client->email)->send(
+                new TicketCloseMail(
+                    $ticket,
+                    $ticket->client
+                )
+            );
         }
     }
 
     public function ticketReplyMail($ticket, $reply): void
     {
         if ($reply->to && $reply->to->email) {
-            Mail::to($reply->to->email)
-                ->queue(new TicketReplyMail($ticket, $reply));
+            Mail::to($reply->to->email)->queue(
+                new TicketReplyMail($ticket, $reply)
+            );
         }
     }
 

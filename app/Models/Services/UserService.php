@@ -19,7 +19,7 @@ class UserService
         $query = request('search_query');
         return User::whereAny(['name', 'email'], 'like', "%$query%")
             ->whereNot('is_super_admin', true)
-            ->with('media')
+            ->with(['media', 'role'])
             ->latest()
             ->paginate(request('per_page', 25));
     }
@@ -27,13 +27,18 @@ class UserService
     public function store($request)
     {
         $data = $request->validated();
+        // Map incoming role (role id) to role_id column if provided
+        if (array_key_exists('role', $data) && $data['role'] !== null && $data['role'] !== '') {
+            $data['role_id'] = (int) $data['role'];
+            unset($data['role']);
+        }
         $password = $data['password'];
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         $this->uploadFiles($request, $user);
         $user->load('media');
 
-//        (new MailService)->sendEmailVerificationMail($user);
+        //        (new MailService)->sendEmailVerificationMail($user);
         $emailToken = null;
         EmailVerificationToken::where('email', $user->email)->delete();
         if ($user->email_verified_at === null) {
@@ -50,6 +55,11 @@ class UserService
     public function update($request, $user)
     {
         $data = $request->validated();
+        // Map incoming role (role id) to role_id column if provided
+        if (array_key_exists('role', $data) && $data['role'] !== null && $data['role'] !== '') {
+            $data['role_id'] = (int) $data['role'];
+            unset($data['role']);
+        }
         $user->update($data);
         $this->uploadFiles($request, $user);
         $user->load('media');

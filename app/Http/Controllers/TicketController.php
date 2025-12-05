@@ -59,10 +59,10 @@ class TicketController extends Controller
     public function show(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
         $ticket->load(['client', 'admin', 'media', 'ticketReplies' =>
-            function ($query) {
-                $query->with('from', 'to', 'media')
-                    ->orderBy('created_at', request('direction', 'asc'));
-            }]);
+        function ($query) {
+            $query->with('from', 'to', 'media')
+                ->orderBy('created_at', request('direction', 'asc'));
+        }]);
         return $this->success('Success', new TicketResource($ticket));
     }
 
@@ -104,16 +104,35 @@ class TicketController extends Controller
 
     public function resolved(Ticket $ticket): \Illuminate\Http\JsonResponse
     {
-//        if ((auth()->user()->role !== 'admin')) {
-//            return $this->failure('You are not authorized to perform this action', 403);
-//        }
-//        if ($ticket->is_resolved == 1) {
-//            return $this->failure('Ticket already closed', 400);
-//        }
+        //        if ((auth()->user()->role !== 'admin')) {
+        //            return $this->failure('You are not authorized to perform this action', 403);
+        //        }
+        //        if ($ticket->is_resolved == 1) {
+        //            return $this->failure('Ticket already closed', 400);
+        //        }
         $this->ticketService->resolved($ticket);
         $mail = new MailService();
         $mail->ticketCloseMail($ticket);
         return $this->success('Ticket resolved successfully');
+    }
+
+    public function statistics(): \Illuminate\Http\JsonResponse
+    {
+        $ticketCounts = Ticket::selectRaw('
+        COUNT(*) as ticket_count,
+        SUM(CASE WHEN is_resolved = 0 THEN 1 ELSE 0 END) as open_ticket_count,
+        SUM(CASE WHEN is_resolved = 1 THEN 1 ELSE 0 END) as closed_ticket_count,
+        SUM(CASE WHEN is_resolved = 1 AND TIMESTAMPDIFF(HOUR, created_at, resolved_at) > 24 THEN 1 ELSE 0 END) as late_resolved_count
+    ')->first();
+
+        return $this->success('Success', [
+            'ticket_count' => $ticketCounts->ticket_count,
+            'open_ticket_count' => $ticketCounts->open_ticket_count,
+            'closed_ticket_count' => $ticketCounts->closed_ticket_count,
+            'late_resolved_count' => $ticketCounts->late_resolved_count,
+            'line_chart' => $this->ticketService->generateLineChart(),
+            'bar_chart' => $this->ticketService->generateBarChart(),
+        ]);
     }
 
     public function review(TicketReviewRequest $request, Ticket $ticket): \Illuminate\Http\JsonResponse
@@ -124,39 +143,26 @@ class TicketController extends Controller
 
     public function overview(): \Illuminate\Http\JsonResponse
     {
-        $ticket = Ticket::where('is_resolved', true)->whereNotNull('rating')->get();
-
-        if ($ticket->isEmpty()) {
-            return $this->success('Success', [
-//                'very_sad' => 0,
-                'sad' => 0,
-                'neutral' => 0,
-                'happy' => 0,
-//                'very_happy' => 0,
-                'total' => 0,
-//                'happy_clients' => '0%',
-            ]);
+        function getQuery()
+        {
+            $query = Ticket::where('is_resolved', true)->whereNotNull('rating');
+            $category_ids = auth()->user()?->role?->getCategoryIds();
+            if (!empty($category_ids)) {
+                $query->whereIn('category_id', $category_ids);
+            }
+            return $query;
         }
 
-//        $verySad = $ticket->where('rating', '1')->count();
-        $sad = $ticket->where('rating', '1')->count();
-        $neutral = $ticket->where('rating', '2')->count();
-        $happy = $ticket->where('rating', '3')->count();
-//        $veryHappy = $ticket->where('rating', '5')->count();
-
-
+        $sad = getQuery()->where('rating', 1)->count();
+        $neutral = getQuery()->where('rating', 2)->count();
+        $happy = getQuery()->where('rating', 3)->count();
         $total = $sad + $neutral + $happy;
 
-//        $overPercentageOfHappyClients = ($veryHappy / $total) * 100;
-
         return $this->success('Success', [
-//            'very_sad' => $verySad,
             'sad' => $sad,
-            'neutral' => $neutral,
             'happy' => $happy,
-//            'very_happy' => $veryHappy,
+            'neutral' => $neutral,
             'total' => $total,
-//            'happy_clients' => $overPercentageOfHappyClients . '%',
         ]);
     }
 
