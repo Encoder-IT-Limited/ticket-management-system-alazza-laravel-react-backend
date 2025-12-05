@@ -2,11 +2,13 @@
 
 namespace App\Http\Resources\Employee;
 
+use App\Traits\MetaResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class EmployeeCollection extends ResourceCollection
 {
+    use MetaResponseTrait;
     /**
      * Transform the resource collection into an array.
      *

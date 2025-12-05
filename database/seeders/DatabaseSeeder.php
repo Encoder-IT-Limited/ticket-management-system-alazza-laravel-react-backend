@@ -26,19 +26,22 @@ class DatabaseSeeder extends Seeder
         //     'is_super_admin' => true,
         // ]);
 
-        // User::firstOrCreate([
-        //     'name' => 'Admin',
-        //     'email' => 'admin@admin.com',
-        //     'email_verified_at' => now(),
-        //     'password' => Hash::make('admin@admin.com'),
-        //     'role' => 'admin',
-        //     'is_super_admin' => true,
-        // ]);
+
 
         $this->call([
             // CategorySeeder::class,
             PermissionSeeder::class,
             RolePermissionSeeder::class,
+        ]);
+
+        User::updateOrCreate([
+            'email' => 'admin@gmail.com',
+        ], [
+            'name' => 'Admin',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'role_id' => 1,
+            'is_super_admin' => true,
         ]);
     }
 }

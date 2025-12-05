@@ -11,6 +11,7 @@ use App\Models\Services\EmployeeService;
 use App\Traits\ApiResponseTrait;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -109,9 +110,15 @@ class EmployeeController extends Controller
             if ($import->failures()->isNotEmpty()) {
                 return $this->failure($import->failures(), 422);
             }
+            // Get inserted data for response
+            $insertedData = $import->getArray();
+            if (count($insertedData) == 0) {
+                return $this->failure('No data found in the uploaded file.', 422);
+            }
+            DB::table('employees')->insert($insertedData);
             return $this->success('Employee imported successfully');
         } catch (\Exception $e) {
-            return $this->failure('Error importing Employee', 500, $e->getMessage());
+            return $this->failure($e->getMessage(), 422);
         }
     }
 }

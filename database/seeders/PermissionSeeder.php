@@ -46,6 +46,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'Assign Tickets', 'category' => 'Tickets', 'slug' => 'assign-tickets'],
             ['name' => 'Close Tickets', 'category' => 'Tickets', 'slug' => 'close-tickets'],
             ['name' => 'Add Comments', 'category' => 'Tickets', 'slug' => 'add-comments'],
+            ['name' => 'Ticket Notifications', 'category' => 'Tickets', 'slug' => 'ticket-notifications'],
 
             // System Permissions
             ['name' => 'Dashboard', 'category' => 'System', 'slug' => 'dashboard'],
@@ -55,13 +56,25 @@ class PermissionSeeder extends Seeder
             // Reports Permissions
             ['name' => 'Read Reports', 'category' => 'Reports', 'slug' => 'read-reports'],
             ['name' => 'Export Reports', 'category' => 'Reports', 'slug' => 'export-reports'],
+            ['name' => 'Monthly Reports', 'category' => 'Reports', 'slug' => 'monthly-reports'],
+            ['name' => 'Weekly Reports', 'category' => 'Reports', 'slug' => 'weekly-reports'],
 
             // Activities Log Permissions
             ['name' => 'Activities Log', 'category' => 'System', 'slug' => 'activities-log'],
+
+            # employee Permissions
+            ['name' => 'Import Employees', 'category' => 'Employees', 'slug' => 'import-employees'],
+            ['name' => 'Read Employees', 'category' => 'Employees', 'slug' => 'read-employees'],
+            ['name' => 'Create Employees', 'category' => 'Employees', 'slug' => 'create-employees'],
+            ['name' => 'Update Employees', 'category' => 'Employees', 'slug' => 'update-employees'],
+            ['name' => 'Delete Employees', 'category' => 'Employees', 'slug' => 'delete-employees'],
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create($permission);
+            Permission::updateOrCreate(
+                ['slug' => $permission['slug']],
+                ['name' => $permission['name'], 'category' => $permission['category']]
+            );
         }
 
         $this->command->info('permissions seeded successfully!');

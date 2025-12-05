@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Employee;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -55,15 +56,12 @@ class EmployeeImport implements SkipsEmptyRows, SkipsOnFailure, ToArray, WithHea
         //     ];
         // }
         $this->insertData = $rows;
-        // Log the inserted data for debugging
-        Log::info('Employee Import Data:', $this->insertData);
-        DB::table('employees')->insert($this->insertData);
     }
 
-    // public function getArray()
-    // {
-    //     return $this->insertData;
-    // }
+    public function getArray()
+    {
+        return $this->insertData;
+    }
 
     public function headingRow(): int
     {
@@ -73,29 +71,37 @@ class EmployeeImport implements SkipsEmptyRows, SkipsOnFailure, ToArray, WithHea
     public function rules(): array
     {
         return [
-            'employee_code' => 'nullable|string|unique:employees,employee_code',
+            'employee_code' => 'nullable|string|distinct|unique:employees,employee_code',
             'image' => 'nullable',
             'name' => 'required|string',
             'father_name' => 'nullable|string',
             'mother_name' => 'nullable|string',
-            'email' => 'required|email|unique:employees,email',
-            'phone' => 'nullable|string|unique:employees,phone',
+
+            'email' => 'required|email|distinct|unique:employees,email',
+            'phone' => 'nullable|string|distinct|unique:employees,phone',
+
             'emergency_contact_name' => 'nullable|string',
             'emergency_contact_phone' => 'nullable|string',
+
             'present_address' => 'nullable|string',
             'permanent_address' => 'nullable|string',
+
             'gender' => 'nullable|string|in:male,female,other',
             'date_of_birth' => 'nullable|date',
             'blood_group' => 'nullable|string',
-            'national_id' => 'nullable|string|unique:employees,national_id',
-            'passport_no' => 'nullable|string|unique:employees,passport_no',
+
+            'national_id' => 'nullable|string|distinct|unique:employees,national_id',
+            'passport_no' => 'nullable|string|distinct|unique:employees,passport_no',
+
             'department' => 'nullable|string',
             'designation' => 'nullable|string',
             'supervisor' => 'nullable|string',
+
             'joining_date' => 'nullable|date',
             'employment_type' => 'nullable|string|in:full_time,part_time,contract,intern',
             'status' => 'nullable|string|in:active,inactive,terminated,resigned',
             'shift' => 'nullable|string',
+
             'basic_salary' => 'nullable|numeric',
             'gross_salary' => 'nullable|numeric',
         ];
