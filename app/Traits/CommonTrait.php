@@ -26,13 +26,13 @@ trait CommonTrait
             $path = 'exports/' . $fileName . '_' . time() . '.xlsx';
             return (new DataExporter($ids, $model, $columns, $head, $modelDatas))
                 ->download($fileName . '.xlsx', Excel::XLSX, ['X-Vapor-Base64-Encode' => 'True']);
-//                ->store($path, 'public', Excel::XLSX);
+            //                ->store($path, 'public', Excel::XLSX);
         }
         if ($format === 'csv') {
             $path = 'exports/' . $fileName . '_' . time() . '.csv';
             return (new DataExporter($ids, $model, $columns, $head, $modelDatas))
                 ->download($fileName . '.csv', Excel::CSV, ['Content-Type' => 'text/csv',]);
-//                ->store($path, 'public', Excel::CSV);
+            //                ->store($path, 'public', Excel::CSV);
         }
         if ($format === 'pdf') {
             $path = 'exports/' . $fileName . '_' . time() . '.pdf';
@@ -42,4 +42,46 @@ trait CommonTrait
         return $path;
     }
 
+    public function exportFileStore($model, $columns, $head, $fileName = 'export_data', $modelDatas = null)
+    {
+        if (gettype(request('ids')) == 'string') {
+            $ids = explode(',', \request('ids'));
+        } else if (gettype(request('ids')) == 'array') {
+            $ids = \request('ids');
+        } else {
+            $ids = null;
+        }
+        $format = \request('format', 'excel');
+        $path = '';
+        if (file_exists(storage_path('app/public/exports/' . $fileName))) {
+            unlink(storage_path('app/public/exports/' . $fileName));
+        }
+        if ($format === 'excel' || $format === 'xlsx') {
+            $path = 'exports/' . $fileName . '.xlsx';
+            $format = 'xlsx';
+            (new DataExporter($ids, $model, $columns, $head, $modelDatas))
+                ->store($path, 'public', Excel::XLSX);
+        }
+        if ($format === 'csv') {
+            $path = 'exports/' . $fileName . '.csv';
+            $format = 'csv';
+            (new DataExporter($ids, $model, $columns, $head, $modelDatas))
+                ->store($path, 'public', Excel::CSV);
+        }
+        if ($format === 'pdf') {
+            $format = 'pdf';
+            $path = 'exports/' . $fileName . '.pdf';
+            (new DataExporter($ids, $model, $columns, $head, $modelDatas))
+                ->store($path, 'public', Excel::DOMPDF);
+        }
+        $filePath = storage_path('app/public/' . $path);
+        # prepare the data for response
+        $data = [
+            'file_name' => $fileName . '.' . $format,
+            'file_path' => $filePath,
+            'download_link' => url('storage/' . $path),
+            'file_extension' => $format
+        ];
+        return $data;
+    }
 }

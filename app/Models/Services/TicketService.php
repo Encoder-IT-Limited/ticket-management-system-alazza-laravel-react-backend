@@ -162,6 +162,45 @@ class TicketService
         return $this->exportData(null, $columns, $headers, 'tickets', $data);
     }
 
+    public function processReport($start, $end, $isWeekly = true)
+    {
+        $columns = [
+            'title',
+            'description',
+            'status',
+            'client.name',
+            'client.company',
+            'admin.name',
+            'is_resolved',
+            'rating',
+            'review',
+            'created_at',
+            'resolved_at',
+
+        ];
+        $headers = [
+            'Title',
+            'Description',
+            'Status',
+            'Client Name',
+            'Company Name',
+            'Admin Name',
+            'Is Resolved',
+            'Rating',
+            'Review',
+            'Created At',
+            'Resolved At',
+        ];
+
+        $data = Ticket::whereDate('created_at', '>=', $start)
+            ->whereDate('created_at', '<=', $end);
+        $data = $data->with('client', 'admin')->get();
+
+        $fileName = 'reports_' . ($isWeekly ? 'weekly' : 'monthly') . '_' . $start . '_to_' . $end;
+
+        return $this->exportFileStore(null, $columns, $headers, $fileName, $data);
+    }
+
 
     public function generateLineChart(): array
     {
