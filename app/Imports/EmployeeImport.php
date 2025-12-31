@@ -104,6 +104,12 @@ class EmployeeImport implements SkipsEmptyRows, SkipsOnFailure, ToArray, WithHea
 
             'basic_salary' => 'nullable|numeric',
             'gross_salary' => 'nullable|numeric',
+
+            'linkedin' => 'nullable|url',
+            // 'twitter' => 'nullable|url',
+            // 'facebook' => 'nullable|url',
+            // 'instagram' => 'nullable|url',
+            'website' => 'nullable|url',
         ];
     }
 

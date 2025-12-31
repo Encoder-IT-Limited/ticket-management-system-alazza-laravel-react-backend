@@ -48,6 +48,12 @@ class EmployeeRequest extends FormRequest
             'shift' => 'nullable|string',
             'basic_salary' => 'nullable|numeric',
             'gross_salary' => 'nullable|numeric',
+            
+            'linkedin' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'facebook' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'website' => 'nullable|url',
         ];
     }
 

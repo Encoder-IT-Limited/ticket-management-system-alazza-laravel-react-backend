@@ -41,6 +41,11 @@ class EmployeeResource extends JsonResource
             'shift' => $this->shift,
             'basic_salary' => $this->basic_salary,
             'gross_salary' => $this->gross_salary,
+            'linkedin' => $this->linkedin ?? null,
+            'twitter' => $this->twitter ?? null,
+            'facebook' => $this->facebook ?? null,
+            'instagram' => $this->instagram ?? null,
+            'website' => $this->website ?? null,
         ];
     }
 }
