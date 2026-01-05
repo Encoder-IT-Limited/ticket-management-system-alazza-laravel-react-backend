@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('employee_code')->nullable();   // EMP001, auto-generated
             $table->string('image')->nullable();
-            $table->string('name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('email')->nullable();

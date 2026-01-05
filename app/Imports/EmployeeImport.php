@@ -71,17 +71,18 @@ class EmployeeImport implements SkipsEmptyRows, SkipsOnFailure, ToArray, WithHea
     public function rules(): array
     {
         return [
-            'employee_code' => 'nullable|string|distinct|unique:employees,employee_code',
+            'employee_code' => 'nullable|distinct|unique:employees,employee_code',
             'image' => 'nullable',
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'nullable|string',
             'father_name' => 'nullable|string',
             'mother_name' => 'nullable|string',
 
             'email' => 'required|email|distinct|unique:employees,email',
-            'phone' => 'nullable|string|distinct|unique:employees,phone',
+            'phone' => 'nullable|distinct|unique:employees,phone',
 
             'emergency_contact_name' => 'nullable|string',
-            'emergency_contact_phone' => 'nullable|string',
+            'emergency_contact_phone' => 'nullable',
 
             'present_address' => 'nullable|string',
             'permanent_address' => 'nullable|string',
@@ -90,8 +91,8 @@ class EmployeeImport implements SkipsEmptyRows, SkipsOnFailure, ToArray, WithHea
             'date_of_birth' => 'nullable|date',
             'blood_group' => 'nullable|string',
 
-            'national_id' => 'nullable|string|distinct|unique:employees,national_id',
-            'passport_no' => 'nullable|string|distinct|unique:employees,passport_no',
+            'national_id' => 'nullable|distinct|unique:employees,national_id',
+            'passport_no' => 'nullable|distinct|unique:employees,passport_no',
 
             'department' => 'nullable|string',
             'designation' => 'nullable|string',

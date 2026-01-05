@@ -25,7 +25,8 @@ class EmployeeRequest extends FormRequest
         return [
             'employee_code' => 'nullable|string|unique:employees,employee_code,' . $id,
             'image' => 'nullable',
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'nullable|string',
             'father_name' => 'nullable|string',
             'mother_name' => 'nullable|string',
             'email' => 'required|email|unique:employees,email,' . $id,
@@ -48,7 +49,7 @@ class EmployeeRequest extends FormRequest
             'shift' => 'nullable|string',
             'basic_salary' => 'nullable|numeric',
             'gross_salary' => 'nullable|numeric',
-            
+
             'linkedin' => 'nullable|url',
             'twitter' => 'nullable|url',
             'facebook' => 'nullable|url',
@@ -68,8 +69,10 @@ class EmployeeRequest extends FormRequest
             'employee_code.string' => 'The employee code must be a string.',
             'employee_code.unique' => 'The employee code has already been taken.',
 
-            'name.required' => 'The name field is required.',
-            'name.string' => 'The name must be a string.',
+            'first_name.required' => 'The first name field is required.',
+            'first_name.string' => 'The first name must be a string.',
+
+            'last_name.string' => 'The last name must be a string.',
 
             'father_name.string' => 'The father name must be a string.',
             'mother_name.string' => 'The mother name must be a string.',
