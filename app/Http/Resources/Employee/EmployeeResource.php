@@ -24,6 +24,8 @@ class EmployeeResource extends JsonResource
             'mother_name' => $this->mother_name,
             'email' => $this->email,
             'phone' => $this->phone,
+            'work_phone' => $this->work_phone,
+            'position' => $this->position,
             'emergency_contact_name' => $this->emergency_contact_name,
             'emergency_contact_phone' => $this->emergency_contact_phone,
             'present_address' => $this->present_address,

@@ -80,6 +80,8 @@ class EmployeeImport implements SkipsEmptyRows, SkipsOnFailure, ToArray, WithHea
 
             'email' => 'required|email|distinct|unique:employees,email',
             'phone' => 'nullable|distinct|unique:employees,phone',
+            'work_phone' => 'nullable',
+            'position' => 'nullable',
 
             'emergency_contact_name' => 'nullable|string',
             'emergency_contact_phone' => 'nullable',

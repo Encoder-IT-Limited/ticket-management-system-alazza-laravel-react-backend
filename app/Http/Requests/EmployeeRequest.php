@@ -31,6 +31,8 @@ class EmployeeRequest extends FormRequest
             'mother_name' => 'nullable|string',
             'email' => 'required|email|unique:employees,email,' . $id,
             'phone' => 'nullable|string|unique:employees,phone,' . $id,
+            'work_phone' => 'nullable|string',
+            'position' => 'nullable|string',
             'emergency_contact_name' => 'nullable|string',
             'emergency_contact_phone' => 'nullable|string',
             'present_address' => 'nullable|string',

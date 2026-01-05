@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations
      */
     public function up(): void
     {
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('mother_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('work_phone')->nullable();
+            $table->string('position')->nullable();
             $table->string('emergency_contact_name')->nullable();
             $table->string('emergency_contact_phone')->nullable();
             $table->string('present_address')->nullable();
