@@ -73,7 +73,7 @@ function uploadFileV1($file, $path = 'files', $name = ''): ?string
         $file_name = time() . rand() . '.' . $file->getClientOriginalExtension();
     }
     //    $file->storeAs('public/' . $path . '/', $file_name);
-    $file->storeAs($path . '/', $file_name);
+    $file->storeAs('public/' . $path . '/', $file_name);
     return $path . '/' . $file_name;
 }
 
