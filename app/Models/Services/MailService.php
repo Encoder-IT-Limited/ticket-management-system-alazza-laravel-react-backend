@@ -46,6 +46,11 @@ class MailService
         }
 
         if ($ticket->client && $ticket->client->email) {
+            $client = $ticket->client;
+            $permission = $client->permissions()->where('slug', 'ticket-close-mail')->first();
+            if (!$permission) {
+                return;
+            }
             // Mail To user
             Mail::to($ticket->client->email)->send(
                 new TicketCloseMail(
