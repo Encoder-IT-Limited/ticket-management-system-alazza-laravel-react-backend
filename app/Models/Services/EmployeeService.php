@@ -8,16 +8,23 @@ class EmployeeService
 {
     public function getAll()
     {
-        $pamarms = request()->all();
+        $params = request()->all();
         $per_page = request()->get('per_page', 10);
-        $daat = Employee::orderBy('id', 'desc');
-        $data = $this->filter($daat, $pamarms);
+
+        # check user role and filter data accordingly
+        $user = auth()->user();
+        if ($user->role->name != 'Admin') {
+            $params['email'] = $user->email;
+        }
+
+        $data = Employee::orderBy('id', 'desc');
+        $data = $this->filter($data, $params);
         return $data->paginate($per_page);
     }
 
     private function filter($data, $pamarms)
     {
-        # search 
+        # search
         if (isset($pamarms['search']) && $pamarms['search'] != '') {
             $data = $data->where(function ($query) use ($pamarms) {
                 $query->where('name', 'like', '%' . $pamarms['search'] . '%')
@@ -41,6 +48,10 @@ class EmployeeService
         # employment_type
         if (isset($pamarms['employment_type']) && $pamarms['employment_type'] != '') {
             $data = $data->where('employment_type', $pamarms['employment_type']);
+        }
+        # email filter
+        if (isset($pamarms['email']) && $pamarms['email'] != '') {
+            $data = $data->where('email', $pamarms['email']);
         }
         return $data;
     }
